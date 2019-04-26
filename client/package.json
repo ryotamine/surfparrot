@@ -4,12 +4,13 @@
   "private": true,
   "dependencies": {
     "htmlparser2": "^3.10.1",
-    "nodemon": "^1.18.11",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "0.9.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

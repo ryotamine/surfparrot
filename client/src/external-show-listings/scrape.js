@@ -12,6 +12,8 @@ request('http://www.rotate.com/tickets', (error, response, body) => {
       const name = new Map(listing.map(x => [x.name]));
       const location = new Map(listing.map(x => [x.location.name]));
       console.log (name, date, location)
+      
+      
     });
   }
 });
