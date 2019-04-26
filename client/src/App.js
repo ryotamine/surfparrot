@@ -1,6 +1,5 @@
 
 import React, { Component } from "react";
-import hash from "./hash";
 import logo from "./logo.svg";
 import "./App.css";
 import * as $ from "jquery";
@@ -27,6 +26,7 @@ const hash = window.location.hash
     }
     return initial;
   }, {});
+
 window.location.hash = "";
 
 class App extends Component {
@@ -47,7 +47,7 @@ class App extends Component {
   };
   this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
   }
-  
+
   getCurrentlyPlaying(token) {
     // Make a call using the token
     $.ajax({
@@ -90,8 +90,13 @@ render() {
           Login to Spotify
         </a>
       )}
-      {this.state.token && (
-        // Spotify Player Will Go Here In the Next Step
+        {/* Spotify Player */}
+         {this.state.token && (
+        <Player
+          item={this.state.item}
+          is_playing={this.state.is_playing}
+          progress_ms={this.progress_ms}
+        />
       )}
       </header>
     </div>
