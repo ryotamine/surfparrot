@@ -5,10 +5,23 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Hello!</h2>
-        </div>
+      <div>
+        <nav className='navbar navbar-expand-lg'>
+          <a className='navbar-brand' href='/'>surfparrot</a>
+          <div>
+            <ul className='nav justify-content-end'>
+              <li class='nav-item'>
+                <a className='nav-link' href='/'>Login</a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' href='/'>Register</a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' href='/'>Contact</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     );
   }
