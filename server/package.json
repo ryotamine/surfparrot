@@ -5,7 +5,7 @@
   "main": "express_server.js",
   "scripts": {
     "start": "node express_server.js",
-    "server": "nodemon server.js",
+    "server": "nodemon express_server.js",
     "client": "npm start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,6 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "concurrently": "^4.1.0",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "json": "^9.0.6",
     "react": "^16.8.6",
