@@ -5,6 +5,7 @@ const cheerio       = require("cheerio");
 const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
+const entities      = require("entities");
 
 app.use(cors());
 
@@ -15,15 +16,16 @@ app.get('/showInfo', (req, res) => {
       $('.post-content script').each((i, el) => {
         let listings = (JSON.parse(el.children[0].data));
         const listingData = listings.map(listing => ({
-          Event: listing.name,
+          Event: entities.decodeHTML(listing.name),
           Date: moment(listing.startDate).format("MMMM Do YYYY"),
-          Location: listing.location.name
+          Location: entities.decodeHTML(listing.location.name)
         }))
         res.json({listingData: listingData}); 
       });
     }
   });
 });
+
 
 
 // Boot server
