@@ -3,8 +3,8 @@ const app           = express();
 const PORT          = 5000
 const cheerio       = require("cheerio");
 const request       = require("request");
-const cors           = require("cors");
-// const SpotifyWebApi = require("spotify-web-api-node");
+const cors          = require("cors");
+const moment        = require("moment");
 
 app.use(cors());
 
@@ -16,7 +16,7 @@ app.get('/showInfo', (req, res) => {
         let listings = (JSON.parse(el.children[0].data));
         const listingData = listings.map(listing => ({
           Event: listing.name,
-          Date: listing.startDate,
+          Date: moment(listing.startDate).format("MMMM Do YYYY"),
           Location: listing.location.name
         }))
         res.json({listingData: listingData}); 
@@ -30,4 +30,8 @@ app.get('/showInfo', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
+
+
+// 2019-04-27T00:00:01
+
 
