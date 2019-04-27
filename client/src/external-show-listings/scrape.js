@@ -1,29 +1,53 @@
-const request = require('request');
-const cheerio = require('cheerio');
+const request    = require('request');
+const cheerio    = require('cheerio');
+const ReactTable = require('react-table');
+const JSON       = require('json');
 
+//scraper
 
-request('http://www.rotate.com/tickets', (error, response, body) => {
-  if (!error && response.statusCode == 200) {
-    const $ = cheerio.load(body);
-    $('.post-content script').each((i, el) => {
-      listing = (JSON.parse(el.children[0].data));
-      // console.log(listing);
-      const date = new Map(listing.map(x => [x.startDate]));
-      const name = new Map(listing.map(x => [x.name]));
-      const location = new Map(listing.map(x => [x.location.name]));
-      console.log (name, date, location)
-      
-      
-    });
+class scrape extends Component {
+  
+  render () {
+    request('http://www.rotate.com/tickets', (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        const $ = cheerio.load(body);
+        $('.post-content script').each((i, el) => {
+          let listing = (JSON.parse(el.children[0].data));
+          const date = new Map(listing.map(x => [x.startDate]));
+          const name = new Map(listing.map(x => [x.name]));
+          const location = new Map(listing.map(x => [x.location.name]));
+          console.log (name, date, location)
+        
+     const listingData = [{
+       Event: [name],
+       Date: [date],
+       Location: [location]
+     }]
+  
+     const columns = [{
+       Header: 'Event',
+       accessor: 'Event'},
+       {
+        Header: 'Date',
+        accessor: 'Date'},
+        {
+          Header: 'Location',
+          accessor: 'Location'}];
+
+    
+  return (
+    <div>
+        <ReactTable>
+          data={listingData}
+          columns={columns}
+          defaultPageSize={3}
+          pageSizeOptions={[3, 6]}
+        </ReactTable>
+    </div>     
+);
+  });
+}
+  });
   }
-});
-
-    // { '@context': 'http://schema.org',
-    // '@type': 'Event',
-    // name: 'BEAR&#8217;S DEN',
-    // startDate: '2019-05-24T00:00:01',
-    // typicalAgeRange: '19+',
-    // performers: { '@type': 'Organization', name: 'BEAR&#8217;S DEN' },
-    // location: { '@type': 'Place', name: 'PHOENIX', address: [Object] },
-    // offers: { '@type': 'Offer', price: '$29.00' } },
-
+}
+export default scrape;

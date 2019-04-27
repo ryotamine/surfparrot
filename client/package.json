@@ -6,7 +6,8 @@
     "htmlparser2": "^3.10.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "react-table": "^6.10.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
