@@ -1,3 +1,5 @@
-.App {
-  text-align: center;
+.home, .login, .register, .contact {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
 }
