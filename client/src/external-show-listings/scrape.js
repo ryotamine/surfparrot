@@ -23,13 +23,12 @@ class Scrape extends Component {
       }
     });
   }
-
   render () {
 
     const columns = [
       {
         Header: 'Event',
-        accessor: 'Event'
+        accessor: 'Event',
       },
       {
         Header: 'Date',
@@ -38,14 +37,19 @@ class Scrape extends Component {
       {
         Header: 'Location',
         accessor: 'Location'
+      },
+      {
+        Header: 'Listen',
+        Cell: row => ( 
+          <div>
+            <button>Listen</button>
+          </div> )
       }
-    ];
-    console.log(this.state.listingData)
 
+    ];
     return (
     <div>
-        <ReactTable
-
+        <ReactTable className="-striped"
           data={this.state.listingData}
           columns={columns}
             defaultPageSize={20}     
