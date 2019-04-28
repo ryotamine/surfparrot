@@ -37,6 +37,7 @@
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "request": "^2.88.0",
     "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
