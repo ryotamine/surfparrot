@@ -1,5 +1,5 @@
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text] {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -8,13 +8,13 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Email and password box */
-.email-login, .password-login {
+/* Name, email, subject, and comment box */
+.name-contact, .email-contact, .subject-contact, .comment-contact {
   border-radius: 5px;
 }
 
-/* Set a style for main login button on home page */
-.main-login {
+/* Set a style for main contact button on home page */
+.main-contact {
   background-color: transparent;
   color: black;
   padding: 14px 20px;
@@ -24,12 +24,12 @@ input[type=text], input[type=password] {
   outline: none;
 }
 
-.main-login:hover {
+.main-contact:hover {
   opacity: 0.8;
 }
 
-/* Set a style for submit login button */
-.submit-login {
+/* Set a style for submit contact button */
+.submit-contact {
   background-color: #2196F3;
   color: white;
   padding: 14px 20px;
@@ -40,15 +40,15 @@ input[type=text], input[type=password] {
   width: 100%;
 }
 
-/* Close login button */
-.close-login {
+/* Close contact button */
+.close-contact {
   text-align: right;
   margin: 24px 0 12px 0;
   position: relative;
 }
 
-/* Login information */
-.info-login {
+/* Contact information */
+.info-contact {
   padding: 16px;
 }
 
@@ -57,8 +57,8 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Login popup */
-.popup-login {
+/* Contact popup */
+.popup-contact {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -72,12 +72,24 @@ span.psw {
   padding-top: 60px;
 }
 
-/* Login content */
-.content-login {
+/* Contact content */
+.content-contact {
   background-color: #fefefe;
   margin: 5% auto 15% auto;
   border: 1px solid #888;
   width: 40%;
+}
+
+/* Contact comment box */
+.comment-contact {
+  height: 100px;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* Close button (x) */
@@ -91,7 +103,7 @@ span.psw {
   cursor: pointer;
 }
 
-/* Add zoom animation to login */
+/* Add zoom animation to contact */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
