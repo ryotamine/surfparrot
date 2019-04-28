@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import request from 'request';
 import ReactTable from 'react-table';
+import "react-table/react-table.css";
+
 
 class Scrape extends Component {
   constructor (props) {
@@ -38,14 +40,20 @@ class Scrape extends Component {
         accessor: 'Location'
       }
     ];
+    console.log(this.state.listingData)
 
     return (
-      <div>
+    <div>
         <ReactTable
+
           data={this.state.listingData}
           columns={columns}
-          defaultPageSize={3}
-          pageSizeOptions={[3, 6]}
+            defaultPageSize={20}     
+          // pageSizeOptions={[3, 6]}
+            style={{
+              height: "400px"
+            }}
+
         />
       </div>
     );
