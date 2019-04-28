@@ -1,7 +1,7 @@
 /* Full-width input fields */
 input[type=text], input[type=password] {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
@@ -9,7 +9,7 @@ input[type=text], input[type=password] {
 }
 
 /* First name, last name, email, and password box */
-.first-name, .last-name, .email, .password {
+.first-name-register, .last-name-register, .email-register, .password-register {
   border-radius: 5px;
 }
 
@@ -28,7 +28,7 @@ input[type=text], input[type=password] {
   opacity: 0.8;
 }
 
-/* Set a style for submit-register button */
+/* Set a style for submit register button */
 .submit-register {
   background-color: #2196F3;
   color: white;
@@ -40,7 +40,7 @@ input[type=text], input[type=password] {
   width: 100%;
 }
 
-/* Close-register button */
+/* Close register button */
 .close-register {
   text-align: right;
   margin: 24px 0 12px 0;
