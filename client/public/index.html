@@ -12,9 +12,40 @@
 
     <!-- Fontawesome link -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- Home CSS link -->
+    <link href="home.css" type="text/css" rel="stylesheet">
+
+    <!-- Login CSS link -->
+    <link href="login.css" type="text/css" rel="stylesheet">
   </head>
   
   <body>
+    <a class='home' href='/'>surfparrot</a>
+    
+    <button class="main-login" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+    <div id="id01" class="popup-login">
+      
+      <form class="content-login animate" action="/action_page.php">
+        <div class="close-login">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+
+        <div class="info-login">
+          <label for="email"><b>Email</b></label>
+          <input class="email" type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input class="password" type="password" placeholder="Enter Password" name="psw" required>
+            
+          <button class="submit-login" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+
     <div id="root"></div>
+
+    <script type="text/javascript" src="login.js"></script>
   </body>
 </html>
