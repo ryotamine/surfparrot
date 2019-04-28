@@ -4,6 +4,7 @@ import Login from './login';
 import Register from './register';
 import Contact from './contact';
 import Scrape from './external-show-listings/scrape';
+import SpotifyPlayer from './SpotifyPlayer';
 
 // App class
 class App extends Component {
@@ -16,9 +17,9 @@ class App extends Component {
         <Register />
         <Contact />
         <Scrape />
+        {/* this.state.artistid */}
+        <SpotifyPlayer artistid="0Z8fvErw8r7KKFjYAWDd0a"/>
       </div>
-
-      
       
 
     );
