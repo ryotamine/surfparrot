@@ -21,7 +21,7 @@ input[type=text], input[type=password] {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  outline: none;
 }
 
 .main-login:hover {
@@ -38,10 +38,6 @@ input[type=text], input[type=password] {
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-}
-
-.submit-login:hover {
-  opacity: 0.8;
 }
 
 /* Close login button */
@@ -79,9 +75,9 @@ span.psw {
 /* Login content */
 .content-login {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 5% auto 15% auto;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 40%;
 }
 
 /* Close button (x) */
@@ -92,6 +88,7 @@ span.psw {
   color: #000;
   font-size: 35px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Add zoom animation to login */
