@@ -23,8 +23,10 @@ class Scrape extends Component {
       }
     });
   }
+  
   render () {
-
+    
+    
     const columns = [
       {
         Header: 'Event',
@@ -36,7 +38,11 @@ class Scrape extends Component {
       },
       {
         Header: 'Location',
-        accessor: 'Location'
+        accessor: 'Location',
+        Cell: row => {
+        const url = `https://www.google.com/maps/search/${row.value}+Toronto`
+        return <a href={url} target="_blank">{row.value}</a>
+        }
       },
       {
         Header: 'Listen',
