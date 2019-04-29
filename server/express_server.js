@@ -6,9 +6,12 @@ const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
 const entities      = require("entities");
+const bcrypt        = require("bcrypt");
+const cookieSession = require("cookie-session");
 
 app.use(cors());
 
+// GET www.rotate.com for show listings
 app.get('/showInfo', (req, res) => {
   request('http://www.rotate.com/tickets', (error, response, body) => {
     if (!error && response.statusCode === 200) {
@@ -26,14 +29,12 @@ app.get('/showInfo', (req, res) => {
   });
 });
 
-
+// Home page
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
 // Boot server
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
-
-
-// 2019-04-27T00:00:01
-
-
