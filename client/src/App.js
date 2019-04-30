@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Home from './home';
-import Login from './login.js';
+import Login from './login';
+import Registration from './registration_form';
+import Contact from './contact';
 import Scrape from './external-show-listings/scrape';
-import Registration from './registration_form.js';
 import SpotifyPlayer from './SpotifyPlayer.js';
 import EventCreation from './event_form';
 import NameForm from './name_form';
@@ -26,21 +27,21 @@ class App extends Component {
   //   }
   //  }
 
+  // Render page
   render() {
     return (
       <div>
         <Home />
-        {/* <Login /> */}
         <Scrape />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
+        <NameForm onSearchTermChange={this.getArtist} />
         <Registration />
         <Login />
-        <NameForm onSearchTermChange={this.getArtist} 
-        />
+        <Contact />
         <EventCreation />
-
+        <Scrape />
       </div>
     );
   }
@@ -62,13 +63,9 @@ class App extends Component {
         }  
       )
       .then(res => {
-        // console.log("~~~~~~~~~~~~getartist", getArtist)
-        // console.log(`this.${artistName}`) 
-        console.log("~~~~~~~~~~~~~~~~~~response", res)
         const items = res.data.artists.items
-        const firstItem = items[0]
         // get the first artist returned from the request
-        // const firstItem = items.find(({ id }) => !!id)
+        const firstItem = items[0]
   
         if (!firstItem) {
           console.log('no artists found')
@@ -81,19 +78,7 @@ class App extends Component {
       })    
     } else {
       this.getSpotifyToken()
-      // console.log("getSpotifyToken: ", this.getSpotifyToken())
-      // this.getRefreshToken()
-      // console.log("getRefreshToken: ", this.getRefreshToken())
-   
-    }
-      // .catch(err => {
-      //    // queries the spotify_token endpoint on backend
-      //   this.getSpotifyToken()
-      //   console.log("getSpotifyToken: ", this.getSpotifyToken())
-      //   this.getRefreshToken()
-      //   console.log("getRefreshToken: ", this.getRefreshToken())
-      // });
-    
+ 
     } catch (e) {
       // queries the spotify_token endpoint on backend
       this.getSpotifyToken()
@@ -113,36 +98,6 @@ class App extends Component {
     }
   }
  
-  // helper function sends spotify_token endpoint back to the frontend
-  // getSpotifyToken = () => {
-  //   axios.get('http://localhost:5000/spotify_token')
-  //   .then(function (response) {
-  //     const token = response.data.token
-  //     // debugger
-  //     console.log("FRONT ENDtoken: ", token)
-  //     this.setState({ token })
-  //     console.log(response);
-  //   })
-
-    // try {
-    //   axios.get('http://localhost:5000/spotify_token').then(function (response) { 
-    //     debugger
-    //     // handle success
-    //     const token = response.data.token
-    //     console.log("token: ", token)
-    //     this.setState({ token })
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     debugger
-    //     // handle error
-    //     console.log(error);
-    //   })
-    // } catch (error) {
-    //   console.log(error)
-    // }
-  
-
     // helper function sends refresh_token endpoint back to the frontend
     getRefreshToken = async () => {
       try {

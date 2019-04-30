@@ -72,7 +72,7 @@ class EventCreation extends Component {
               <label htmlFor="song-link"><b>Link a song!</b></label>
               <input className="event-songLink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songLink-create" required></input>
                             
-              <button className="submit-register" type="submit" value="submit">Create Your Event!</button>
+              <button className="submit-event" type="submit" value="submit">Create Your Event!</button>
             </div>
           </form>
         </div>

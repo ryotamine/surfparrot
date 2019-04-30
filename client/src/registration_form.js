@@ -3,6 +3,7 @@ import Popup from "reactjs-popup";
 
 
 class Registration extends Component {
+
   constructor(props) {
     super(props);
     this.state = { open: false}
@@ -44,7 +45,7 @@ class Registration extends Component {
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
+        <button className="main-register" onClick={this.openModal}>
           Register 
         </button>
         
@@ -53,6 +54,7 @@ class Registration extends Component {
           closeOnDocumentClick
           onClose={this.closeModal}
           >
+          
         <div id="id02" className="modal">
           <a className="close" onClick={this.closeModal}>
           &times;
@@ -81,5 +83,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration
-
+export default Registration;
