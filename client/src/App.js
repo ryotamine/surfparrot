@@ -97,20 +97,21 @@ class App extends Component {
       this.setState({ token })
       console.log(response);
     })
+
     // try {
-      // axios.get('/spotify_token').then(function (response) { 
-      //   debugger
-      //   // handle success
-      //   const token = response.data.token
-      //   console.log("token: ", token)
-      //   this.setState({ token })
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   debugger
-      //   // handle error
-      //   console.log(error);
-      // })
+    //   axios.get('http://localhost:5000/spotify_token').then(function (response) { 
+    //     debugger
+    //     // handle success
+    //     const token = response.data.token
+    //     console.log("token: ", token)
+    //     this.setState({ token })
+    //     console.log(response);
+    //   })
+    //   .catch(function (error) {
+    //     debugger
+    //     // handle error
+    //     console.log(error);
+    //   })
     // } catch (error) {
     //   console.log(error)
     // }
