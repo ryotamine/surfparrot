@@ -31,6 +31,7 @@
     "cheerio": "^1.0.0-rc.3",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
     "entities": "^1.1.2",
     "express": "^4.16.4",
     "fast-boot": "^1.0.7",

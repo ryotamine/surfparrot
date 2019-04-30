@@ -6,9 +6,15 @@ const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
 const entities      = require("entities");
-const getSpotifyToken = require('./getSpotifyToken')
+const getSpotifyToken = require('./getSpotifyToken');
+
+require('dotenv').config()
+
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
+
+console.log("SPOTIFY_CLIENT_ID", SPOTIFY_CLIENT_ID)
+console.log("SPOTIFY_CLIENT_SECRET", SPOTIFY_CLIENT_SECRET)
 
 app.use(cors());
 
@@ -63,6 +69,7 @@ app.get('/spotify_token', (req, res) => {
     }
   )
 })
+
 
 app.get('/refresh_token', function(req, res) {
   // requesting access token from refresh token

@@ -21,8 +21,7 @@ const getSpotifyToken = ({
 
     (error, response, body) => {
       console.log("body~~~~~~~~~~~~~~~~~", body)
-      console.log("error~~~~~~~~~~~~~~~~~~~", error)
-      console.log("response~~~~~~~~~~~~~~~~~~~~~", response)
+      console.log("body.access_token~~~~~~~~", body.access_token)
       if (error) {
         done(error)
       } else if (response.statusCode < 200 || response.statusCode > 299) {
@@ -50,3 +49,5 @@ const getSpotifyToken = ({
 // }
 
 module.exports = getSpotifyToken
+
+
