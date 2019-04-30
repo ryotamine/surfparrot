@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
-// App className
+
+
 class Registration extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +19,7 @@ class Registration extends Component {
   }
 
   
-  //   this.handleSubmit = this.handleSubmit.bind(this)
+    
 
   //   this.state = {
   //     firstName: '',
@@ -27,10 +28,6 @@ class Registration extends Component {
   //     password: ''
   //   };
     
-  //   this.handleChange = this.handleChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
   // handleChange(event) {
   //   this.setState({
   //     firstName: event.target.value,
