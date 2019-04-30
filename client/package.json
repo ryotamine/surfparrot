@@ -14,6 +14,8 @@
     "react-table": "^6.10.0"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.12.4",
     "nodemon": "^1.18.11"
   },
   "scripts": {

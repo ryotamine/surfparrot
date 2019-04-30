@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>surfparrot</title>
-
+    
     <!-- Normalize CSS -->
     <style>
       @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
@@ -24,6 +24,11 @@
   </head>
   
   <body>
+    <!-- Home -->
+    <a class='home' href='/'>surfparrot</a>
+    
+    <!-- Registration Popup -->
+
     <!-- Login popup -->
     <button class="main-login" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
@@ -45,35 +50,6 @@
         </div>
       </form>
     </div>
-
-    <!-- Register popup -->
-    <button class="main-register" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
-
-    <div id="id02" class="popup-register">
-      
-      <form class="content-register animate" action="/action_page.php">
-        <div class="close-register">
-          <span onclick="document.getElementById('id02').style.display='none'" class="close">&times;</span>
-        </div>
-
-        <div class="info-register">
-          <label for="first-name"><b>First Name</b></label>
-          <input class="first-name-register" type="text" placeholder="First Name" name="first-name" required>
-
-          <label for="last-name"><b>Last Name</b></label>
-          <input class="last-name-register" type="text" placeholder="Last Name" name="last-name" required>
-
-          <label for="email"><b>Email</b></label>
-          <input class="email-register" type="text" placeholder="Email Address" name="email" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input class="password-register" type="password" placeholder="Create a Password" name="psw" required>
-            
-          <button class="submit-register" type="submit">Register</button>
-        </div>
-      </form>
-    </div>
-
     <!-- Contact popup -->
     <button class="main-contact" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Contact</button>
 

@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
-require('./login.css');
-require('./require-login.js');
+import './index.css';
+// require('../styles/home.css');
+
+
 
 const routing = (
   <Router>
