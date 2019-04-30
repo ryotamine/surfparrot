@@ -21,7 +21,7 @@ class Contact extends Component {
     this.setState({ open: false });
   }
 
-  // Render login popup
+  // Render contact popup
   render() {
     return (
       <div>
