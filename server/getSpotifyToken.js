@@ -15,6 +15,7 @@ const getSpotifyToken = ({
       },
       json: true,
     },
+
     (error, response, body) => {
       if (error) {
         done(error)

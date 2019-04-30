@@ -6,6 +6,9 @@ const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
 const entities      = require("entities");
+const getSpotifyToken = require('./getSpotifyToken')
+const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
+const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 
 app.use(cors());
 
@@ -27,13 +30,50 @@ app.get('/showInfo', (req, res) => {
 });
 
 
+app.get('/spotify_token', (req, res) => {
+  console.log("spotify_tokenxxxxxxxxxxxxxxxxxxx ", '/spotify_token')
+  getSpotifyToken({
+      clientId: SPOTIFY_CLIENT_ID,
+      clientSecret: SPOTIFY_CLIENT_SECRET,
+    },
+    // MENTOR suggested I rewrite as a named function, and the name value of the token is wrong
+    //token is empty
+    (_, token) => res.status(200).json({
+      token: token,
+      test: 'hello world'
+    })
+  )
+})
+
+app.get('/refresh_token', function(req, res) {
+  // requesting access token from refresh token
+  var refresh_token = req.query.refresh_token;
+  console.log("refresh_token: ", refresh_token)
+  var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
+    form: {
+      grant_type: 'refresh_token',
+      refresh_token: refresh_token
+    },
+    json: true
+  };
+  
+  request.post(authOptions, function(error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var access_token = body.access_token;
+      res.send({
+        'access_token': access_token
+      });
+    }
+  });
+});
+
+
 
 // Boot server
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
 
-
 // 2019-04-27T00:00:01
-
-
