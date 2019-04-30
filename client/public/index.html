@@ -24,8 +24,69 @@
   </head>
   
   <body>
+<<<<<<< HEAD
     <!-- Home -->
     <a class='home' href='/'>surfparrot</a>
+=======
+    <!-- Register popup -->
+    <button class="main-register" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
+
+    <div id="id02" class="popup-register">
+      
+      <form class="content-register animate" action="/action_page.php">
+        <div class="close-register">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close">&times;</span>
+        </div>
+
+        <div class="info-register">
+          <label for="first-name"><b>First Name</b></label>
+          <input class="first-name-register" type="text" placeholder="First Name" name="first-name" required>
+
+          <label for="last-name"><b>Last Name</b></label>
+          <input class="last-name-register" type="text" placeholder="Last Name" name="last-name" required>
+
+          <label for="email"><b>Email</b></label>
+          <input class="email-register" type="text" placeholder="Email Address" name="email" required>
+
+          <label for="psw"><b>Password</b></label>
+          <input class="password-register" type="password" placeholder="Create a Password" name="psw" required>
+            
+          <button class="submit-register" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Contact popup -->
+    <button class="main-contact" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Contact</button>
+
+    <div id="id03" class="popup-contact">
+      
+      <form class="content-contact animate" action="/action_page.php">
+        <div class="close-contact">
+          <span onclick="document.getElementById('id03').style.display='none'" class="close">&times;</span>
+        </div>
+
+        <div class="info-contact">
+          <label for="name"><b>Name</b></label>
+          <input class="name-contact" type="text" placeholder="Name" name="name" required>
+
+          <label for="email"><b>Email</b></label>
+          <input class="email-contact" type="text" placeholder="Email Address" name="email" required>
+
+          <label for="subject"><b>Subject</b></label>
+          <input class="subject-contact" type="text" placeholder="Subject" name="subject" required>
+
+          <div>
+            <label for="comment"><b>Comment</b></label>
+          </div>
+          <textarea class="comment-contact" type="text" placeholder="Comment" name="comment" required></textarea>
+
+          <button class="submit-contact" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+>>>>>>> feature/popup
     <div id="root"></div>
     <!-- Register JS link -->
     <script type="text/javascript" src="./scripts/register.js"></script>
