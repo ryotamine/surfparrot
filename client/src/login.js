@@ -6,7 +6,6 @@ class Login extends Component {
   // Login constructor
   constructor(props) {
     super(props);
-
     this.state = { open: false };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -36,7 +35,7 @@ class Login extends Component {
           onClose={this.closeModal}
         >
 
-          <div id="id01" className="modal">
+          <div id="id02" className="modal">
             <a className="close" onClick={this.closeModal}>
               &times;
             </a>
@@ -60,8 +59,8 @@ class Login extends Component {
           </div>
         </Popup>
       </div>
-    );
+    )
   }
 }
 
-export default Login;
+export default Login
