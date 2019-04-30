@@ -3,13 +3,9 @@ import Home from './home';
 import Login from './login.js';
 import Scrape from './external-show-listings/scrape';
 import Registration from './registration_form.js';
-<<<<<<< HEAD
 import axios from 'axios';
 import SpotifyPlayer from './SpotifyPlayer.js';
-=======
 import EventCreation from './event_form';
-
->>>>>>> afb0f4a03a272d4d4f8158b438f60a0bdbb3dc1a
 
 // App class
 class App extends Component {
