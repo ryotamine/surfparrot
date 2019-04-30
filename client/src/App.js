@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Home from './home';
-import Login from './login.js';
+import Login from './login';
+import Registration from './registration_form';
+import Contact from './contact';
 import Scrape from './external-show-listings/scrape';
-import Registration from './registration_form.js';
 import axios from 'axios';
 import SpotifyPlayer from './SpotifyPlayer.js';
 import EventCreation from './event_form';
@@ -24,6 +25,7 @@ class App extends Component {
         <Home />
         <Login />
         <Registration />
+        <Contact />
         <button onClick={() => this.getArtist('esther')}>get artist</button>
         <EventCreation />
         <Scrape />
