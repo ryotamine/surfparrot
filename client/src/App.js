@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Home from './home';
 import Login from './login.js';
 import Scrape from './external-show-listings/scrape';
 import Registration from './registration_form.js';
-import axios from 'axios';
 import SpotifyPlayer from './SpotifyPlayer.js';
 import EventCreation from './event_form';
+import NameForm from './name_form';
 
 // App class
 class App extends Component {
   state = {
     token: null,
+    artist: '43ZHCT0cAZBISjO8DG9PnE', 
+    searchTerm: ""
   }
 
   componentDidMount() {
     this.getSpotifyToken()
   }
 
+  // shouldComponentUpdate(nextProps, nextState){
+  //   if (searchTerm !== onSearchTermChange) {
+  //     return this.state.list!==nextState.list
+  //   }
+  //  }
 
   render() {
     return (
@@ -25,15 +33,22 @@ class App extends Component {
         {/* <Login /> */}
         <Scrape />
         {/* this.state.artistid */}
-        <SpotifyPlayer artistid="0Z8fvErw8r7KKFjYAWDd0a"/>
+        <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
         <Registration />
         <Login />
-        <button onClick={() => this.getArtist('esther')}>get artist</button>
+        <NameForm onSearchTermChange={this.getArtist} 
+        />
         <EventCreation />
 
       </div>
     );
+  }
+
+
+  updateSearchTerm = searchTerm => {
+    this.setState({searchTerm});
+
   }
 
   getArtist = async artistName => {
@@ -41,24 +56,26 @@ class App extends Component {
       if (this.state.token) {
       console.log("this.state.token: ", `${this.state.token}`)
       const response = await axios.get(
-        `https://api.spotify.com/v1/search/?q=name:${artistName}&type=artist`,
+        `https://api.spotify.com/v1/search/?q=${artistName}&type=artist`,
         {
           headers: { Authorization: `Bearer ${this.state.token}` },
         }  
       )
-      .then(getArtist => {
-        // console.log(getArtist)
-        console.log(`this.${artistName}`) 
-        const items = response.data.artists.items
+      .then(res => {
+        // console.log("~~~~~~~~~~~~getartist", getArtist)
+        // console.log(`this.${artistName}`) 
+        console.log("~~~~~~~~~~~~~~~~~~response", res)
+        const items = res.data.artists.items
+        const firstItem = items[0]
         // get the first artist returned from the request
-        const firstItem = items.find(({ id }) => !!id)
+        // const firstItem = items.find(({ id }) => !!id)
   
         if (!firstItem) {
           console.log('no artists found')
           return
         }
-        const id = firstItem.id 
         // get the id of the first artist returned
+        this.setState({artist: firstItem})
         // do something with the atist id
         // https://api.spotify.com/v1/artists/{id}/top-tracks
       })    
@@ -69,7 +86,6 @@ class App extends Component {
       // console.log("getRefreshToken: ", this.getRefreshToken())
    
     }
-      
       // .catch(err => {
       //    // queries the spotify_token endpoint on backend
       //   this.getSpotifyToken()
@@ -77,7 +93,6 @@ class App extends Component {
       //   this.getRefreshToken()
       //   console.log("getRefreshToken: ", this.getRefreshToken())
       // });
-
     
     } catch (e) {
       // queries the spotify_token endpoint on backend
