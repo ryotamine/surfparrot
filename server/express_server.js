@@ -30,18 +30,37 @@ app.get('/showInfo', (req, res) => {
 });
 
 
+
+app.get('/healthcheck', (req, res) => {
+  res.status(200).json({
+    message: 'success!'
+  })
+})
+
+// app.get('/spotify_token', (req, res) => {
+//   getSpotifyToken({
+//       clientId: SPOTIFY_CLIENT_ID,
+//       clientSecret: SPOTIFY_CLIENT_SECRET,
+//     },
+//     (_, token) => res.status(200).json({
+//       token
+//     })
+//   )
+// })
+
 app.get('/spotify_token', (req, res) => {
-  console.log("spotify_tokenxxxxxxxxxxxxxxxxxxx ", '/spotify_token')
+  console.log("spotify_tokenxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ", '/spotify_token')
   getSpotifyToken({
       clientId: SPOTIFY_CLIENT_ID,
       clientSecret: SPOTIFY_CLIENT_SECRET,
     },
-    // MENTOR suggested I rewrite as a named function, and the name value of the token is wrong
-    //token is empty
-    (_, token) => res.status(200).json({
-      token: token,
-      test: 'hello world'
-    })
+    // the name value of the token is wrong ?
+    (_, token) => {
+      console.log("_", _)
+      console.log("token: ", token)
+      console.log("token: token", token)
+      res.status(200).json({token: token,})
+    }
   )
 })
 
@@ -68,8 +87,6 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 });
-
-
 
 // Boot server
 app.listen(PORT, () => {
