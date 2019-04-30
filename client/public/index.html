@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>surfparrot</title>
-
+    
     <!-- Normalize CSS -->
     <style>
       @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");
@@ -16,9 +16,6 @@
     <!-- Home CSS link -->
     <link href="./styles/home.css" type="text/css" rel="stylesheet">
 
-    <!-- Login CSS link -->
-    <link href="./styles/login.css" type="text/css" rel="stylesheet">
-
     <!-- Register CSS link -->
     <link href="./styles/register.css" type="text/css" rel="stylesheet">
 
@@ -27,31 +24,6 @@
   </head>
   
   <body>
-    <!-- Home -->
-    <a class='home' href='/'>surfparrot</a>
-    
-    <!-- Login popup -->
-    <button class="main-login" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-    <div id="id01" class="popup-login">
-      
-      <form class="content-login animate" action="/action_page.php">
-        <div class="close-login">
-          <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
-        </div>
-
-        <div class="info-login">
-          <label for="email"><b>Email</b></label>
-          <input class="email-login" type="text" placeholder="Email Address" name="email" required>
-
-          <label for="psw"><b>Password</b></label>
-          <input class="password-login" type="password" placeholder="Password" name="psw" required>
-            
-          <button class="submit-login" type="submit">Login</button>
-        </div>
-      </form>
-    </div>
-
     <!-- Register popup -->
     <button class="main-register" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Register</button>
 
@@ -111,10 +83,6 @@
     </div>
 
     <div id="root"></div>
-
-    <!-- Login JS link -->
-    <script type="text/javascript" src="./scripts/login.js"></script>
-
     <!-- Register JS link -->
     <script type="text/javascript" src="./scripts/register.js"></script>
 

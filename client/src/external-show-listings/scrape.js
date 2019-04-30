@@ -23,13 +23,13 @@ class Scrape extends Component {
       }
     });
   }
-
+  
   render () {
-
+    
     const columns = [
       {
         Header: 'Event',
-        accessor: 'Event'
+        accessor: 'Event',
       },
       {
         Header: 'Date',
@@ -37,23 +37,29 @@ class Scrape extends Component {
       },
       {
         Header: 'Location',
-        accessor: 'Location'
+        accessor: 'Location',
+        Cell: row => {
+        const url = `https://www.google.com/maps/search/${row.value}+Toronto`
+        return <a href={url} target="_blank" rel="noopener noreferrer">{row.value}</a>
+        }
+      },
+      {
+        Header: 'Listen',
+        Cell: row => ( 
+          <div>
+            <button>Listen</button>
+          </div> )
       }
     ];
-    console.log(this.state.listingData)
-
     return (
     <div>
-        <ReactTable
-
+        <ReactTable className="-striped"
           data={this.state.listingData}
           columns={columns}
-            defaultPageSize={20}     
-          // pageSizeOptions={[3, 6]}
-            style={{
+          defaultPageSize={20}     
+          style={{
               height: "400px"
-            }}
-
+          }}
         />
       </div>
     );
