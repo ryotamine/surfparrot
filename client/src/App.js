@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Home from './home';
-import Login from './login';
+import Login from './login.js';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer';
 import Registration from './registration_form.js';

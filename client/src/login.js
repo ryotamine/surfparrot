@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
-require('./login.css');
-require('./require-login.js');
 
 // Login class
 class Login extends Component {
@@ -43,20 +41,20 @@ class Login extends Component {
               &times;
             </a>
           
-            <form className="loginForm">
+            <form onSubmit={this.handleSubmit} className="loginForm">
 
               <div className="info-login">
                 <label htmlFor="email"><b>Email</b></label>
-                <input className="email-login" type="text" placeholder="Email Address" name="email" required></input>
+                <input className="email-login" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Email Address" name="email" required></input>
 
                 <label htmlFor="psw"><b>Password</b></label>
-                <input className="password-login" type="password" placeholder="Password" name="psw" required></input>
+                <input className="password-login" type="password" value={this.state.value} onChange={this.handleChange} placeholder="Password" name="psw" required></input>
 
                 <label htmlFor="account"><b>Account Type</b></label><br></br>
                 <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
                 <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
                 
-                <button className="submit-login" type="submit">Login</button>
+                <button className="submit-login" type="submit" value="submit">Login</button>
               </div>
             </form>
           </div>
