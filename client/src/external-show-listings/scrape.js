@@ -26,7 +26,6 @@ class Scrape extends Component {
   
   render () {
     
-    
     const columns = [
       {
         Header: 'Event',
@@ -41,7 +40,7 @@ class Scrape extends Component {
         accessor: 'Location',
         Cell: row => {
         const url = `https://www.google.com/maps/search/${row.value}+Toronto`
-        return <a href={url} target="_blank">{row.value}</a>
+        return <a href={url} target="_blank" rel="noopener noreferrer">{row.value}</a>
         }
       },
       {
@@ -51,19 +50,16 @@ class Scrape extends Component {
             <button>Listen</button>
           </div> )
       }
-
     ];
     return (
     <div>
         <ReactTable className="-striped"
           data={this.state.listingData}
           columns={columns}
-            defaultPageSize={20}     
-          // pageSizeOptions={[3, 6]}
-            style={{
+          defaultPageSize={20}     
+          style={{
               height: "400px"
-            }}
-
+          }}
         />
       </div>
     );

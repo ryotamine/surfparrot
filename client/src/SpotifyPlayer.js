@@ -8,7 +8,7 @@ class SpotifyPlayer extends Component {
 			return <iframe id="spotifyPlayer" src={`https://open.spotify.com/embed/artist/${this.props.artistid}`} 
 				width="300" 
 				height="80" 
-				frameborder="0" 
+				frameBorder="0" 
 				allowtransparency="true" 
 				allow="encrypted-media">
 			</iframe>
