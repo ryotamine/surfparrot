@@ -1,62 +1,69 @@
 import React, { Component } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-modal';
-import ModalDialog from 'react-bootstrap/ModalDialog';
-import ModalHeader from 'react-bootstrap/ModalHeader';
-import ModalTitle from 'react-bootstrap/ModalTitle';
-import ModalBody from 'react-bootstrap/ModalBody';
-import ModalFooter from 'react-bootstrap/ModalFooter';
+import Popup from 'reactjs-popup';
 require('./login.css');
 require('./require-login.js');
 
 // Login class
 class Login extends Component {
+  // Login constructor
   constructor(props) {
     super(props);
 
-    this.state = {
-      show: false,
-    };
+    this.state = { open: false };
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  _handleCloseLogin = () => {
-    this.setState({ show: false });
+  // Open login popup helper function
+  openModal () {
+    this.setState({ open: true });
   }
 
-  _handleOpenLogin = () => {
-    this.setState({ show: true });
+  // Close login popup helper function
+  closeModal () {
+    this.setState({ open: false });
   }
 
+  // Render login popup
   render() {
     return (
       <div>
-        <button className="main-login" onClick={this._handleOpenLogin} style={{width: 'auto'}}>Login</button>
+        <button className="button" onClick={this.openModal}>
+          Login
+        </button>
 
-        <div id="id01" className="popup-login">
+        <Popup
+          open={this.state.open}
+          closeOnDocumentClick
+          onClose={this.closeModal}
+        >
+
+          <div id="id01" className="modal">
+            <a className="close" onClick={this.closeModal}>
+              &times;
+            </a>
           
-//   //         <form className="content-login animate" action="/action_page.php">
-//   //           <div className="close-login">
-//   //             <span onClick={this._handleCloseLogin} className="close">&times;</span>
-//   //           </div>
+            <form className="loginForm">
 
-//   //           <div className="info-login">
-//   //             <label htmlFor="email"><b>Email</b></label>
-//   //             <input className="email-login" type="text" placeholder="Email Address" name="email" required></input>
+              <div className="info-login">
+                <label htmlFor="email"><b>Email</b></label>
+                <input className="email-login" type="text" placeholder="Email Address" name="email" required></input>
 
-              <label htmlFor="psw"><b>Password</b></label>
-              <input className="password-login" type="password" placeholder="Password" name="psw" required></input>
+                <label htmlFor="psw"><b>Password</b></label>
+                <input className="password-login" type="password" placeholder="Password" name="psw" required></input>
 
-              <label htmlFor="account"><b>Account Type</b></label><br></br>
-              <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
-              <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
+                <label htmlFor="account"><b>Account Type</b></label><br></br>
+                <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
+                <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
                 
-//   //             <button className="submit-login" type="submit">Login</button>
-//   //           </div>
-//   //         </form>
-//   //       </div>
-//   //     </div>
-//   //   );
-//   // }
-// }
+                <button className="submit-login" type="submit">Login</button>
+              </div>
+            </form>
+          </div>
+        </Popup>
+      </div>
+    );
+  }
+}
 
-// export default Login;
+export default Login;
