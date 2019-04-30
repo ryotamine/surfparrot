@@ -1,32 +1,32 @@
 import React, { Component } from 'react';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-modal';
+import ModalDialog from 'react-bootstrap/ModalDialog';
+import ModalHeader from 'react-bootstrap/ModalHeader';
+import ModalTitle from 'react-bootstrap/ModalTitle';
+import ModalBody from 'react-bootstrap/ModalBody';
+import ModalFooter from 'react-bootstrap/ModalFooter';
+require('./login.css');
+require('./require-login.js');
 
 // Login class
 class Login extends Component {
-  // Login constructor
   constructor(props) {
     super(props);
 
-    this.state = { 
-      openLogin: '',
-      closeLogin: ''
+    this.state = {
+      show: false,
     };
   }
-  
-  // Open login helper function
-  _handleOpenLogin = (e) => {
-    e.preventDefault();
-    let openLogin = e.target.value;
-    this.setState({ openLogin });
+
+  _handleCloseLogin = () => {
+    this.setState({ show: false });
   }
 
-  // Close login helper function
-  _handleCloseLogin = (e) => {
-    e.preventDefault();
-    let closeLogin = e.target.value;
-    this.setState({ closeLogin });
+  _handleOpenLogin = () => {
+    this.setState({ show: true });
   }
 
-  // Render login popup
   render() {
     return (
       <div>
@@ -45,6 +45,10 @@ class Login extends Component {
 
               <label htmlFor="psw"><b>Password</b></label>
               <input className="password-login" type="password" placeholder="Password" name="psw" required></input>
+
+              <label htmlFor="account"><b>Account Type</b></label><br></br>
+              <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
+              <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
                 
               <button className="submit-login" type="submit">Login</button>
             </div>
