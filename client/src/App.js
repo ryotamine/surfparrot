@@ -4,6 +4,7 @@ import Login from './login.js';
 import Scrape from './external-show-listings/scrape';
 import Registration from './registration_form.js';
 import axios from 'axios';
+import SpotifyPlayer from './SpotifyPlayer.js';
 
 // App class
 class App extends Component {
