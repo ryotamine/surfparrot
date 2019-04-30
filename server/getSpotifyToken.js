@@ -20,7 +20,6 @@ const getSpotifyToken = ({
     },
 
     (error, response, body) => {
-      console.log("body~~~~~~~~~~~~~~~~~", body)
       console.log("body.access_token~~~~~~~~", body.access_token)
       if (error) {
         done(error)

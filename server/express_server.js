@@ -13,9 +13,6 @@ require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 
-console.log("SPOTIFY_CLIENT_ID", SPOTIFY_CLIENT_ID)
-console.log("SPOTIFY_CLIENT_SECRET", SPOTIFY_CLIENT_SECRET)
-
 app.use(cors());
 
 app.get('/showInfo', (req, res) => {
@@ -43,29 +40,15 @@ app.get('/healthcheck', (req, res) => {
   })
 })
 
-// app.get('/spotify_token', (req, res) => {
-//   getSpotifyToken({
-//       clientId: SPOTIFY_CLIENT_ID,
-//       clientSecret: SPOTIFY_CLIENT_SECRET,
-//     },
-//     (_, token) => res.status(200).json({
-//       token
-//     })
-//   )
-// })
 
 app.get('/spotify_token', (req, res) => {
-  console.log("spotify_tokenxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ", '/spotify_token')
   getSpotifyToken({
       clientId: SPOTIFY_CLIENT_ID,
       clientSecret: SPOTIFY_CLIENT_SECRET,
     },
-    // the name value of the token is wrong ?
     (_, token) => {
-      console.log("_", _)
-      console.log("token: ", token)
-      console.log("token: token", token)
-      res.status(200).json({token: token,})
+      console.log("BACKEND token: ", token)
+      res.status(200).json({token})
     }
   )
 })
