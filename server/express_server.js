@@ -6,17 +6,14 @@ const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
 const entities      = require("entities");
-<<<<<<< HEAD
 const bcrypt        = require("bcrypt");
 const cookieSession = require("cookie-session");
-=======
 const getSpotifyToken = require('./getSpotifyToken');
 
 require('dotenv').config()
 
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
->>>>>>> spotify
 
 app.use(cors());
 
@@ -91,8 +88,5 @@ app.get('/refresh_token', function(req, res) {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
-<<<<<<< HEAD
-=======
 
 // 2019-04-27T00:00:01
->>>>>>> spotify
