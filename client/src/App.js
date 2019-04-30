@@ -6,6 +6,8 @@ import Contact from './contact';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer';
 import axios from 'axios';
+const request = require('request');
+
 // import { threadId } from 'worker_threads';
 
 // App class
