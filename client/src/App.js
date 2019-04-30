@@ -4,6 +4,7 @@ import Login from './login.js';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer';
 import Registration from './registration_form.js';
+import EventCreation from './event_form';
 
 
 // App class
@@ -19,6 +20,8 @@ class App extends Component {
       <br />
         <Registration />
         <Login />
+        <EventCreation />
+
       </div>
     );
   }
