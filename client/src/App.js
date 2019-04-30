@@ -22,16 +22,13 @@ class App extends Component {
     return (
       <div>
         <Home />
-        {/* <Login /> */}
+        <Login />
+        <Registration />
+        <button onClick={() => this.getArtist('esther')}>get artist</button>
+        <EventCreation />
         <Scrape />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid="0Z8fvErw8r7KKFjYAWDd0a"/>
-      <br />
-        <Registration />
-        <Login />
-        <button onClick={() => this.getArtist('esther')}>get artist</button>
-        <EventCreation />
-
       </div>
     );
   }

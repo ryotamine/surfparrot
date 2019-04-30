@@ -5,7 +5,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <a className='home' href='/'>surfparrot</a>
+        <button className='home'><a className='home' href='/'>surfparrot</a></button>
       </div>
     );
   }

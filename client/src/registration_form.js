@@ -44,7 +44,7 @@ class Registration extends Component {
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
+        <button className="main-register" onClick={this.openModal}>
           Register 
         </button>
         
@@ -81,5 +81,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration
-
+export default Registration;

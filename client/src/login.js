@@ -26,7 +26,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
+        <button className="main-login" onClick={this.openModal}>
           Login
         </button>
 
