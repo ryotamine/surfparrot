@@ -3,6 +3,7 @@ import Popup from "reactjs-popup";
 
 
 class Registration extends Component {
+
   constructor(props) {
     super(props);
     this.state = { open: false}
@@ -53,6 +54,7 @@ class Registration extends Component {
           closeOnDocumentClick
           onClose={this.closeModal}
           >
+          
         <div id="id02" className="modal">
           <a className="close" onClick={this.closeModal}>
           &times;
