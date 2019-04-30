@@ -87,16 +87,28 @@ class App extends Component {
     }
   }
 
-  // helper function sends spotify_token endpoint back to the frontend
-  getSpotifyToken = () => {
-    axios.get('http://localhost:5000/spotify_token')
-    .then(function (response) {
+
+  getSpotifyToken = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/spotify_token')
       const token = response.data.token
-      debugger
-      console.log("token: ", token)
+      console.log("FRONT END token: ", token)
       this.setState({ token })
-      console.log(response);
-    })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+ 
+  // helper function sends spotify_token endpoint back to the frontend
+  // getSpotifyToken = () => {
+  //   axios.get('http://localhost:5000/spotify_token')
+  //   .then(function (response) {
+  //     const token = response.data.token
+  //     // debugger
+  //     console.log("FRONT ENDtoken: ", token)
+  //     this.setState({ token })
+  //     console.log(response);
+  //   })
 
     // try {
     //   axios.get('http://localhost:5000/spotify_token').then(function (response) { 
@@ -115,12 +127,12 @@ class App extends Component {
     // } catch (error) {
     //   console.log(error)
     // }
-  }
+  
 
     // helper function sends refresh_token endpoint back to the frontend
     getRefreshToken = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/refresh_token')
+        const response = await axios.get('http://localhost:5000/spotify_token')
         const token = response.data.token
         this.setState({ token })
       } catch (error) {
