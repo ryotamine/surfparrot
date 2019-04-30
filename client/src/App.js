@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <Home />
-        <Login />
+        {/* <Login /> */}
         <Scrape />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid="0Z8fvErw8r7KKFjYAWDd0a"/>
