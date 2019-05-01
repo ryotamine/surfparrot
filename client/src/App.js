@@ -36,7 +36,7 @@ class App extends Component {
       <div>
         <Home />
         <Scrape
-        onSearchTermChange={this.getArtist} 
+        handleSubmit={this.getArtist} 
         artistName = {this.state.artistName}  />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>

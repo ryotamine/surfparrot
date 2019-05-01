@@ -56,7 +56,7 @@ class Registration extends Component {
           >
           
         <div id="id02" className="modal">
-          <a className="close" onClick={this.closeModal}>
+          <a href className="close" onClick={this.closeModal}>
           &times;
          </a>
           <form onSubmit={this.handleSubmit} className="registrationForm">

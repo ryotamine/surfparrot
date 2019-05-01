@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import request from 'request';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
-import App from '../App';
+// import App from '../App';
 
 
 class Scrape extends Component {
@@ -34,7 +34,7 @@ class Scrape extends Component {
     });
   }
   handleClick(eventName) {
-    this.props.onSearchTermChange(eventName)
+    this.props.handleSubmit(eventName)
 
    //  this.props.getArtist(this.state.listingData.name)
   // console.log("this state listing data event name", this.state.listingData[0].Event)
@@ -69,7 +69,7 @@ class Scrape extends Component {
           }
           return ( 
             <div>
-             <button onClick={artistButtonClicked} id="${row.value}">Listen to {row.value}</button>
+             <button onClick={artistButtonClicked} id={row.value}>Listen to {row.value}</button>
             </div> 
           )
         }
