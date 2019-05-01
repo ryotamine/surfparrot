@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // User signed in as class
-class UserSignedInAs extends Component {
+class SignedInAs extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class UserSignedInAs extends Component {
   }
 }
 
-export default UserSignedInAs;
+export default SignedInAs;

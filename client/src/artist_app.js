@@ -3,12 +3,12 @@ import Home from './home';
 import SignedInAs from './signed_in_as';
 import Logout from './logout';
 import Contact from './contact';
-import UserContent from './user_content';
+import ArtistContent from './artist_content';
 
-// User App class
-class UserApp extends Component {
+// Artist App class
+class ArtistApp extends Component {
 
-  // Render user page
+  // Render artist page
   render() {
     return (
       <div>
@@ -16,10 +16,10 @@ class UserApp extends Component {
         <SignedInAs />
         <Logout />
         <Contact />
-        <UserContent />
+        <ArtistContent />
       </div>
     );
   }
 }
 
-export default UserApp;
+export default ArtistApp;
