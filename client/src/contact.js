@@ -35,7 +35,7 @@ class Contact extends Component {
           onClose={this.closeModal}
         >
           <div id="id03" className="modal">
-            <a className="close" onClick={this.closeModal}>
+            <a href className="close" onClick={this.closeModal}>
               &times;
             </a>
           

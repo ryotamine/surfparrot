@@ -35,8 +35,6 @@ app.get('/showInfo', (req, res) => {
   });
 });
 
-console.log("test+++++++++++++++++++++++");
-
 // Home page
 app.get("/", (req, res) => {
   res.render("index");

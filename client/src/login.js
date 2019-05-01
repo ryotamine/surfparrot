@@ -35,7 +35,7 @@ class Login extends Component {
           onClose={this.closeModal}
         >
           <div id="id02" className="modal">
-            <a className="close" onClick={this.closeModal}>
+            <a href className="close" onClick={this.closeModal}>
               &times;
             </a>
           

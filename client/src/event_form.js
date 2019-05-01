@@ -52,16 +52,16 @@ class EventCreation extends Component {
           open={this.state.open}
           closeOnDocumentClick
           onClose={this.closeModal}
-        >
-          <div id="id02" className="modal">
-            <a className="close" onClick={this.closeModal}>
-              &times;
-            </a>
-            <form onSubmit={this.handleSubmit} className="registrationForm">
-            
-              <div className="info-event">
-                <label htmlFor="event-name"><b>Event Name</b></label>
-                <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name" required></input>
+          >
+        <div id="id02" className="modal">
+          <a href className="close" onClick={this.closeModal}>
+          &times;
+         </a>
+          <form onSubmit={this.handleSubmit} className="registrationForm">
+          
+            <div className="info-event">
+              <label htmlFor="event-name"><b>Event Name</b></label>
+              <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>
 
                 <label htmlFor="Date"><b>Date</b></label>
                 <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="event-date" required></input>
