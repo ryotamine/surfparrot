@@ -2,20 +2,26 @@ import React, { Component } from 'react';
 import request from 'request';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
+import App from '../App';
 
 
 class Scrape extends Component {
   constructor (props) {
     super(props);
-    this.state = {listingData: []};
+    this.getArtist = this.getArtist.bind(this);
+    this.state = 
+    {
+      listingData: [],
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
-
-
+  
   componentDidMount() {
     this.getConcertData()
   }
-  getConcertData() {
 
+//calls server to get data for the table
+  getConcertData() {
     request('http://localhost:5000/showInfo', {json: true}, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         this.setState({listingData: body.listingData});
@@ -23,9 +29,14 @@ class Scrape extends Component {
 
     });
   }
+  handleClick() {
+    console.log("scrape handleClick Works")
+    getArtist(row.value) 
+    this.props.artistName
+  }
 
+//construct the table.
   render () {
-    
     const columns = [
       {
         Header: 'Event',
@@ -48,12 +59,11 @@ class Scrape extends Component {
         accessor: 'Event',
         Cell: row => ( 
           <div>
-            <button eventListener id="${row.value}">Listen to {row.value}</button>
+            <button onClick={this.handleClick} id="${row.value}">Listen to {row.value}</button>
           </div> )
       }
     ];
-  console.log("event", this.state.listingData)
-
+//display the table
     return (
     <div>
         <ReactTable className="-striped"

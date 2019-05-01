@@ -11,11 +11,18 @@ import NameForm from './name_form';
 
 // App class
 class App extends Component {
+  constructor(props) {
+  this.getArtist = this.getArtist.bind(this);
+  super(props);
+  }
   state = {
     token: null,
     artist: '43ZHCT0cAZBISjO8DG9PnE', 
     searchTerm: ""
   }
+
+
+
 
   componentDidMount() {
     this.getSpotifyToken()
@@ -29,6 +36,10 @@ class App extends Component {
 
   // Render page
   render() {
+
+    <Scrape artistName = {this.getArtist} />
+
+
     return (
       <div>
         <Home />
