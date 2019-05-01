@@ -20,13 +20,14 @@ class NameForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+             <form onSubmit={this.handleSubmit}>
                 <label>
                     Artist:
                     <input className="artistSearch" type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+           
         )
     }
 

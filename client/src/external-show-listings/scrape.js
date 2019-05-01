@@ -34,11 +34,11 @@ class Scrape extends Component {
     });
   }
   handleClick(eventName) {
-    console.log("scrape handleClick Works")
-  //  this.props.getArtist(this.state.listingData.name)
+    this.props.onSearchTermChange(eventName)
+
+   //  this.props.getArtist(this.state.listingData.name)
   // console.log("this state listing data event name", this.state.listingData[0].Event)
    console.log("this state listing data event name", eventName)
-  
   }
 
 //construct the table.
