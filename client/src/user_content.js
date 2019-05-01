@@ -7,7 +7,9 @@ class UserContent extends Component {
       <div>
         <h1>Upcoming Events</h1>
         <h1>Find More Events</h1>
-        <a href="/"><i class="fas fa-plus-circle fa-5x"></i></a>
+        <button className="main-event-form">
+          <a className="plus" href="/"><i className="fas fa-plus-circle fa-4x"></i></a>
+        </button>
       </div>
     );
   }

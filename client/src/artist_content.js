@@ -29,7 +29,7 @@ class ArtistContent extends Component {
         <h1>My Events</h1>
         <h1>Create Event</h1>
         <button className="main-event-form" onClick={this.openModal}>
-          <i className="fas fa-plus-circle fa-5x"></i>
+          <i className="fas fa-plus-circle fa-4x"></i>
         </button>
 
         <Popup
@@ -51,7 +51,7 @@ class ArtistContent extends Component {
                 <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="last-name" required></input>
 
                 <label htmlFor="Location"><b>Location</b></label>
-                <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Email Address" name="email" required></input>
+                <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add Location" name="email" required></input>
               
                 <label htmlFor="song-link"><b>Link a song!</b></label>
                 <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songLink-create" required></input>

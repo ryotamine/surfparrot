@@ -75,6 +75,11 @@ input[type=text] {
   width: 40%;
 }
 
+/* Find more event button */
+.plus {
+  color: black;
+}
+
 /* Close button (x) */
 .close {
   position: absolute;
