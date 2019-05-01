@@ -1,5 +1,5 @@
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text] {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
@@ -8,13 +8,13 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* First name, last name, email, and password box */
-.first-name-register, .last-name-register, .email-register, .password-register {
+/* Creat event name, date, location, and song link box */
+.event-name-create, .event-date-create, .event-location-create, .event-songlink-create {
   border-radius: 5px;
 }
 
 /* Set a style for main register button on home page */
-.main-form {
+.main-event-form {
   background-color: transparent;
   color: black;
   padding: 14px 20px;
@@ -29,7 +29,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for submit register button */
-.submit-form {
+.submit-event-form {
   background-color: #2196F3;
   color: white;
   padding: 14px 20px;
@@ -47,14 +47,9 @@ input[type=text], input[type=password] {
   position: relative;
 }
 
-/* Login information */
-.info-register {
+/* Event form information */
+.info-event-form {
   padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
 }
 
 /* Register popup */
@@ -78,6 +73,11 @@ span.psw {
   margin: 5% auto 15% auto;
   border: 1px solid #888;
   width: 40%;
+}
+
+/* Find more event button */
+.plus {
+  color: black;
 }
 
 /* Close button (x) */

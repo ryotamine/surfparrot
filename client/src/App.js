@@ -8,42 +8,48 @@ import NameForm from './name_form';
 
 // App class
 class App extends Component {
-  state = {
-    token: null,
-    artist: '43ZHCT0cAZBISjO8DG9PnE', 
-    searchTerm: ""
+  constructor(props) {
+  super(props);
+  this.getArtist = this.getArtist.bind(this);
   }
+    state = {
+      token: null,
+      artist: '43ZHCT0cAZBISjO8DG9PnE', 
+      searchTerm: "",
+      artistName: ""
+    }
 
-  componentDidMount() {
-    this.getSpotifyToken()
-  }
+  
 
   // shouldComponentUpdate(nextProps, nextState){
   //   if (searchTerm !== onSearchTermChange) {
   //     return this.state.list!==nextState.list
   //   }
   //  }
-
   // Render page
   render() {
+
     return (
       <div>
         <Home />
-        <Scrape />
+        <Scrape
+        handleSubmit={this.getArtist} 
+        artistName = {this.state.artistName}  />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
-        <NameForm onSearchTermChange={this.getArtist} />
         <EventCreation />
       </div>
     );
   }
+  componentDidMount() {
+    this.getSpotifyToken()
+    this.getArtist()
+  }
 
   updateSearchTerm = searchTerm => {
     this.setState({searchTerm});
-
   }
-
   getArtist = async artistName => {
     try {
       if (this.state.token) {
@@ -65,7 +71,8 @@ class App extends Component {
         }
         // get the id of the first artist returned
         this.setState({artist: firstItem})
-        // do something with the atist id
+        this.setState({artistName: firstItem})
+        // do something with the artist id
         // https://api.spotify.com/v1/artists/{id}/top-tracks
       })    
     } else {

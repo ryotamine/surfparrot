@@ -54,7 +54,7 @@ class EventCreation extends Component {
           onClose={this.closeModal}
           >
         <div id="id02" className="modal">
-          <a className="close" onClick={this.closeModal}>
+          <a href className="close" onClick={this.closeModal}>
           &times;
          </a>
           <form onSubmit={this.handleSubmit} className="registrationForm">
@@ -63,19 +63,19 @@ class EventCreation extends Component {
               <label htmlFor="event-name"><b>Event Name</b></label>
               <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>
 
-              <label htmlFor="Date"><b>Date</b></label>
-              <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="last-name" required></input>
+                <label htmlFor="Date"><b>Date</b></label>
+                <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="event-date" required></input>
 
-              <label htmlFor="Location"><b>Location</b></label>
-              <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Email Address" name="email" required></input>
-            
-              <label htmlFor="song-link"><b>Link a song!</b></label>
-              <input className="event-songLink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songLink-create" required></input>
-                            
-              <button className="submit-event" type="submit" value="submit">Create Your Event!</button>
-            </div>
-          </form>
-        </div>
+                <label htmlFor="Location"><b>Location</b></label>
+                <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add Location" name="event-location" required></input>
+              
+                <label htmlFor="song-link"><b>Link a song!</b></label>
+                <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songlink" required></input>
+                              
+                <button className="submit-event" type="submit" value="submit">Create Your Event!</button>
+              </div>
+            </form>
+          </div>
         </Popup>
       </div>
     )

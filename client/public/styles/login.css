@@ -32,8 +32,10 @@ input[type=text], input[type=password] {
 .submit-login {
   background-color: #2196F3;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  display: inline;
+  text-decoration: none;
+  padding: 7px 10px;
+  margin: 4px 0;
   border: none;
   border-radius: 5px;
   cursor: pointer;

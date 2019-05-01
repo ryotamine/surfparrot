@@ -2,30 +2,47 @@ import React, { Component } from 'react';
 import request from 'request';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
+// import App from '../App';
 
 
 class Scrape extends Component {
   constructor (props) {
     super(props);
-    this.state = {listingData: []};
+    this.state = 
+    {
+      listingData: [{
+        Date: this.date,
+        Event: this.Event,
+        Location: this.Location
+      }],
+    };
+    this.handleClick = this.handleClick.bind(this);
+    
   }
-
-
+  
   componentDidMount() {
     this.getConcertData()
   }
-  getConcertData() {
 
+//calls server to get data for the table
+  getConcertData() {
     request('http://localhost:5000/showInfo', {json: true}, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         this.setState({listingData: body.listingData});
-
       }
+
     });
   }
-  
+  handleClick(eventName) {
+    this.props.handleSubmit(eventName)
+
+   //  this.props.getArtist(this.state.listingData.name)
+  // console.log("this state listing data event name", this.state.listingData[0].Event)
+   console.log("this state listing data event name", eventName)
+  }
+
+//construct the table.
   render () {
-    
     const columns = [
       {
         Header: 'Event',
@@ -44,13 +61,21 @@ class Scrape extends Component {
         }
       },
       {
-        Header: 'Listen',
-        Cell: row => ( 
-          <div>
-            <button>Listen</button>
-          </div> )
+        Header: 'Event',
+        accessor: 'Event',
+        Cell: row => { 
+          const artistButtonClicked = () => {
+            this.handleClick(row.value) 
+          }
+          return ( 
+            <div>
+             <button onClick={artistButtonClicked} id={row.value}>Listen to {row.value}</button>
+            </div> 
+          )
+        }
       }
     ];
+//display the table
     return (
     <div>
         <ReactTable className="-striped"
@@ -63,6 +88,8 @@ class Scrape extends Component {
         />
       </div>
     );
-  }  
+  }
+
 } 
+
 export default Scrape;
