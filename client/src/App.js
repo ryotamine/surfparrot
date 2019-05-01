@@ -41,7 +41,7 @@ class App extends Component {
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
-        <NameForm onSearchTermChange={this.getArtist} />
+        <NameForm />
         <Registration />
         <Login />
         <Contact />
