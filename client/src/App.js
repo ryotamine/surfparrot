@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Home from './home';
-import Login from './login';
-import Registration from './registration_form';
-import Contact from './contact';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer.js';
 import EventCreation from './event_form';
@@ -37,14 +34,10 @@ class App extends Component {
         <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
         <NameForm onSearchTermChange={this.getArtist} />
-        <Registration />
-        <Login />
-        <Contact />
         <EventCreation />
       </div>
     );
   }
-
 
   updateSearchTerm = searchTerm => {
     this.setState({searchTerm});
@@ -85,7 +78,6 @@ class App extends Component {
       this.getRefreshToken()
     }
   }
-
 
   getSpotifyToken = async () => {
     try {
