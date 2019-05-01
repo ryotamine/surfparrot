@@ -17,6 +17,7 @@ class Scrape extends Component {
       }],
     };
     this.handleClick = this.handleClick.bind(this);
+    
   }
   
   componentDidMount() {
@@ -32,10 +33,12 @@ class Scrape extends Component {
 
     });
   }
-  handleClick() {
+  handleClick(eventName) {
     console.log("scrape handleClick Works")
   //  this.props.getArtist(this.state.listingData.name)
-  console.log("this state listing data event name", this.state.listingData[0].Event)
+  // console.log("this state listing data event name", this.state.listingData[0].Event)
+   console.log("this state listing data event name", eventName)
+  
   }
 
 //construct the table.
@@ -60,10 +63,16 @@ class Scrape extends Component {
       {
         Header: 'Event',
         accessor: 'Event',
-        Cell: row => ( 
-          <div>
-            <button onClick={this.handleClick} id="${row.value}">Listen to {row.value}</button>
-          </div> )
+        Cell: row => { 
+          const artistButtonClicked = () => {
+            this.handleClick(row.value) 
+          }
+          return ( 
+            <div>
+             <button onClick={artistButtonClicked} id="${row.value}">Listen to {row.value}</button>
+            </div> 
+          )
+        }
       }
     ];
 //display the table

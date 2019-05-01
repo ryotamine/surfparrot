@@ -24,6 +24,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getSpotifyToken()
+    
   }
 
   // shouldComponentUpdate(nextProps, nextState){
@@ -31,7 +32,6 @@ class App extends Component {
   //     return this.state.list!==nextState.list
   //   }
   //  }
-
   // Render page
   render() {
 
