@@ -34,14 +34,12 @@ class Contact extends Component {
           closeOnDocumentClick
           onClose={this.closeModal}
         >
-
           <div id="id03" className="modal">
             <a className="close" onClick={this.closeModal}>
               &times;
             </a>
           
             <form onSubmit={this.handleSubmit} className="contactForm">
-
               <div className="info-contact">
                 <label htmlFor="name"><b>Name</b></label>
                 <input className="name-contact" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Name" name="name" required></input>

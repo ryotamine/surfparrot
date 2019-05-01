@@ -37,13 +37,12 @@ class ArtistContent extends Component {
           closeOnDocumentClick
           onClose={this.closeModal}
         >
-
           <div id="id04" className="modal">
             <a className="close" onClick={this.closeModal}>
             &times;
-          </a>
-            <form onSubmit={this.handleSubmit} className="eventForm">
+            </a>
             
+            <form onSubmit={this.handleSubmit} className="eventForm">
               <div className="info-event-form">
                 <label htmlFor="event-name"><b>Event Name</b></label>
                 <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>

@@ -34,14 +34,12 @@ class Login extends Component {
           closeOnDocumentClick
           onClose={this.closeModal}
         >
-
           <div id="id02" className="modal">
             <a className="close" onClick={this.closeModal}>
               &times;
             </a>
           
-            <form onSubmit={this.handleSubmit} className="loginForm">
-
+            <form onSubmit={this.handleSubmit} className="login-form">
               <div className="info-login">
                 <label htmlFor="email"><b>Email</b></label>
                 <input className="email-login" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Email Address" name="email" required></input>
@@ -59,8 +57,8 @@ class Login extends Component {
           </div>
         </Popup>
       </div>
-    )
+    );
   }
 }
 
-export default Login
+export default Login;
