@@ -53,7 +53,7 @@ class Login extends Component {
                 <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
                 <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
                 
-                <button className="submit-login" type="submit" value="submit">Login</button>
+                <button className="submit-login" type="submit" value="submit"><a className="submit-login" href="/user">Login</a></button>
               </div>
             </form>
           </div>
