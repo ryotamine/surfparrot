@@ -41,7 +41,6 @@ class App extends Component {
         <Login />
         <Contact />
         <EventCreation />
-        <Scrape />
       </div>
     );
   }
@@ -78,6 +77,7 @@ class App extends Component {
       })    
     } else {
       this.getSpotifyToken()
+    }
  
     } catch (e) {
       // queries the spotify_token endpoint on backend
