@@ -8,11 +8,21 @@ class Navbar extends React.Component {
 
     render() {
         return (
-           <div className="topnav">
-                <Registration/>
-                <Login />
-                <Contact />
-            </div>
+            <header>
+                <div className="logo">
+                    <img src="/docs/logo.jpg"></img>
+                </div>
+
+                <button className='home'><a className='home main-nav' href='/'>surfparrot</a></button>
+
+                <div className="rightnav">
+                    <ul>
+                        <li><Registration /></li>
+                        <li><Login /></li>
+                        <li><Contact /></li>
+                    </ul>
+                </div>
+            </header>
         )
     }
 

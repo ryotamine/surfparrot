@@ -19,8 +19,6 @@ class App extends Component {
       artistName: ""
     }
 
-  
-
   // shouldComponentUpdate(nextProps, nextState){
   //   if (searchTerm !== onSearchTermChange) {
   //     return this.state.list!==nextState.list
@@ -30,16 +28,16 @@ class App extends Component {
   render() {
 
     return (
-      <div>
+      <main>
         <Home />
         <Scrape
         handleSubmit={this.getArtist} 
         artistName = {this.state.artistName}  />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>
-      <br />
+        <br />
         <EventCreation />
-      </div>
+      </main>
     );
   }
   componentDidMount() {

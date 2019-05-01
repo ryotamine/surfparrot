@@ -45,7 +45,7 @@ class Registration extends Component {
   render() {
     return (
       <div>
-        <button className="main-register" onClick={this.openModal}>
+        <button className="main-register main-nav" onClick={this.openModal}>
           Register 
         </button>
         

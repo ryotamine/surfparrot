@@ -25,7 +25,7 @@ class Contact extends Component {
   render() {
     return (
       <div>
-        <button className="main-contact" onClick={this.openModal}>
+        <button className="main-contact main-nav" onClick={this.openModal}>
           Contact
         </button>
 

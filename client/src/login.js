@@ -25,7 +25,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <button className="main-login" onClick={this.openModal}>
+        <button className="main-login main-nav" onClick={this.openModal}>
           Login
         </button>
 
@@ -60,5 +60,6 @@ class Login extends Component {
     );
   }
 }
+
 
 export default Login;

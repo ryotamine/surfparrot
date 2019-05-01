@@ -16,7 +16,6 @@ input[type=text], input[type=password] {
 /* Set a style for main register button on home page */
 .main-register {
   background-color: transparent;
-  color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;

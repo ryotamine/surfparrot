@@ -16,7 +16,6 @@ input[type=text] {
 /* Set a style for main contact button on home page */
 .main-contact {
   background-color: transparent;
-  color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
