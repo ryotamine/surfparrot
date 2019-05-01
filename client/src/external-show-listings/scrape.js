@@ -8,10 +8,13 @@ import App from '../App';
 class Scrape extends Component {
   constructor (props) {
     super(props);
-    this.getArtist = this.getArtist.bind(this);
     this.state = 
     {
-      listingData: [],
+      listingData: [{
+        Date: this.date,
+        Event: this.Event,
+        Location: this.Location
+      }],
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -31,8 +34,8 @@ class Scrape extends Component {
   }
   handleClick() {
     console.log("scrape handleClick Works")
-    getArtist(row.value) 
-    this.props.artistName
+  //  this.props.getArtist(this.state.listingData.name)
+  console.log("this state listing data event name", this.state.listingData[0].Event)
   }
 
 //construct the table.

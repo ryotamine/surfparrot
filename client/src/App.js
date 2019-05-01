@@ -12,17 +12,15 @@ import NameForm from './name_form';
 // App class
 class App extends Component {
   constructor(props) {
-  this.getArtist = this.getArtist.bind(this);
   super(props);
+  this.getArtist = this.getArtist.bind(this);
+
   }
   state = {
     token: null,
     artist: '43ZHCT0cAZBISjO8DG9PnE', 
     searchTerm: ""
   }
-
-
-
 
   componentDidMount() {
     this.getSpotifyToken()
@@ -37,13 +35,10 @@ class App extends Component {
   // Render page
   render() {
 
-    <Scrape artistName = {this.getArtist} />
-
-
     return (
       <div>
         <Home />
-        <Scrape />
+        <Scrape artistName = {this.getArtist}  />
         {/* this.state.artistid */}
         <SpotifyPlayer artistid={this.state.artist.id}/>
       <br />
@@ -56,10 +51,8 @@ class App extends Component {
     );
   }
 
-
   updateSearchTerm = searchTerm => {
     this.setState({searchTerm});
-
   }
 
   getArtist = async artistName => {
@@ -83,7 +76,7 @@ class App extends Component {
         }
         // get the id of the first artist returned
         this.setState({artist: firstItem})
-        // do something with the atist id
+        // do something with the artist id
         // https://api.spotify.com/v1/artists/{id}/top-tracks
       })    
     } else {
