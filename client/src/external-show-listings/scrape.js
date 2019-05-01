@@ -19,11 +19,11 @@ class Scrape extends Component {
     request('http://localhost:5000/showInfo', {json: true}, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         this.setState({listingData: body.listingData});
-
       }
+
     });
   }
-  
+
   render () {
     
     const columns = [
@@ -44,13 +44,16 @@ class Scrape extends Component {
         }
       },
       {
-        Header: 'Listen',
+        Header: 'Event',
+        accessor: 'Event',
         Cell: row => ( 
           <div>
-            <button>Listen</button>
+            <button eventListener id="${row.value}">Listen to {row.value}</button>
           </div> )
       }
     ];
+  console.log("event", this.state.listingData)
+
     return (
     <div>
         <ReactTable className="-striped"
@@ -63,6 +66,8 @@ class Scrape extends Component {
         />
       </div>
     );
-  }  
+  }
+
 } 
+
 export default Scrape;
