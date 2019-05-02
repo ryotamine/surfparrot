@@ -1,0 +1,9 @@
+footer {
+    background-image: url('../docs/brick.jpg');
+    padding: 40px 0px 40px 2%;
+    height: 20vh;
+}
+
+.player {
+    padding-top: 0.75%;
+}

@@ -1,3 +1,13 @@
+.ReactTable  {
+    height: 53vh !important;
+}
+
 .ReactTable .rt-thead .rt-tr {
+    padding: 10px 10px 10px 10px !important;
     text-align: left !important; 
+    background-color: #e0b8dd;
+}
+
+.rt-tbody {
+    padding: 2% 0% 0% 1%;
 }

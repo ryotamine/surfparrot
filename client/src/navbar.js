@@ -3,8 +3,7 @@ import Login from './login';
 import Registration from './registration_form';
 import Contact from './contact';
 
-class Navbar extends React.Component {
-   
+class Navbar extends Component {
 
     render() {
         return (

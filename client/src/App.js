@@ -6,6 +6,8 @@ import SpotifyPlayer from './SpotifyPlayer.js';
 import EventCreation from './event_form';
 import NameForm from './name_form';
 
+
+
 // App class
 class App extends Component {
   constructor(props) {
@@ -33,10 +35,13 @@ class App extends Component {
         <Scrape
         handleSubmit={this.getArtist} 
         artistName = {this.state.artistName}  />
-        {/* this.state.artistid */}
-        <SpotifyPlayer artistid={this.state.artist.id}/>
-        <br />
-        <EventCreation />
+        <footer>
+          <div className="player">
+            <SpotifyPlayer artistid={this.state.artist.id}/>
+            <br />
+            <EventCreation />
+          </div>
+        </footer>
       </main>
     );
   }
