@@ -6,6 +6,14 @@ class Login extends Component {
   // Login constructor
   constructor(props) {
     super(props);
+
+    this.state = { 
+      open: false,
+      email: '',
+      password: '',
+      artist: false,
+    };
+
     this.state = { open: false };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);

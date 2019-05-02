@@ -17,3 +17,8 @@
 .rt-td a {
     color: #3e2626;
 }
+
+.rt-td a:hover {
+    color: rgb(223, 104, 104) !important;
+}
+

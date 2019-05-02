@@ -15,7 +15,6 @@ class Registration extends Component {
       email: '',
       password: '',
       artist: false,
-      user: false
     };
 
     this.openModal = this.openModal.bind(this);
@@ -46,9 +45,7 @@ class Registration extends Component {
   // Radio button change helper function
   handleRadioButtonChange(event) {
     event.persist();
-    this.setState(prevState => ({
-      [event.target.id]: !prevState[event.target.id]
-    }));
+    this.setState({artist: event.target.id === 'artist'});
   }
 
   // Artist or user selection helper function
@@ -58,6 +55,7 @@ class Registration extends Component {
       register: true
     });
   }
+
 
   // Handle submit helper function
   // handleSubmit(event) {
@@ -89,7 +87,7 @@ class Registration extends Component {
     }
 
     // Redirect to user page per radio button selection
-    if (this.state.user && this.state.register) {
+    if (!this.state.artist && this.state.register) {
       return <Redirect to="/user"/>
     }
 
