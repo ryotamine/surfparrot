@@ -39,6 +39,7 @@ class Registration extends Component {
     event.preventDefault();
     this.setState({
       [event.target.id]: event.target.value
+
     });
   }
 
@@ -54,6 +55,8 @@ class Registration extends Component {
     this.setState({
       register: true
     });
+    // update sessionStorage
+    sessionStorage.setItem('email', this.state.email);
   }
 
 
@@ -79,6 +82,7 @@ class Registration extends Component {
   //     })
   // }
 
+  
   // Render register popup
   render() {
     // Redirect to artist page per radio button selection

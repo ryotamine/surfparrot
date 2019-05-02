@@ -31,6 +31,16 @@ class Login extends Component {
 
   // Render login popup
   render() {
+    // // Redirect to artist page per radio button selection
+    // if (this.state.artist && this.state.register) {
+    //   return <Redirect to="/artist"/>
+    // }
+  
+    // // Redirect to user page per radio button selection
+    // if (!this.state.artist && this.state.register) {
+    //   return <Redirect to="/user"/>
+    // }
+
     return (
       <div>
         <button className="main-login main-nav" onClick={this.openModal}>
@@ -55,10 +65,6 @@ class Login extends Component {
                 <label htmlFor="psw"><b>Password</b></label>
                 <input className="password-login" type="password" value={this.state.value} onChange={this.handleChange} placeholder="Password" name="psw" required></input>
 
-                <label htmlFor="account"><b>Account Type</b></label><br></br>
-                <input className="check-artist" type="checkbox" name="artist" required></input> Artist<br></br>
-                <input className="check-user" type="checkbox" name="user" required></input> User<br></br>
-                
                 <button className="submit-login" type="submit" value="submit"><a className="submit-login" href="/user">Login</a></button>
               </div>
             </form>
