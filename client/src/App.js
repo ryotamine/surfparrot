@@ -39,8 +39,6 @@ class App extends Component {
         <footer>
           <div className="player">
             <SpotifyPlayer artistid={this.state.artist.id}/>
-            <br />
-            <EventCreation />
           </div>
         </footer>
       </main>

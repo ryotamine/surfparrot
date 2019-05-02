@@ -44,7 +44,7 @@ class EventCreation extends Component {
   render() {
     return (
       <div>
-        <button className="button" onClick={this.openModal}>
+        <button className="main-register main-nav" onClick={this.openModal}>
          Create Event 
         </button>
         
