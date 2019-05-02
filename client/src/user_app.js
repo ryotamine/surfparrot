@@ -14,9 +14,8 @@ class UserApp extends Component {
       <div>
         <Home />
         <SignedInAs />
-        <Logout />
-        <Contact />
         <UserContent />
+        <Logout />
       </div>
     );
   }
