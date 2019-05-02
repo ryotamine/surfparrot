@@ -59,6 +59,28 @@ class Registration extends Component {
     });
   }
 
+  // Handle submit helper function
+  // handleSubmit(event) {
+  //   event.persist();
+  //   const data = {
+  //     'firstName': this.firstName.value,
+  //     'lastName': this.lastName.value,
+  //     'email': this.email.value,
+  //     'password': this.password.value
+  //     //'accountType': this.accountType.value
+  //   }
+  //     $.ajax({
+  //       type: 'PUT',
+  //       // url: 'http://localhost:3000/', How to differentiate between artist and user?
+  //       data: data,
+  //       crossDomain: true,
+  //       success: function(result) {
+  //         //console.log('result': result)
+  //       },
+  //       error: function(err) {alert('invalid info')}
+  //     })
+  // }
+
   // Render register popup
   render() {
     // Redirect to artist page per radio button selection
@@ -87,19 +109,62 @@ class Registration extends Component {
               &times;
             </a>
 
-            <form onSubmit={this.handleSubmit} className="registrationForm">
+            <form className="registrationForm">
               <div className="info-register">
-                <label htmlFor="first-name"><b>First Name</b></label>
-                <input className="first-name-register" type="text" value={this.state.value} onBlur={this.handleChange} placeholder="First Name" id="firstName" required></input>
+                <label htmlFor="first-name">
+                  <b>First Name</b>
+                </label>
+                <input 
+                  className="first-name-register" 
+                  type="text" 
+                  value={this.state.value} 
+                  onBlur={this.handleChange} 
+                  placeholder="First Name" 
+                  id="firstName" 
+                  ref={node => this.firstName = node} 
+                  required>
+                </input>
 
-                <label htmlFor="last-name"><b>Last Name</b></label>
-                <input className="last-name-register" type="text" value={this.state.value} onBlur={this.handleChange} placeholder="Last Name" id="lastName" required></input>
+                <label htmlFor="last-name">
+                  <b>Last Name</b>
+                </label>
+                <input 
+                  className="last-name-register" 
+                  type="text" 
+                  value={this.state.value} 
+                  onBlur={this.handleChange} 
+                  placeholder="Last Name" 
+                  id="lastName" 
+                  ref={node => this.lastName = node}
+                  required>
+                </input>
 
-                <label htmlFor="email"><b>Email</b></label>
-                <input className="email-register" type="text" value={this.state.value} onBlur={this.handleChange} placeholder="Email Address" id="email" required></input>
+                <label htmlFor="email">
+                  <b>Email</b>
+                </label>
+                <input 
+                  className="email-register" 
+                  type="text" 
+                  value={this.state.value} 
+                  onBlur={this.handleChange} 
+                  placeholder="Email Address" 
+                  id="email" 
+                  ref={node => this.email = node}
+                  required>
+                </input>
 
-                <label htmlFor="psw"><b>Password</b></label>
-                <input className="password-register" type="password" value={this.state.value} onBlur={this.handleChange} placeholder="Create a Password" id="password" required></input>
+                <label htmlFor="psw">
+                  <b>Password</b>
+                </label>
+                <input 
+                  className="password-register" 
+                  type="password" 
+                  value={this.state.value} 
+                  onBlur={this.handleChange} 
+                  placeholder="Create a Password" 
+                  id="password"
+                  ref={node => this.password = node}
+                  required></input>
 
                 <label htmlFor="account"><b>Account Type</b></label><br></br>
 
@@ -110,7 +175,8 @@ class Registration extends Component {
                   onChange={this.handleRadioButtonChange} 
                   value={"artist"} 
                   checked={this.state.artist} 
-                  id="artist" 
+                  id="artist"
+                  name="accountType"
                   required>
                 </input> Artist<br></br>
 
@@ -120,7 +186,8 @@ class Registration extends Component {
                   checked={this.state.user}
                   onChange={this.handleRadioButtonChange} 
                   value={"user"}  
-                  id="user" 
+                  id="user"
+                  name="accountType"
                   required>
                 </input> User<br></br>
 
