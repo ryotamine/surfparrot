@@ -16,8 +16,9 @@ class App extends Component {
       token: null,
       artist: '43ZHCT0cAZBISjO8DG9PnE', 
       searchTerm: "",
-      artistName: ""
-    }
+      artistName: "",
+      data: null
+    };
 
   // shouldComponentUpdate(nextProps, nextState){
   //   if (searchTerm !== onSearchTermChange) {
@@ -39,11 +40,24 @@ class App extends Component {
         <EventCreation />
       </main>
     );
-  }
+  };
   componentDidMount() {
     this.getSpotifyToken()
     this.getArtist()
-  }
+    this.callBackendAPI()
+    .then(res => this.setState({ data: res.express }))
+    .catch(err => console.log(err));
+  };
+
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+    return body;
+  };
 
   updateSearchTerm = searchTerm => {
     this.setState({searchTerm});
@@ -65,6 +79,7 @@ class App extends Component {
   
         if (!firstItem) {
           console.log('no artists found')
+          alert("This listing is not on Spotify, search goog?")
           return
         }
         // get the id of the first artist returned

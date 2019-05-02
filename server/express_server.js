@@ -9,13 +9,26 @@ const entities      = require("entities");
 const bcrypt        = require("bcrypt");
 const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
+// const mongoose = require('mongoose');
+// const config = require('./data/db.js');
 
 require('dotenv').config()
-
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
-
 app.use(cors());
+//Begin Code
+
+// mongoose.Promise = global.Promise;
+// mongoose.connect(config.DB, { useNewUrlParser: true }).then(
+//   () => {console.log('Database is connected') },
+//   err => { console.log('Can not connect to the database'+ err)}
+// );
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+
+app.get('/express_backend', (req, res) => {
+  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
+});
 
 // GET www.rotate.com for show listings
 app.get('/showInfo', (req, res) => {
