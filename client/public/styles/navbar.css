@@ -12,6 +12,15 @@ header {
     color: white;
 }
 
+.main-nav {
+    color: #efdbdb;
+    text-transform: lowercase;
+    /* font-family: 'Indie Flower', cursive !important; */
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Neucha', cursive;
+    font-size: 1.25rem;
+}
+
 .logo {
     flex: 0 0 200px;
     padding-left: 2%;
@@ -28,12 +37,6 @@ header {
     justify-content: flex-end;
     text-align: center;
     margin: 0 auto;
-}
-
-.main-nav {
-    color: #efdbdb;
-    font-weight: bolder;
-    text-transform: lowercase;
 }
 
 .rightnav ul {

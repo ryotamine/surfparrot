@@ -69,7 +69,7 @@ class Scrape extends Component {
           }
           return ( 
             <div>
-             <button onClick={artistButtonClicked} id={row.value}>Listen to {row.value}</button>
+             <button onClick={artistButtonClicked} id={row.value}><i class="fas fa-volume-up"></i>  {row.value}</button>
             </div> 
           )
         }
