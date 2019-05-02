@@ -21,6 +21,7 @@ input[type=text] {
   border: none;
   cursor: pointer;
   outline: none;
+  color: black;
 }
 
 .main-contact:hover {

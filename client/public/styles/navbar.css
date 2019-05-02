@@ -6,8 +6,9 @@ header {
     margin: 0 auto;
     padding: 15px 0 40px 0;
     height: 20vh;
-    background-image: url('../docs/brick.jpg');
-    background-position: 10px -50px;
+    /* background-image: url('../docs/brick.jpg');
+    background-position: 10px -50px; */
+    background-color: #c16a6a;
     color: white;
 }
 

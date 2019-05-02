@@ -9,7 +9,7 @@ class Navbar extends Component {
         return (
             <header>
                 <div className="logo">
-                    <img src="/docs/logo.jpg"></img>
+                    <img src="/docs/parrot2.png"></img>
                 </div>
 
                 <button className='home'><a className='home main-nav' href='/'>surfparrot</a></button>
@@ -26,5 +26,6 @@ class Navbar extends Component {
     }
 
 }
+
 
 export default Navbar;

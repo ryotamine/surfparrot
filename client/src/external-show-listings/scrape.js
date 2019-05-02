@@ -61,7 +61,7 @@ class Scrape extends Component {
         }
       },
       {
-        Header: 'Event',
+        Header: 'Listen',
         accessor: 'Event',
         Cell: row => { 
           const artistButtonClicked = () => {
@@ -75,6 +75,7 @@ class Scrape extends Component {
         }
       }
     ];
+    
 //display the table
     return (
     <div>

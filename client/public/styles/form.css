@@ -21,6 +21,7 @@ input[type=text] {
   border: none;
   cursor: pointer;
   outline: none;
+
 }
 
 .main-form:hover {
@@ -112,4 +113,16 @@ input[type=text] {
      display: block;
      float: none;
   }
+}
+
+.info-contact {
+  color: black;
+}
+
+.info-login {
+  color: black;
+}
+
+.info-register {
+  color: black;
 }

@@ -5,9 +5,12 @@
 .ReactTable .rt-thead .rt-tr {
     padding: 10px 10px 10px 10px !important;
     text-align: left !important; 
-    background-color: #e0b8dd;
+    background-color: #d6d6d6; 
+    color: #777070;
 }
 
 .rt-tbody {
     padding: 2% 0% 0% 1%;
-}
+}   
+
+  
