@@ -1,10 +1,14 @@
+const express = require("express");
 const cookieSession = require("cookie-session");
 const bcrypt = require("bcrypt");
+//const getRegistrationInfo = require("../client/src/registration_form")
+
+const app = express();
 
 app.use(cookieSession({
   name: "session",
   keys: ["surfparrot"]
-});
+}));
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,8 +23,16 @@ function generateRandomString() {
   return text;
 }
 
-// PUT registration form
-app.put("/user", (req, res) => {
+// GET registration
+app.get("/", (req, res) => {
+  let templateVars = {
+    account: somethingKnex[req.session.accountId]
+  };
+  res.render("../client/src/registration_form", templateVars);
+});
+
+// POST registration form
+app.post("/user/:id", (req, res) => {
   const id = generateRandomString();
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
@@ -50,7 +62,7 @@ app.put("/user", (req, res) => {
   console.log(somethingKnex);
 
   // Check for registration errors
-  if !firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password) {
     res.status(400).send("Invalid. Please try again.");
     return;
   } else {
