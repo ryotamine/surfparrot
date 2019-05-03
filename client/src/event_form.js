@@ -60,19 +60,19 @@ class EventCreation extends Component {
           <form onSubmit={this.handleSubmit} className="registrationForm">
           
             <div className="info-event">
-              <label htmlFor="event-name"><b>Event Name</b></label>
+              <label htmlFor="event-name" className="event-name"><b>Event Name</b></label>
               <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>
 
-                <label htmlFor="Date"><b>Date</b></label>
-                <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="event-date" required></input>
+                <label htmlFor="Date" className="event-date"><b>Date</b></label>
+                <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Date" name="event-date" required></input>
 
-                <label htmlFor="Location"><b>Location</b></label>
+                <label htmlFor="Location" className="event-location"><b>Location</b></label>
                 <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add Location" name="event-location" required></input>
               
-                <label htmlFor="song-link"><b>Link a song!</b></label>
-                <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songlink" required></input>
+                <label htmlFor="song-link" className="event-song"><b>Link a Song!</b></label>
+                <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a Song!" name="event-songlink" required></input>
                               
-                <button className="submit-event" type="submit" value="submit">Create Your Event!</button>
+                <button className="submit-event-form" type="submit" value="submit">Create Your Event!</button>
               </div>
             </form>
           </div>
