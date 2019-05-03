@@ -7,7 +7,7 @@ const request       = require("request");
 const cors          = require("cors");
 const moment        = require("moment");
 const entities      = require("entities");
-const bcrypt        = require("bcryptjs");
+const bcrypt        = require("bcrypt");
 const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
 const passport = require("passport-local")
@@ -32,14 +32,16 @@ app.use(bodyParser.json())
 
 //Code to register a new user
 app.post("/register/musician", (req, res) => {
-  database.insert([{musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: req.body.password}])
+  database.insert([{
+    musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: bcrypt.hashSync(req.body.password, 10)}])
     .into("User_musician").then(function (res) {
   })
   res.send({ express: 'REGISTERED NEW USER MUSICIAN' });
 });
 
 app.post("/register/user", (req, res) => {
-  database.insert([{fan_first_name: req.body.firstName, fan_last_name: req.body.lastName, fan_email: req.body.email, password_digest: req.body.password}])
+  database.insert([{
+    fan_first_name: req.body.firstName, fan_last_name: req.body.lastName, fan_email: req.body.email, password_digest: bcrypt.hashSync(req.body.password, 10)}])
   .into("User_fan").then(function (res) {
   })
   res.send({ express: 'REGISTERING NEW USER FAN' });
