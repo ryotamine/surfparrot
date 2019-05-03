@@ -30,11 +30,21 @@ app.use(bodyParser.urlencoded())
 // parse application/json
 app.use(bodyParser.json())
 
-app.post("/register", (req, res) => {
+app.post("/register/musician", (req, res) => {
   console.log(req.body);
   //insert for knex
   database.insert([{musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: req.body.password}])
   .into("User_musician").then(function (res) {
+    console.log(res)
+  })
+  res.send({ express: 'REGISTERING USER' });
+});
+
+app.post("/register/user", (req, res) => {
+  console.log(req.body);
+  //insert for knex
+  database.insert([{fan_first_name: req.body.firstName, fan_last_name: req.body.lastName, fan_email: req.body.email, password_digest: req.body.password}])
+  .into("User_fan").then(function (res) {
     console.log(res)
   })
   res.send({ express: 'REGISTERING USER' });
