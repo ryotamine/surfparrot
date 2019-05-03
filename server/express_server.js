@@ -14,7 +14,7 @@ const passport = require("passport-local")
 const bodyParser = require("body-parser");
 const capitalize    = require('capitalize');
 
-
+//create ajax db environment
 const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
 const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
 const database      = require('knex')(configuration);   
@@ -25,29 +25,24 @@ const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 app.use(cors());
 
-// parse application/x-www-form-urlencoded
+//Code to receive info from the front end and parse correctly
 app.use(bodyParser.urlencoded())
-// parse application/json
 app.use(bodyParser.json())
 
+
+//Code to register a new user
 app.post("/register/musician", (req, res) => {
-  console.log(req.body);
-  //insert for knex
   database.insert([{musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: req.body.password}])
-  .into("User_musician").then(function (res) {
-    console.log(res)
+    .into("User_musician").then(function (res) {
   })
-  res.send({ express: 'REGISTERING USER' });
+  res.send({ express: 'REGISTERED NEW USER MUSICIAN' });
 });
 
 app.post("/register/user", (req, res) => {
-  console.log(req.body);
-  //insert for knex
   database.insert([{fan_first_name: req.body.firstName, fan_last_name: req.body.lastName, fan_email: req.body.email, password_digest: req.body.password}])
   .into("User_fan").then(function (res) {
-    console.log(res)
   })
-  res.send({ express: 'REGISTERING USER' });
+  res.send({ express: 'REGISTERING NEW USER FAN' });
 });
 
 
@@ -117,10 +112,6 @@ app.post("/register/user", (req, res) => {
 // })
 
 // app.post('/api/login', passport.authenticate('local'), users.login)
-
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
 
 // GET www.rotate.com for show listings
 app.get('/showInfo', (req, res) => {

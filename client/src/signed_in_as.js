@@ -13,6 +13,4 @@ class SignedInAs extends Component {
     );
   }
 }
-
-
 export default SignedInAs;
