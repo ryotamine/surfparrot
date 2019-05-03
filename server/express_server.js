@@ -32,8 +32,14 @@ app.use(bodyParser.json())
 
 app.post("/register", (req, res) => {
   console.log(req.body);
+  //insert for knex
+  database.insert([{musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: req.body.password}])
+  .into("User_musician").then(function (res) {
+    console.log(res)
+  })
   res.send({ express: 'REGISTERING USER' });
 });
+
 
 // const { dbConfig } = require('pg')
 // //configure Postgres Pool
