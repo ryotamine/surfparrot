@@ -72,7 +72,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((id, cb) => {
-  db.query('SELECT id, username, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
+  db.query('SELECT id, musician_email, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
     if(err) {
       winston.error('Error when selecting user on session deserialize', err)
       return cb(err)
