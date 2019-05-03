@@ -1,7 +1,7 @@
 footer {
     background-image: url('../docs/sheet.jpg');
     padding: 40px 0px 40px 2%;
-    height: 20vh;
+    height: 30vh;
 }
 
 .player {
@@ -9,3 +9,10 @@ footer {
     justify-content: center;
     padding-top: 0.75%;
 }
+
+
+@media screen and (min-height: 926px) {
+    footer {
+        height: 20vh;
+    }
+  }

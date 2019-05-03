@@ -5,7 +5,7 @@ header {
     align-items: flex-start;
     margin: 0 auto;
     padding: 15px 0 40px 0;
-    height: 20vh;
+    height: 30vh;
     /* background-image: url('../docs/brick.jpg');
     background-position: 10px -50px; */
     background-color: #c16a6a;
@@ -60,3 +60,9 @@ header {
 a:hover {
 	font-weight: 900;
 } */
+
+@media screen and (min-height: 926px) {
+    header {
+        height: 20vh;
+    }
+  }

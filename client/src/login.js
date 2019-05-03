@@ -37,7 +37,7 @@ class Login extends Component {
     // }
   
     // // Redirect to user page per radio button selection
-    // if (!this.state.artist && this.state.register) {
+    // if (!this.state.artist && this.state.register) { 
     //   return <Redirect to="/user"/>
     // }
 

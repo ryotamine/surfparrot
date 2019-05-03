@@ -14,9 +14,8 @@ class ArtistApp extends Component {
       <div>
         <Home />
         <SignedInAs />
-        <Logout />
-        <Contact />
         <ArtistContent />
+        <Logout />
       </div>
     );
   }
