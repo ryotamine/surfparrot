@@ -1,4 +1,5 @@
 const express       = require("express");
+const router        =express.Router();
 const app           = express();
 const PORT          = 5000
 const cheerio       = require("cheerio");
@@ -10,6 +11,13 @@ const entities      = require("entities");
 const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
 const capitalize    = require('capitalize');
+<<<<<<< HEAD
+=======
+
+const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
+const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
+const database      = require('knex')(configuration);   
+>>>>>>> feature/connect-server
 
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
