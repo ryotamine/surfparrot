@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Home from './home';
+import UserNavbar from './navbar_user';
 import SignedInAs from './signed_in_as';
-import Logout from './logout';
-import Contact from './contact';
 import UserContent from './user_content';
 
 // User App class
@@ -12,10 +10,9 @@ class UserApp extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <UserNavbar />
         <SignedInAs />
         <UserContent />
-        <Logout />
       </div>
     );
   }
