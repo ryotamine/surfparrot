@@ -9,7 +9,7 @@ const entities      = require("entities");
 //const bcrypt        = require("bcryptjs");
 const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
-
+const capitalize    = require('capitalize');
 
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
@@ -29,9 +29,9 @@ app.get('/showInfo', (req, res) => {
       $('.post-content script').each((i, el) => {
         let listings = (JSON.parse(el.children[0].data));
         const listingData = listings.map(listing => ({
-          Event: entities.decodeHTML(listing.name),
+          Event: entities.decodeHTML(capitalize.words(listing.name).split(':').pop()),
           Date: moment(listing.startDate).format("MMMM Do YYYY"),
-          Location: entities.decodeHTML(listing.location.name)
+          Location: entities.decodeHTML(capitalize.words(listing.location.name))
         }))
         res.json({listingData: listingData}); 
       });
