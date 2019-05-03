@@ -26,11 +26,7 @@ class ArtistContent extends Component {
   render() {
     return (
       <div>
-        <h1>My Events</h1>
-        <h1>Create Event</h1>
-        <button className="main-event-form" onClick={this.openModal}>
-          <i className="fas fa-plus-circle fa-4x"></i>
-        </button>
+        <h1 className="artist-my-events">My Events</h1>
 
         <Popup
           open={this.state.open}
