@@ -62,13 +62,24 @@ class Registration extends Component {
     
     console.log(this.state)
     // Default options are marked with *
-    fetch('/register', {
+    fetch('/register/musician', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.statefirstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
+      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
+    })
+    .then(response => response.json()); // parses JSON response into native Javascript objects 
+
+    // Default options are marked with *
+    fetch('/register/user', {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
     })
     .then(response => response.json()); // parses JSON response into native Javascript objects 
   }

@@ -118,9 +118,6 @@ app.post("/register/user", (req, res) => {
 
 // app.post('/api/login', passport.authenticate('local'), users.login)
 
-app.get('/express_backend', (req, res) => {
-  res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
 
 // GET www.rotate.com for show listings
 app.get('/showInfo', (req, res) => {
