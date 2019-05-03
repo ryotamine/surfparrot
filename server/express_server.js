@@ -1,4 +1,5 @@
 const express       = require("express");
+const router        =express.Router();
 const app           = express();
 const PORT          = 5000
 const cheerio       = require("cheerio");
@@ -11,6 +12,13 @@ const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
 const passport = require("passport-local")
 const bodyParser = require("body-parser");
+const capitalize    = require('capitalize');
+
+
+const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
+const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
+const database      = require('knex')(configuration);   
+
 
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
@@ -106,9 +114,9 @@ app.get('/showInfo', (req, res) => {
       $('.post-content script').each((i, el) => {
         let listings = (JSON.parse(el.children[0].data));
         const listingData = listings.map(listing => ({
-          Event: entities.decodeHTML(listing.name),
+          Event: entities.decodeHTML(capitalize.words(listing.name).split(':').pop()),
           Date: moment(listing.startDate).format("MMMM Do YYYY"),
-          Location: entities.decodeHTML(listing.location.name)
+          Location: entities.decodeHTML(capitalize.words(listing.location.name))
         }))
         res.json({listingData: listingData}); 
       });

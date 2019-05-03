@@ -10,6 +10,6 @@ exports.seed = function(knex, Promise) {
       date: 'May 5, 2019',
       location: 'Garrison'
     },
-    'id'])
+  ])
   })
 };

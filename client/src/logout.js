@@ -6,7 +6,7 @@ class Logout extends Component {
   render() {
     return (
       <div>
-        <button className='home main-nav'><a href='/' className='home main-nav' onClick={this.handleLogout}>Logout</a></button>
+        <button className='logout main-nav'><a href='/' className='logout main-nav' onClick={this.handleLogout}>Logout</a></button>
       </div>
     );
   }

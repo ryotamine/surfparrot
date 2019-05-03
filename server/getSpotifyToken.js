@@ -14,12 +14,15 @@ const getSpotifyToken = ({
       },
       headers: {
         'Content-type': 'application/x-www-form-urlencoded',
-        Authorization: 'Basic ' + base64url(clientId + ':' + clientSecret),
+        'Authorization': 'Basic ' + base64url(clientId + ':' + clientSecret),
       },
       json: true,
     },
 
     (error, response, body) => {
+      console.log("body.client_id~~~~~~~~", clientId)
+      console.log("body.client_secret~~~~~~~~", clientSecret)
+      console.log(body)
       console.log("body.access_token~~~~~~~~", body.access_token)
       if (error) {
         done(error)
@@ -48,5 +51,3 @@ const getSpotifyToken = ({
 // }
 
 module.exports = getSpotifyToken
-
-

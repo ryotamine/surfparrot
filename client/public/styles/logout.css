@@ -1,0 +1,12 @@
+.logout, .find-event {
+  display: inline;
+  padding-top: 2%;
+  text-decoration: none;
+  background-color: transparent;
+  padding: 14px 10px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Neucha', cursive;
+}

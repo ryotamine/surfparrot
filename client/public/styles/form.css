@@ -8,7 +8,12 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-/* Creat event name, date, location, and song link box */
+/* Event, name, date, location, and song fonts */
+.event-name, .event-date, .event-location, .event-song {
+  color: black;
+}
+
+/* Create event name, date, location, and song link box */
 .event-name-create, .event-date-create, .event-location-create, .event-songlink-create {
   border-radius: 5px;
 }

@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 class FindEvent extends Component {
   render() {
     return (
-      <button className='home'>
-        <a className='home main-nav' href='/'>find event</a>
+      <button className='find-event main-nav'>
+        <a className='find-event main-nav' href='/'>find event</a>
       </button>
     );
   }
