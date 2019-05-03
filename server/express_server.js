@@ -10,79 +10,89 @@ const bcrypt        = require("bcryptjs");
 const cookieSession = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
 const passport = require("passport-local")
-
+const bodyParser = require("body-parser");
 
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 app.use(cors());
 
-const { dbConfig } = require('pg')
-//configure Postgres Pool
-const dbConfig = {
-  user: config.db.user,
-  password: config.db.password,
-  database: config.db.database,
-  host: config.db.host,
-  port: config.db.port,
-  max: config.db.max,
-  idleTimeoutMillis: config.db.idleTimeoutMillis,
-}
-const pool = new pg.Pool(dbConfig)
-pool.on('error', function (err) {
-  winston.error('idle client error', err.message, err.stack)
-})
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded())
+// parse application/json
+app.use(bodyParser.json())
 
-// expose Postgres interface to use in other modules
-module.exports = {
-  query: (text, params, callback) => {
-    return pool.query(text, params, callback)
-  }
-}
+app.post("/register", (req, res) => {
+  console.log(req.body);
+  res.send({ express: 'REGISTERING USER' });
+});
 
-app.use(passport.initialize())
-app.use(passport.session())
+// const { dbConfig } = require('pg')
+// //configure Postgres Pool
+// const dbConfig = {
+//   user: config.db.user,
+//   password: config.db.password,
+//   database: config.db.database,
+//   host: config.db.host,
+//   port: config.db.port,
+//   max: config.db.max,
+//   idleTimeoutMillis: config.db.idleTimeoutMillis,
+// }
+// const pool = new pg.Pool(dbConfig)
+// pool.on('error', function (err) {
+//   winston.error('idle client error', err.message, err.stack)
+// })
 
-// configure passport-local strategy
-passport.use(new LocalStrategy((musician_email, password_digest, cb) => {
-  db.query('SELECT id, musician_email, password_digest, type FROM users WHERE musician_email=$1', [username], (err, result) => {
-    if(err) {
-      winston.error('Error when selecting user on login', err)
-      return cb(err)
-    }
+// // expose Postgres interface to use in other modules
+// module.exports = {
+//   query: (text, params, callback) => {
+//     return pool.query(text, params, callback)
+//   }
+// }
 
-    if(result.rows.length > 0) {
-      const first = result.rows[0]
-      bcrypt.compare(password_digest, first.password_digest, function(err, res) {
-        if(res) {
-          cb(null, { id: first.id, musician_email: first.musician_email, type: first.type })
-         } else {
-          cb(null, false)
-         }
-       })
-     } else {
-       cb(null, false)
-     }
-  })
-}))
+// app.use(passport.initialize())
+// app.use(passport.session())
 
-// persist and load user info to session cookie
-passport.serializeUser((user, done) => {
-  done(null, user.id)
-})
+// // configure passport-local strategy
+// passport.use(new LocalStrategy((musician_email, password_digest, cb) => {
+//   db.query('SELECT id, musician_email, password_digest, type FROM users WHERE musician_email=$1', [username], (err, result) => {
+//     if(err) {
+//       winston.error('Error when selecting user on login', err)
+//       return cb(err)
+//     }
 
-passport.deserializeUser((id, cb) => {
-  db.query('SELECT id, musician_email, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
-    if(err) {
-      winston.error('Error when selecting user on session deserialize', err)
-      return cb(err)
-    }
+//     if(result.rows.length > 0) {
+//       const first = result.rows[0]
+//       bcrypt.compare(password_digest, first.password_digest, function(err, res) {
+//         if(res) {
+//           cb(null, { id: first.id, musician_email: first.musician_email, type: first.type })
+//          } else {
+//           cb(null, false)
+//          }
+//        })
+//      } else {
+//        cb(null, false)
+//      }
+//   })
+// }))
 
-    cb(null, results.rows[0])
-  })
-})
+// // persist and load user info to session cookie
+// passport.serializeUser((user, done) => {
+//   done(null, user.id)
+// })
 
-app.post('/api/login', passport.authenticate('local'), users.login)
+// passport.deserializeUser((id, cb) => {
+//   db.query('SELECT id, musician_email, type FROM users WHERE id = $1', [parseInt(id, 10)], (err, results) => {
+//     if(err) {
+//       winston.error('Error when selecting user on session deserialize', err)
+//       return cb(err)
+//     }
+
+//     cb(null, results.rows[0])
+//   })
+// })
+
+// app.post('/api/login', passport.authenticate('local'), users.login)
 
 app.get('/express_backend', (req, res) => {
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
