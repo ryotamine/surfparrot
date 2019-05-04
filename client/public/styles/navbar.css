@@ -37,6 +37,7 @@ header {
     justify-content: flex-end;
     text-align: center;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .rightnav ul {
@@ -60,6 +61,52 @@ header {
 a:hover {
 	font-weight: 900;
 } */
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-family: 'Neucha', cursive;
+    color: #efdbdb;
+    padding: 11px;
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #504c4c;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.dropdown-content .main-nav {
+    float: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content .main-nav:hover {
+    background-color:#504c4c;;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.fa-caret-down {
+    padding: 10px;
+}
+
 
 @media screen and (min-height: 926px) {
     header {

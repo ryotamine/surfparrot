@@ -68,7 +68,7 @@ class Registration extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.statefirstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
+      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
     })
     .then(response => response.json()); // parses JSON response into native Javascript objects 
   }

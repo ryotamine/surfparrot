@@ -16,9 +16,19 @@ class Navbar extends Component {
 
         <div className="rightnav">
           <ul>
-            <li><Login /></li>
-            <li><Registration /></li>
             <li><Contact /></li>
+
+            <div className="dropdown">
+              <button className="dropbtn">
+                 my account
+                <i class="fa fa-caret-down"></i>
+                <div className="dropdown-content">
+                  <Registration />
+                  <Login />
+                </div>
+              </button>
+            </div>
+
           </ul>
         </div>
       </header>
