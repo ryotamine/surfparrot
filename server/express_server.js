@@ -39,7 +39,7 @@ function generateRandomString() {
 
 
 // POST artist registration to database
-app.post("/register", (req, res) => {
+app.post("/register/artist", (req, res) => {
   console.log(req.body, req.params.id);
   const artistId = generateRandomString();
   database.insert([{
@@ -75,7 +75,7 @@ app.post("/register", (req, res) => {
 // });
 
 // POST user registration
-app.post("/register", (req, res) => {
+app.post("/register/user", (req, res) => {
   console.log(req.body, req.params.id);
   const userId = generateRandomString();
   database.insert([{

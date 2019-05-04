@@ -9,13 +9,12 @@ class Registration extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
-      id: '',
+    this.state = {
       firstName: '',
       lastName: '',
       email: '',
       password: '',
-      artist: false,
+      artist: false
     };
     
     this.openModal = this.openModal.bind(this);
@@ -40,14 +39,13 @@ class Registration extends Component {
     event.preventDefault();
     this.setState({
       [event.target.id]: event.target.value
-
     });
   }
 
   // Radio button change helper function
   handleRadioButtonChange(event) {
     event.persist();
-    this.setState({artist: event.target.id === 'artist'});
+    this.setState({ artist: event.target.id === 'artist' });
   }
 
   // Artist or user selection helper function
@@ -59,7 +57,7 @@ class Registration extends Component {
     sessionStorage.setItem('email', this.state.email);
 
     if (this.state.artist) {
-      fetch("/register", {
+      fetch("/register/artist", {
         method: "POST",
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
@@ -80,7 +78,7 @@ class Registration extends Component {
     }
 
     if (!this.state.artist) {
-      fetch("/register", {
+      fetch("/register/user", {
         method: "POST", 
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
