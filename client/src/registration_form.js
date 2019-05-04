@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
+import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
-
 
 // Register class
 class Registration extends Component {
@@ -19,7 +19,6 @@ class Registration extends Component {
       artist: false,
     };
     
-
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -27,7 +26,6 @@ class Registration extends Component {
     this.handleRadioButtonChange = this.handleRadioButtonChange.bind(this);
   }
  
-
   // Open register popup helper function
   openModal () {
     this.setState({ open: true });
@@ -61,9 +59,9 @@ class Registration extends Component {
     });
     sessionStorage.setItem('email', this.state.email);
 
-    console.log("User", this.state)
+    // console.log("User", this.state)
     if (this.state.artist) {
-      fetch('/register/musician', {
+      fetch('/register/musician/:id', {
         method: "POST",
         mode: "cors", 
         headers: 
@@ -83,10 +81,10 @@ class Registration extends Component {
     }
 
     if (!this.state.artist) {
-      fetch('/register/user', {
+      fetch("/register", {
         method: "POST", 
         mode: "cors", 
-        headers: { "Content-Type": "application/json", },     
+        headers: { "Content-Type": "application/json" },     
         body: JSON.stringify({
           'user': this.state.user, 
           'email' : this.state.email,
@@ -94,8 +92,14 @@ class Registration extends Component {
           'lastName': this.state.lastName, 
           'password': this.state.password
         }),
-        })
-        .then(response => response.json()); // parses JSON response into native Javascript objects
+      })
+      .then(response => 
+        // window.location = response.url
+        response.json()
+      ).then(response => {
+        console.log("kasdjklsadjklsadljka", this.props.history, response)
+        this.props.history.push(response.url2)
+      })
     }
   }
 
@@ -128,14 +132,14 @@ class Registration extends Component {
   // Render register popup
   render() {
     // Redirect to artist page per radio button selection
-    if (this.state.artist && this.state.register) {
-      return <Redirect to="/artist"/>
-    }
+    // if (this.state.artist && this.state.register) {
+    //   return <Redirect to="/artist"/>
+    // }
 
-    // Redirect to user page per radio button selection
-    if (!this.state.artist && this.state.register) {
-      return <Redirect to="/user"/>
-    }
+    // // Redirect to user page per radio button selection
+    // if (!this.state.artist && this.state.register) {
+    //   return <Redirect to="/user"/>
+    // }
 
     return (
       <div>
@@ -245,4 +249,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);
