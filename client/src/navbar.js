@@ -32,6 +32,11 @@ class Navbar extends Component {
      });
   }
 
+  handleLogout(event) {
+    // clear sessionStorage
+    sessionStorage.clear();
+  }
+
   render() {
     return (
       <header>
@@ -58,6 +63,10 @@ class Navbar extends Component {
                 <button className="main-login main-nav" onClick={this.openLoginModal}>
                   Login
                 </button>
+                <button className='main-logout main-nav'><a href='/' className='main-logout main-nav' onClick={this.handleLogout}>
+                  Logout</a>
+                </button>
+    
               </div>
             </div>
 

@@ -4,7 +4,7 @@ header {
     flex-flow: row nowrap;
     align-items: flex-start;
     margin: 0 auto;
-    padding: 15px 0 40px 0;
+    padding: 15px 20px 40px 0;
     height: 30vh;
     /* background-image: url('../docs/brick.jpg');
     background-position: 10px -50px; */
@@ -23,6 +23,16 @@ header {
     font-size: 1.25rem;
 }
 
+.main-logout {
+    background-color: transparent;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: -7px 0px 0px -8px;
+}
+
 .main-nav:hover {
     color: #3e1f1f;
 }
@@ -32,6 +42,10 @@ header {
 }
 
 .main-login:hover {
+    color: pink;
+}
+
+.main-logout:hover {
     color: pink;
 }
 
@@ -103,7 +117,7 @@ a:hover {
     z-index: 1;
     background-color: #752626;
     right: 0px;
-    bottom: 8px;
+    bottom: -26%;
 }
 
 .dropdown-content .main-nav {
@@ -114,8 +128,6 @@ a:hover {
     text-align: right;
 }
 
-.dropdown-content .main-nav:hover {
-}
 
 .dropdown:hover .dropdown-content {
     display: block;
