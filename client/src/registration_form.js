@@ -55,13 +55,9 @@ class Registration extends Component {
     this.setState({
       register: true
     });
-    // update sessionStorage
     sessionStorage.setItem('email', this.state.email);
 
-    // fetch/POST request to endpoint in the server
-    
-    console.log(this.state)
-    // Default options are marked with *
+   
     fetch('/register/musician', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin

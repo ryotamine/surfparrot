@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
+import { Redirect } from 'react-router';
 
 
 class EventCreation extends Component {
+
   constructor(props) {
     super(props);
-    this.state = { open: false}
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+    this.state = 
+      { 
+      open: false,
+      eventName: '',
+      eventDate: '',
+      eventLocation: '',
+      songLink: ''
+      };
 
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSaveEvent = this.handleSaveEvent.bind(this);
   }
    
   openModal () {
@@ -16,11 +27,38 @@ class EventCreation extends Component {
   }
   closeModal () {
     this.setState({ open: false })
+  };
+
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({
+      [event.target.id]: event.target.value
+
+    });
   }
-
   
-    
+    handleSaveEvent(event) {
+      event.preventDefault();
+    console.log("handle save event", this.state)
 
+    fetch('/saveEvent', {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        {
+          'eventName': this.state.eventName, 
+          'eventDate' : this.state.eventDate, 
+          'eventLocation': this.state.eventLocation, 
+          'songLink': this.state.songLink 
+        }
+      ), 
+    })
+    .then(response => response.json()); 
+
+  }
   //   this.state = {
   //     firstName: '',
   //     lastName: '',
@@ -40,7 +78,6 @@ class EventCreation extends Component {
   //   alert('User Form Submitted: ' + this.state.value);
   //   event.preventDefault();
   // }
-
   render() {
     return (
       <div>
@@ -61,18 +98,62 @@ class EventCreation extends Component {
           
             <div className="info-event">
               <label htmlFor="event-name" className="event-name"><b>Event Name</b></label>
-              <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>
+              <input 
+                className="event-name-create" 
+                type="text" value={this.state.value} 
+                onBlur={this.handleChange} 
+                placeholder="Event Name" 
+                name="event-name-create" 
+                id="eventName" 
+                ref={node => this.eventName = node} 
+                required>
+              </input>
 
-                <label htmlFor="Date" className="event-date"><b>Date</b></label>
-                <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Date" name="event-date" required></input>
+              <label htmlFor="Date" className="event-date"><b>Date</b></label>
+              <input
+                className="event-date-create" 
+                type="text" 
+                value={this.state.value} 
+                onBlur={this.handleChange} 
+                placeholder="Date" 
+                name="event-date"
+                id="eventDate" 
+                ref={node => this.eventDate = node} 
+                required>
+              </input>
 
-                <label htmlFor="Location" className="event-location"><b>Location</b></label>
-                <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add Location" name="event-location" required></input>
+              <label htmlFor="Location" className="event-location"><b>Location</b></label>
+              <input 
+                className="event-location-create" 
+                type="text" 
+                value={this.state.value} 
+                onBlur={this.handleChange} 
+                placeholder="Add Location" 
+                name="event-location"  
+                id="eventLocation" 
+                ref={node => this.eventLocation = node}
+                required>
+              </input>
               
                 <label htmlFor="song-link" className="event-song"><b>Link a Song!</b></label>
-                <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a Song!" name="event-songlink" required></input>
+              <input 
+                className="event-songlink-create" 
+                type="text" 
+                value={this.state.value} 
+                onBlur={this.handleChange} 
+                placeholder="Link a Song!" 
+                name="event-songlink" 
+                id="songLink" 
+                ref={node => this.songLink = node}
+                required>
+              </input>
                               
-                <button className="submit-event-form" type="submit" value="submit">Create Your Event!</button>
+              <button 
+                className="submit-event-form" 
+                type="submit" 
+                value="submit" 
+                onClick={this.handleSaveEvent}>Create Your Event!
+              </button>
               </div>
             </form>
           </div>
@@ -81,6 +162,5 @@ class EventCreation extends Component {
     )
   }
 }
-
 export default EventCreation
 

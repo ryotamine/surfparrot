@@ -45,6 +45,13 @@ app.post("/register/user", (req, res) => {
   res.send({ express: 'REGISTERING NEW USER FAN' });
 });
 
+app.post("/saveEvent", (req, res) => {
+  database.insert([{event: req.body.eventName, date: req.body.eventDate, location: req.body.eventLocation, song: req.body.songLink}])
+  .into("Event").then(function (res) {
+  })
+  res.send({ express: 'CREATE A NEW EVENT' });
+});
+
 
 // const { dbConfig } = require('pg')
 // //configure Postgres Pool
