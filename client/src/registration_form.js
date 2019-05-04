@@ -58,25 +58,25 @@ class Registration extends Component {
     });
     sessionStorage.setItem('email', this.state.email);
 
-    // console.log("User", this.state)
     if (this.state.artist) {
-      fetch('/register/musician/:id', {
+      fetch("/register", {
         method: "POST",
         mode: "cors", 
-        headers: 
-        {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          'id': this.state.id,
           'artist': this.state.artist, 
           'firstName': this.state.firstName, 
           'lastName': this.state.lastName, 
-          'email' : this.state.email, 
+          'email': this.state.email, 
           'password': this.state.password 
-        }), // body data type must match "Content-Type" header
+        }),
       })
-        .then(response => response.json()); // parses JSON response into native Javascript objects
+      .then(response => 
+        response.json()
+      ).then(response => {
+        console.log("Artist", this.props.history, response)
+        this.props.history.push(response.url1)
+      })
     }
 
     if (!this.state.artist) {
@@ -86,17 +86,16 @@ class Registration extends Component {
         headers: { "Content-Type": "application/json" },     
         body: JSON.stringify({
           'user': this.state.user, 
-          'email' : this.state.email,
           'firstName': this.state.firstName, 
-          'lastName': this.state.lastName, 
+          'lastName': this.state.lastName,
+          'email': this.state.email, 
           'password': this.state.password
         }),
       })
       .then(response => 
-        // window.location = response.url
         response.json()
       ).then(response => {
-        console.log("kasdjklsadjklsadljka", this.props.history, response)
+        console.log("User", this.props.history, response)
         this.props.history.push(response.url2)
       })
     }
@@ -124,8 +123,6 @@ class Registration extends Component {
   //     })
   // }
 
-
-  
   // Render register popup
   render() {
     // Redirect to artist page per radio button selection

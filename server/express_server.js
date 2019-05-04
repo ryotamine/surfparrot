@@ -39,17 +39,21 @@ function generateRandomString() {
 
 
 // POST artist registration to database
-app.post("/register/musician/:id", (req, res) => {
+app.post("/register", (req, res) => {
+  console.log(req.body, req.params.id);
+  const artistId = generateRandomString();
   database.insert([{
-    id: generateRandomString(),
+    id: artistId,
     musician_first_name: req.body.firstName, 
     musician_last_name: req.body.lastName, 
     musician_email: req.body.email, 
-    password_digest: bcrypt.hashSync(req.body.password, 10)}])
-      .into("User_musician")
-        .then(function (res) {
+    password_digest: bcrypt.hashSync(req.body.password, 10)}]
+  )
+  .into("User_musician")
+  .then((result) => {
+    console.log("result", result);
+    res.json({url1: `/artists/${artistId}`, abc: 12})
   });
-  res.redirect("/artist/:id");
 
   // Check if musician email already exists
   // for (let musicianId in database) {
@@ -73,7 +77,7 @@ app.post("/register/musician/:id", (req, res) => {
 // POST user registration
 app.post("/register", (req, res) => {
   console.log(req.body, req.params.id);
-  const userId = generateRandomString()
+  const userId = generateRandomString();
   database.insert([{
     id: userId,
     fan_first_name: req.body.firstName, 
