@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
+import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
-
 
 // Register class
 class Registration extends Component {
@@ -18,11 +18,22 @@ class Registration extends Component {
       artist: false,
     };
     
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleAccountSelection = this.handleAccountSelection.bind(this);
     this.handleRadioButtonChange = this.handleRadioButtonChange.bind(this);
   }
  
+  // Open register popup helper function
+  openModal () {
+    this.setState({ open: true });
+  }
+
+  // Close register popup helper function
+  closeModal () {
+    this.setState({ open: false });
+  }
 
   // Registration form helper function  
   handleChange(event) {
@@ -47,41 +58,46 @@ class Registration extends Component {
     });
     sessionStorage.setItem('email', this.state.email);
 
-    console.log("User", this.state)
     if (this.state.artist) {
-      fetch('/register/musician', {
+      fetch("/register", {
         method: "POST",
         mode: "cors", 
-        headers: 
-        {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          'id': this.state.id,
           'artist': this.state.artist, 
           'firstName': this.state.firstName, 
           'lastName': this.state.lastName, 
-          'email' : this.state.email, 
+          'email': this.state.email, 
           'password': this.state.password 
-        }), // body data type must match "Content-Type" header
+        }),
       })
-        .then(response => response.json()); // parses JSON response into native Javascript objects
+      .then(response => 
+        response.json()
+      ).then(response => {
+        console.log("Artist", this.props.history, response)
+        this.props.history.push(response.url1)
+      })
     }
 
     if (!this.state.artist) {
-      fetch('/register/user', {
+      fetch("/register", {
         method: "POST", 
         mode: "cors", 
-        headers: { "Content-Type": "application/json", },     
+        headers: { "Content-Type": "application/json" },     
         body: JSON.stringify({
           'user': this.state.user, 
-          'email' : this.state.email,
           'firstName': this.state.firstName, 
-          'lastName': this.state.lastName, 
+          'lastName': this.state.lastName,
+          'email': this.state.email, 
           'password': this.state.password
         }),
-        })
-        .then(response => response.json()); // parses JSON response into native Javascript objects
+      })
+      .then(response => 
+        response.json()
+      ).then(response => {
+        console.log("User", this.props.history, response)
+        this.props.history.push(response.url2)
+      })
     }
   }
 
@@ -107,19 +123,17 @@ class Registration extends Component {
   //     })
   // }
 
-
-  
   // Render register popup
   render() {
     // Redirect to artist page per radio button selection
-    if (this.state.artist && this.state.register) {
-      return <Redirect to="/artist"/>
-    }
+    // if (this.state.artist && this.state.register) {
+    //   return <Redirect to="/artist"/>
+    // }
 
-    // Redirect to user page per radio button selection
-    if (!this.state.artist && this.state.register) {
-      return <Redirect to="/user"/>
-    }
+    // // Redirect to user page per radio button selection
+    // if (!this.state.artist && this.state.register) {
+    //   return <Redirect to="/user"/>
+    // }
 
     return (
       
@@ -224,4 +238,4 @@ class Registration extends Component {
   }
 }
 
-export default Registration;
+export default withRouter(Registration);

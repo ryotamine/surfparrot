@@ -6,6 +6,14 @@ class UserContent extends Component {
     return (
       <div>
         <h1 className="user-upcoming-events">Upcoming Events</h1>
+
+        <ul>
+          <li className="event-info">
+            <div className="align-event-option">
+              <button className="delete-event"><i class="far fa-trash-alt"></i></button>
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }
