@@ -25,13 +25,23 @@ const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 app.use(cors());
 
 // Code to receive info from the front-end and parse correctly
-app.use(bodyParser.urlencoded());
+// app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
+
+function generateRandomString() {
+  let text = "";
+  let str = "0123456789";
+  for (let i = 0; i < 5; i++) {
+    text += str.charAt(Math.floor(Math.random() * str.length));
+  }
+  return text;
+}
 
 
 // POST artist registration to database
 app.post("/register/musician", (req, res) => {
   database.insert([{
+    id: generateRandomString(),
     musician_first_name: req.body.firstName, 
     musician_last_name: req.body.lastName, 
     musician_email: req.body.email, 
@@ -58,6 +68,7 @@ app.post("/register/musician", (req, res) => {
 // POST user registration
 app.post("/register/user", (req, res) => {
   database.insert([{
+    id: generateRandomString(),
     fan_first_name: req.body.firstName, 
     fan_last_name: req.body.lastName, 
     fan_email: req.body.email, 
@@ -81,7 +92,12 @@ app.post("/register/user", (req, res) => {
   // }
 });
 app.post("/saveEvent", (req, res) => {
-  database.insert([{event: req.body.eventName, date: req.body.eventDate, location: req.body.eventLocation, song: req.body.songLink}])
+  database.insert([{
+    event: req.body.eventName, 
+    date: req.body.eventDate, 
+    location: req.body.eventLocation, 
+    song: req.body.songLink
+  }])
   .into("Event").then(function (res) {
   })
   res.send({ express: 'CREATE A NEW EVENT' });

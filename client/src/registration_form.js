@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Popup from "reactjs-popup";
 import { Redirect } from 'react-router';
 
+
 // Register class
 class Registration extends Component {
   // Register constructor
@@ -9,16 +10,19 @@ class Registration extends Component {
     super(props);
 
     this.state = { 
+      id: '',
       firstName: '',
       lastName: '',
       email: '',
       password: '',
       artist: false,
     };
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleAccountSelection = this.handleAccountSelection.bind(this);
     this.handleRadioButtonChange = this.handleRadioButtonChange.bind(this);
   }
+ 
 
   // Registration form helper function  
   handleChange(event) {
@@ -43,36 +47,39 @@ class Registration extends Component {
     });
     sessionStorage.setItem('email', this.state.email);
 
-    // fetch/POST request to endpoint in the server
-    
-    console.log(this.state)
-    // Default options are marked with *
+    console.log("User", this.state)
     if (this.state.artist) {
       fetch('/register/musician', {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        headers: {
+        method: "POST",
+        mode: "cors", 
+        headers: 
+        {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          'id': this.state.id,
           'artist': this.state.artist, 
-          'firstName': this.state.firstName, 'lastName': this.state.lastName, 
-          'email' : this.state.email, 'password': this.state.password }), // body data type must match "Content-Type" header
-        })
+          'firstName': this.state.firstName, 
+          'lastName': this.state.lastName, 
+          'email' : this.state.email, 
+          'password': this.state.password 
+        }), // body data type must match "Content-Type" header
+      })
         .then(response => response.json()); // parses JSON response into native Javascript objects
     }
 
-    // Default options are marked with *
     if (!this.state.artist) {
       fetch('/register/user', {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        headers: {
-          "Content-Type": "application/json",
-        },
+        method: "POST", 
+        mode: "cors", 
+        headers: { "Content-Type": "application/json", },     
         body: JSON.stringify({
           'user': this.state.user, 
-          'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
+          'email' : this.state.email,
+          'firstName': this.state.firstName, 
+          'lastName': this.state.lastName, 
+          'password': this.state.password
+        }),
         })
         .then(response => response.json()); // parses JSON response into native Javascript objects
     }

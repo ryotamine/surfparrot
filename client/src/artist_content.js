@@ -28,6 +28,15 @@ class ArtistContent extends Component {
       <div>
         <h1 className="artist-my-events">My Events</h1>
 
+        <ul>
+          <li className="event-info">
+              <div className="align-event-option">
+                <button className="edit-event">Edit</button>
+                <button className="delete-event">Delete</button>
+              </div>
+          </li>
+        </ul>
+
         <Popup
           open={this.state.open}
           closeOnDocumentClick

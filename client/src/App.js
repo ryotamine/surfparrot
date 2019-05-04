@@ -31,8 +31,10 @@ class App extends Component {
       <main>
         <Home />
         <Scrape
-        handleSubmit={this.getArtist} 
-        artistName = {this.state.artistName}  />
+          handleSubmit={this.getArtist} 
+          artistName = {this.state.artistName}
+          {...this.State}
+        />
         <footer>
           <div className="player">
             <SpotifyPlayer artistid={this.state.artist.id}/>
@@ -78,8 +80,8 @@ class App extends Component {
         const firstItem = items[0]
   
         if (!firstItem) {
-          console.log('no artists found')
-          alert("This listing is not on Spotify, search goog?")
+          alert('surfparrot could not find this artist on Spotify!')
+          // <Redirect />
           return
         }
         // get the id of the first artist returned
