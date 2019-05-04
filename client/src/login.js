@@ -8,25 +8,10 @@ class Login extends Component {
     super(props);
 
     this.state = { 
-      open: false,
       email: '',
       password: '',
       artist: false,
     };
-
-    this.state = { open: false };
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
-  }
-
-  // Open login popup helper function
-  openModal () {
-    this.setState({ open: true });
-  }
-
-  // Close login popup helper function
-  closeModal () {
-    this.setState({ open: false });
   }
 
   // Render login popup
@@ -42,18 +27,13 @@ class Login extends Component {
     // }
 
     return (
-      <div>
-        <button className="main-login main-nav" onClick={this.openModal}>
-          Login
-        </button>
-
         <Popup
-          open={this.state.open}
+          open={true}
           closeOnDocumentClick
-          onClose={this.closeModal}
+          onClose={this.props.closeModal}
         >
           <div id="id02" className="modal">
-            <a href className="close" onClick={this.closeModal}>
+            <a href className="close" onClick={this.props.closeModal}>
               &times;
             </a>
           
@@ -70,7 +50,6 @@ class Login extends Component {
             </form>
           </div>
         </Popup>
-      </div>
     );
   }
 }

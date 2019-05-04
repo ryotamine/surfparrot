@@ -29,10 +29,6 @@ input[type=text] {
 
 }
 
-.main-form:hover {
-  opacity: 0.8;
-}
-
 /* Set a style for submit register button */
 .submit-event-form {
   background-color: #2196F3;

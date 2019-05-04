@@ -23,10 +23,6 @@ input[type=text], input[type=password] {
     outline: none;
 }
 
-.main-register:hover {
-  opacity: 0.8;
-}
-
 /* Set a style for submit register button */
 .submit-register {
   background-color: #2196F3;

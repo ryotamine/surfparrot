@@ -24,10 +24,6 @@ input[type=text] {
   color: black;
 }
 
-.main-contact:hover {
-  opacity: 0.8;
-}
-
 /* Set a style for submit contact button */
 .submit-contact {
   background-color: #2196F3;
