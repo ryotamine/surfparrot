@@ -55,22 +55,41 @@ class Registration extends Component {
     this.setState({
       register: true
     });
-    // update sessionStorage
     sessionStorage.setItem('email', this.state.email);
 
     // fetch/POST request to endpoint in the server
     
     console.log(this.state)
     // Default options are marked with *
-    fetch('/register', {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, cors, *same-origin
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({'artist': this.state.artist, 'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
-    })
-    .then(response => response.json()); // parses JSON response into native Javascript objects 
+    if (this.state.artist) {
+      fetch('/register/musician', {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'artist': this.state.artist, 
+          'firstName': this.state.firstName, 'lastName': this.state.lastName, 
+          'email' : this.state.email, 'password': this.state.password }), // body data type must match "Content-Type" header
+        })
+        .then(response => response.json()); // parses JSON response into native Javascript objects
+    }
+
+    // Default options are marked with *
+    if (!this.state.artist) {
+      fetch('/register/user', {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          'user': this.state.user, 
+          'email' : this.state.email, 'firstName': this.state.firstName, 'lastName': this.state.lastName, 'password': this.state.password }), // body data type must match "Content-Type" header
+        })
+        .then(response => response.json()); // parses JSON response into native Javascript objects
+    }
   }
 
   

@@ -30,7 +30,6 @@ class Scrape extends Component {
       if (!error && response.statusCode === 200) {
         this.setState({listingData: body.listingData});
       }
-
     });
   }
   handleClick(eventName) {
