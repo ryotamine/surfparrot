@@ -1,53 +1,87 @@
-const express       = require("express");
-const router        =express.Router();
-const app           = express();
-const PORT          = 5000
-const cheerio       = require("cheerio");
-const request       = require("request");
-const cors          = require("cors");
-const moment        = require("moment");
-const entities      = require("entities");
-const bcrypt        = require("bcrypt");
-const cookieSession = require("cookie-session");
+const express         = require("express");
+const router          = express.Router();
+const app             = express();
+const PORT            = 5000
+const cheerio         = require("cheerio");
+const request         = require("request");
+const cors            = require("cors");
+const moment          = require("moment");
+const entities        = require("entities");
+const bcrypt          = require("bcrypt");
+const cookieSession   = require("cookie-session");
 const getSpotifyToken = require('./getSpotifyToken');
-const passport = require("passport-local")
-const bodyParser = require("body-parser");
-const capitalize    = require('capitalize');
+const passport        = require("passport-local")
+const bodyParser      = require("body-parser");
+const capitalize      = require('capitalize');
 
-//create ajax db environment
-const environment = process.env.NODE_ENV || 'development';    // if something else isn't setting ENV, use development
-const configuration = require('./knexfile')[environment];    // require environment's settings from knexfile
+// Create AJAX DB environment
+const environment   = process.env.NODE_ENV || 'development'; // if something else isn't setting ENV, use development
+const configuration = require('./knexfile')[environment]; // require environment's settings from knexfile
 const database      = require('knex')(configuration);   
-
 
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 app.use(cors());
 
-//Code to receive info from the front end and parse correctly
-app.use(bodyParser.urlencoded())
-app.use(bodyParser.json())
+// Code to receive info from the front-end and parse correctly
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 
-//Code to register a new user
+// POST artist registration to database
 app.post("/register/musician", (req, res) => {
   database.insert([{
-    musician_first_name: req.body.firstName, musician_last_name: req.body.lastName, musician_email: req.body.email, password_digest: bcrypt.hashSync(req.body.password, 10)}])
-    .into("User_musician").then(function (res) {
-  })
+    musician_first_name: req.body.firstName, 
+    musician_last_name: req.body.lastName, 
+    musician_email: req.body.email, 
+    password_digest: bcrypt.hashSync(req.body.password, 10)}])
+      .into("User_musician")
+        .then(function (res) {
+  });
   res.send({ express: 'REGISTERED NEW USER MUSICIAN' });
+
+  // Check if musician email already exists
+  // for (let musicianId in database) {
+  //   if (req.body.email === database[musicianId].musician_email) {
+  //     res.status(400).send("Invalid. Please try again.");
+  //   }
+  // }
+
+  // Check for musician registration errors
+  // if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
+  //   res.status(400).send("Invalid. Please try again.");
+  //   return;
+  // }
 });
 
+// POST user registration
 app.post("/register/user", (req, res) => {
   database.insert([{
-    fan_first_name: req.body.firstName, fan_last_name: req.body.lastName, fan_email: req.body.email, password_digest: bcrypt.hashSync(req.body.password, 10)}])
-  .into("User_fan").then(function (res) {
-  })
+    fan_first_name: req.body.firstName, 
+    fan_last_name: req.body.lastName, 
+    fan_email: req.body.email, 
+    password_digest: bcrypt.hashSync(req.body.password, 10)}])
+      .into("User_fan")
+        .then(function (res) {
+  });
   res.send({ express: 'REGISTERING NEW USER FAN' });
+
+  // Check if artist email already exists
+  // for (let artistId in database) {
+  //   if (req.body.email === database[artistId].fan_email) {
+  //     res.status(400).send("Invalid. Please try again.");
+  //   }
+  // }
+
+  // Check for artist registration errors
+  // if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
+  //   res.status(400).send("Invalid. Please try again.");
+  //   return;
+  // }
 });
 
-
+// Passport example
 // const { dbConfig } = require('pg')
 // //configure Postgres Pool
 // const dbConfig = {
@@ -126,7 +160,7 @@ app.get('/showInfo', (req, res) => {
           Event: entities.decodeHTML(capitalize.words(listing.name).split(':').pop()),
           Date: moment(listing.startDate).format("MMMM Do YYYY"),
           Location: entities.decodeHTML(capitalize.words(listing.location.name))
-        }))
+        }));
         res.json({listingData: listingData}); 
       });
     }
@@ -141,10 +175,10 @@ app.get("/", (req, res) => {
 app.get('/healthcheck', (req, res) => {
   res.status(200).json({
     message: 'success!'
-  })
-})
+  });
+});
 
-
+// GET Spotify token
 app.get('/spotify_token', (req, res) => {
   getSpotifyToken({
       clientId: SPOTIFY_CLIENT_ID,
@@ -154,14 +188,14 @@ app.get('/spotify_token', (req, res) => {
       console.log("BACKEND token: ", token)
       res.status(200).json({token})
     }
-  )
-})
+  );
+});
 
-
+// GET Spotify refresh token
 app.get('/refresh_token', function(req, res) {
-  // requesting access token from refresh token
+  // Requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
-  console.log("refresh_token: ", refresh_token)
+  console.log("refresh_token: ", refresh_token);
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
@@ -186,5 +220,3 @@ app.get('/refresh_token', function(req, res) {
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
-
-// 2019-04-27T00:00:01
