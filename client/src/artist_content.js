@@ -31,8 +31,8 @@ class ArtistContent extends Component {
         <ul>
           <li className="event-info">
               <div className="align-event-option">
-                <button className="edit-event">Edit</button>
-                <button className="delete-event">Delete</button>
+                <button className="edit-event"><i class="fas fa-edit"></i></button>
+                <button className="delete-event"><i class="far fa-trash-alt"></i></button>
               </div>
           </li>
         </ul>

@@ -39,7 +39,7 @@ function generateRandomString() {
 
 
 // POST artist registration to database
-app.post("/register/musician", (req, res) => {
+app.post("/register/musician/:id", (req, res) => {
   database.insert([{
     id: generateRandomString(),
     musician_first_name: req.body.firstName, 
@@ -49,7 +49,7 @@ app.post("/register/musician", (req, res) => {
       .into("User_musician")
         .then(function (res) {
   });
-  res.send({ express: 'REGISTERED NEW USER MUSICIAN' });
+  res.redirect("/artist/:id");
 
   // Check if musician email already exists
   // for (let musicianId in database) {
@@ -65,18 +65,27 @@ app.post("/register/musician", (req, res) => {
   // }
 });
 
+// GET user registration
+// app.get("/register", (req, res) => {
+//   // ...
+// });
+
 // POST user registration
-app.post("/register/user", (req, res) => {
+app.post("/register", (req, res) => {
+  console.log(req.body, req.params.id);
+  const userId = generateRandomString()
   database.insert([{
-    id: generateRandomString(),
+    id: userId,
     fan_first_name: req.body.firstName, 
     fan_last_name: req.body.lastName, 
     fan_email: req.body.email, 
-    password_digest: bcrypt.hashSync(req.body.password, 10)}])
-      .into("User_fan")
-        .then(function (res) {
+    password_digest: bcrypt.hashSync(req.body.password, 10)}]
+  )
+  .into("User_fan")
+  .then((result) => {
+    console.log("result", result);
+    res.json({url2: `/users/${userId}`, abc: 12})
   });
-  res.send({ express: 'REGISTERING NEW USER FAN' });
 
   // Check if artist email already exists
   // for (let artistId in database) {
@@ -91,6 +100,7 @@ app.post("/register/user", (req, res) => {
   //   return;
   // }
 });
+
 app.post("/saveEvent", (req, res) => {
   database.insert([{
     event: req.body.eventName, 
@@ -208,7 +218,7 @@ app.get('/spotify_token', (req, res) => {
       clientSecret: SPOTIFY_CLIENT_SECRET,
     },
     (_, token) => {
-      console.log("BACKEND token: ", token)
+      // console.log("BACKEND token: ", token)
       res.status(200).json({token})
     }
   );
@@ -218,7 +228,7 @@ app.get('/spotify_token', (req, res) => {
 app.get('/refresh_token', function(req, res) {
   // Requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
-  console.log("refresh_token: ", refresh_token);
+  // console.log("refresh_token: ", refresh_token);
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
