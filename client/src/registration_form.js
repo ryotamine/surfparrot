@@ -55,7 +55,6 @@ class Registration extends Component {
     this.setState({
       register: true
     });
-    // update sessionStorage
     sessionStorage.setItem('email', this.state.email);
 
     // fetch/POST request to endpoint in the server

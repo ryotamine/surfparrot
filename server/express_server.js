@@ -80,6 +80,13 @@ app.post("/register/user", (req, res) => {
   //   return;
   // }
 });
+app.post("/saveEvent", (req, res) => {
+  database.insert([{event: req.body.eventName, date: req.body.eventDate, location: req.body.eventLocation, song: req.body.songLink}])
+  .into("Event").then(function (res) {
+  })
+  res.send({ express: 'CREATE A NEW EVENT' });
+});
+
 
 // Passport example
 // const { dbConfig } = require('pg')
