@@ -38,7 +38,7 @@ class EventCreation extends Component {
   }
   
     handleSaveEvent(event) {
-      event.preventDefault();
+      event.persist();
     console.log("handle save event", this.state)
 
     fetch('/saveEvent', {
