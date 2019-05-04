@@ -1,0 +1,21 @@
+.align-event-option {
+  text-align: right;
+}
+
+.event-info {
+  list-style: none;
+  overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 1px solid #555;
+}
+
+.edit-event, .delete-event {
+  background: none;
+  border: 0px;
+  font-size: 20px;
+  color: #555;
+  width: 60px;
+  margin: 10px 0 0;
+  font-family: 'Neucha', cursive;;
+  cursor: pointer;
+}
