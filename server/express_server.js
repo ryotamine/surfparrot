@@ -24,7 +24,7 @@ const database      = require('knex')(configuration);
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
-app.use(cors());
+app.use(cors({credentials: true, origin: "http://localhost:3000"}));
 
 // Code to receive info from the front-end and parse correctly
 // app.use(bodyParser.urlencoded());
@@ -54,7 +54,8 @@ app.get('/login-recommendations', function(req, res) {
   req.session[stateKey] = state;
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-read-playback-state';
+  // var scope = 'user-read-private user-read-email user-read-playback-state';
+  const scope = 'user-read-recently-played';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -97,20 +98,17 @@ app.get('/callback', function(req, res) {
     request.post(authOptions, function(error, response, body) {
       if (!error && response.statusCode === 200) {
 
-        var access_token = body.access_token,
-            refresh_token = body.refresh_token;
-
+        req.session.access_token = body.access_token
+        req.session.refresh_token = body.refresh_token;
+        console.log("~~~~~~~~~~req.session", req.session)
+        console.log("~~~~~~~~~~~~~req.session.access_token", req.session.access_token)
         // var options = {
         //   url: 'https://api.spotify.com/v1/me',
         //   headers: { 'Authorization': 'Bearer ' + access_token },
         //   json: true
         // };
           //redirect to recommendations page
-        res.redirect('http://localhost:3000/recommendations/?' +
-        querystring.stringify({
-          access_token: access_token,
-          refresh_token: refresh_token
-        }));
+        res.redirect('http://localhost:3000/recommendations/')
          
       } else {
         res.redirect('/?' +
@@ -121,6 +119,13 @@ app.get('/callback', function(req, res) {
     });
   }
 });
+
+app.get('/user_token', function(req, res) {
+  console.log("~~~~~~~~~~~~~~~sending user token", req.session)
+  res.json({
+    user_token: req.session.access_token
+  });
+})
 
 app.get('/refresh_token', function(req, res) {
   // requesting access token from refresh token
