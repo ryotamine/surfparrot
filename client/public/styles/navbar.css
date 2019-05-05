@@ -22,6 +22,16 @@ header {
     font-size: 1.25rem;
 }
 
+.main-find-event {
+    background-color: transparent;
+    padding: 7px 10px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: -7px 0px 0px -8px;
+}
+
 .main-logout {
     background-color: transparent;
     padding: 14px 20px;
@@ -42,6 +52,10 @@ header {
 }
 
 .main-login:hover {
+    color: white;
+}
+
+.main-find-event:hover {
     color: white;
 }
 

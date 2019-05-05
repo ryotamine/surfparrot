@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './navbar';
+import NavbarUser from './navbar_user';
 import SignedInAs from './signed_in_as';
 import UserContent from './user_content';
 
@@ -10,7 +10,7 @@ class UserApp extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarUser />
         <SignedInAs />
         <UserContent />
       </div>

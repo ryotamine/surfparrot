@@ -82,7 +82,7 @@ class EventCreation extends Component {
     return (
       <div>
         <button className="main-register main-nav" onClick={this.openModal}>
-         Create Event 
+         create event 
         </button>
         
         <Popup

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from './navbar';
+import NavbarArtist from './navbar_artist';
 import SignedInAs from './signed_in_as';
 import ArtistContent from './artist_content';
 
@@ -10,7 +10,7 @@ class ArtistApp extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarArtist />
         <SignedInAs />
         <ArtistContent />
       </div>
