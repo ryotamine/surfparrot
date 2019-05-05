@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Login from './login';
 import Registration from './registration_form';
 import Contact from './contact';
+import Recommendations from './recommendations';
 
 class Navbar extends Component {
 
@@ -43,11 +44,14 @@ class Navbar extends Component {
         <div className="logo">
             <img src="/docs/parrot2.png"></img>
         </div>
+        
 
         <button className='home'><a className='home main-nav' href='/'>surfparrot</a></button>
 
         <div className="rightnav">
           <ul>
+
+            <li><Recommendations /></li>
             <li><Contact /></li>
 
             <div className="dropdown">
