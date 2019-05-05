@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Login from './login';
-import Registration from './registration_form';
 import Contact from './contact';
+import EventCreation from './event_form';
 
-class Navbar extends Component {
+class NavbarUser extends Component {
 
   // Register & Login constructor
   constructor(props) {

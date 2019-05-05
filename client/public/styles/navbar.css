@@ -1,21 +1,20 @@
-
 header {
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
     margin: 0 auto;
-    padding: 15px 20px 40px 0;
-    height: 30vh;
+    padding: 20px 0px;
+    height: 200px;
     /* background-image: url('../docs/brick.jpg');
     background-position: 10px -50px; */
-    background-color: #c16a6a;
+    /* background-color: #c16a6a; */
     color: white;
     position: relative;
 
 }
 
 .main-nav {
-    color: #efdbdb;
+    color: black;
     text-transform: lowercase;
     /* font-family: 'Indie Flower', cursive !important; */
     /* font-family: 'Roboto', sans-serif; */
@@ -34,24 +33,24 @@ header {
 }
 
 .main-nav:hover {
-    color: #3e1f1f;
+    cursor: pointer;
+    color: grey;
 }
 
 .main-register:hover {
-    color: pink;
+    color: white;
 }
 
 .main-login:hover {
-    color: pink;
+    color: white;
 }
 
 .main-logout:hover {
-    color: pink;
+    color: white;
 }
 
 .logo {
     flex: 0 0 200px;
-    padding-left: 2%;
 }
 
 .logo img {
@@ -99,23 +98,21 @@ a:hover {
     outline: none;
     background-color: inherit;
     font-family: 'Neucha', cursive;
-    color: #efdbdb;
+    color: black;
     padding: 11px;
     font-size: 1.25rem;
     margin: 0;
 }
 
 .dropbtn:hover {
-    color: #3e1f1f;
+    color: grey;
 }
 
 .dropdown-content {
     display: none;
-    position: absolute;
-    min-width: 160px;
     box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.5);
     z-index: 1;
-    background-color: #752626;
+    background-color: #ccc;
     right: 0px;
     bottom: -26%;
 }

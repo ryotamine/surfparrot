@@ -5,20 +5,26 @@
 .ReactTable .rt-thead .rt-tr {
     padding: 10px 10px 10px 10px !important;
     text-align: left !important; 
-    background-color: #d6d6d6; 
-    color: #777070;
+    background-color: black; 
+    color: white;
 }
 
 .rt-tbody {
-    padding: 2% 0% 0% 1%;
+    background-color: white;
 }   
 
-  
 .rt-td a {
-    color: #3e2626;
+    color: black;
 }
 
 .rt-td a:hover {
-    color: rgb(223, 104, 104) !important;
+    color: #888 !important;
 }
 
+div.-pagination {
+    background-color: white;
+}
+
+button {
+    cursor: pointer;
+}

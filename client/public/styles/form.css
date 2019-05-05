@@ -123,6 +123,7 @@ input[type=text] {
 
 .info-contact {
   color: black;
+  text-align: left;
 }
 
 .info-login {

@@ -5,6 +5,7 @@ import App from './App';
 import UserApp from './user_app';
 import ArtistApp from './artist_app';
 
+// App routing
 const routing = (
   <Router>
     <div>

@@ -1,18 +1,16 @@
 footer {
-    background-image: url('../docs/sheet.jpg');
-    padding: 40px 0px 40px 2%;
-    height: 30vh;
+  /* background-image: url('../docs/sheet.jpg'); */
+  padding: 20px 0px;
 }
 
 .player {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.75%;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.75%;
 }
 
-
 @media screen and (min-height: 926px) {
-    footer {
-        height: 20vh;
-    }
+  footer {
+    height: 20vh;
   }
+}

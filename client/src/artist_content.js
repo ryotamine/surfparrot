@@ -28,14 +28,12 @@ class ArtistContent extends Component {
       <div>
         <h1 className="artist-my-events">My Events</h1>
 
-        <ul>
-          <li className="event-info">
-              <div className="align-event-option">
-                <button className="edit-event"><i class="fas fa-edit"></i></button>
-                <button className="delete-event"><i class="far fa-trash-alt"></i></button>
-              </div>
-          </li>
-        </ul>
+        <li className="event-info">
+          <div className="align-event-option">
+            <button className="edit-event"><i class="fas fa-edit"></i></button>
+            <button className="delete-event"><i class="far fa-trash-alt"></i></button>
+          </div>
+        </li>
 
         <Popup
           open={this.state.open}

@@ -7,15 +7,14 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 
 body {
+  background-image: url('../docs/surfparrot-background.jpg');
+  background-size: 100vw 100vh;
+  z-index: -1;
   margin: 0 auto;
-  min-height: 100vh;
-  max-width: 75%;
+  height: 100%;
+  width: 90%;
   font-family: 'Roboto', sans-serif;
 }
-
-main {
-  padding: 15px;
-} 
 
 .home {
   display: inline;
