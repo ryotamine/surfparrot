@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Contact from './contact';
-import EventCreation from './event_form';
+import FindEvent from './find_event';
 
 class NavbarUser extends Component {
   // Logout helper function
@@ -29,7 +29,7 @@ class NavbarUser extends Component {
               </button>
 
               <div className="dropdown-content">
-                <EventCreation />
+                <FindEvent />
                 <button className='main-logout main-nav'>
                   <a href='/' 
                     className='main-logout main-nav' 
