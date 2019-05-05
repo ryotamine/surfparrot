@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import Navbar from './navbar';
 
+
+// User App class
 class Recommendations extends Component {
+    constructor(props) {
+    super(props);
+    }
+        state = {
+            token: null,
+            artistNames: "",
+        };
+    
+    // componentDidMount() {
+        
+    // }
+    
 
-  constructor(props) {
-  super(props);
-  }
-    state = {
-      token: null,
-    };
-
+  // Render user page
   render() {
     return (
-        <a href="http://localhost:5000/login-recommendations">
-          get show recommendations!
-        </a>
-        
-    )
+      <div>
+        <Navbar />
+      </div>
+    );
   }
 }
-
 
 export default Recommendations;

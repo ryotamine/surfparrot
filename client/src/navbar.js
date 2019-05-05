@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from './login';
 import Registration from './registration_form';
 import Contact from './contact';
-import Recommendations from './recommendations';
+import LoginRecommendations from './loginrecommendations';
 
 class Navbar extends Component {
 
@@ -51,7 +51,7 @@ class Navbar extends Component {
         <div className="rightnav">
           <ul>
 
-            <li><Recommendations /></li>
+            <li><LoginRecommendations /></li>
             <li><Contact /></li>
 
             <div className="dropdown">
