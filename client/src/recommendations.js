@@ -29,31 +29,64 @@ class Recommendations extends Component {
             console.log("FRONT END token: ", token)
             if (token) {
                 console.log("this.state.token: ", token)
-                axios.get(
-                  `https://api.spotify.com/v1/me/player/recently-played`,
-                  {
-                    headers: { Authorization: `Bearer ${token}` },
-                    params: {limit: 50 },
-                  }  
-                )
-                .then(res => {
-                  const data = res.data.items;
+                axios.all([
+                  axios.get(
+                    //50 most recently played tracks
+                    `https://api.spotify.com/v1/me/player/recently-played`,
+                    {
+                      headers: { Authorization: `Bearer ${token}` },
+                      params: {limit: 50 },
+                    }  
+                  ),
+                  axios.get(
+                    //50 artists the user followers
+                    `https://api.spotify.com/v1/me/following?type=artist`,
+                    {
+                      headers: { Authorization: `Bearer ${token}` },
+                      params: {limit: 50 },
+                    }  
+                  ),
+                  // axios.get(
+                  //   //50 of users top played artists
+                  //   `	https://api.spotify.com/v1/me/top/{artists}`,
+                  //   {
+                  //     headers: { Authorization: `Bearer ${token}` },
+                  //     params: {limit: 50 },
+                  //   }  
+                  // )
+                ])
+                .then(axios.spread((recent, following, top) => {
+                  //most recently listened to
+                  const data = recent.data.items;
                   const artistArray = data.map(artist => ({
                     Artists: artist.track.album.artists
                   }));
+                  //array of all the artists pulled from different queries
                   const artistNames = [] 
+                  //is this setting it to state properly?
                   this.setState({artists: artistNames}) 
+                  console.log("~~~~~~~~~~artistNames", artistNames)
                     for (let i = 0; i < artistArray.length; i++) {
                         let item = artistArray[i].Artists;
                         for (let j = 0; j < item.length; j++) {
                             artistNames.push(item[j].name)
                             console.log("~~~~~~~~~~~~names", item[j].name)
-                            // console.log(artistNames)
                         }
                     }
-                  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~res.data", res.data)
                   console.log("~~~~~~~artistNames", artistNames)
-                })
+                  const library = following.data.artists.items;
+                  //artists user follows
+                  console.log("~~~~~~~~~library", library)
+                    for (let i = 0; i < library.length; i++ ) {
+                      let item = library[i].name
+                      artistNames.push(item)
+                      console.log("~~~~~~~item", item)
+                    }
+                  //top artists
+                  // const topObject = top.data
+                  // console.log("~~~~~topObject", topObject)
+
+                }))
                 
             } else {
                 axios.get('http://localhost:5000/user_refresh_token', {

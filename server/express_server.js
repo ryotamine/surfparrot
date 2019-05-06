@@ -55,7 +55,7 @@ app.get('/login-recommendations', function(req, res) {
 
   // your application requests authorization
   // var scope = 'user-read-private user-read-email user-read-playback-state';
-  const scope = 'user-read-recently-played';
+  const scope = 'user-read-recently-played, user-follow-read, user-top-read'; 
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
