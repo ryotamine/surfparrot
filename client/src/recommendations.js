@@ -12,6 +12,7 @@ class Recommendations extends Component {
             token: null,
             data: null,
             recommendations: "",
+            artists: []
         };
     
     componentDidMount() {
@@ -36,27 +37,46 @@ class Recommendations extends Component {
                   }  
                 )
                 .then(res => {
-                  console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~res.data", res.data)
+                  const data = res.data.items;
+                  const artistArray = data.map(artist => ({
+                    Artists: artist.track.album.artists
+                  }));
+                  const artistNames = [] 
+                  this.setState({artists: artistNames}) 
+                    for (let i = 0; i < artistArray.length; i++) {
+                        let item = artistArray[i].Artists;
+                        for (let j = 0; j < item.length; j++) {
+                            artistNames.push(item[j].name)
+                            console.log("~~~~~~~~~~~~names", item[j].name)
+                            // console.log(artistNames)
+                        }
+                    }
+                  // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~res.data", res.data)
+                  console.log("~~~~~~~artistNames", artistNames)
                 })
-            } 
+                
+            } else {
+                axios.get('http://localhost:5000/user_refresh_token', {
+                    withCredentials: true,
+                })
+                this.getRefreshToken()
+            }
         })
+        console.log("this.state.artists~~~~~~~~", this.state.artists)
       }
     
-
     // Render user page
-    render() {
+    render() 
+                {
         return (
         <div>
             <Navbar />
-
-
+            {this.state.artists}
         </div>
 
         );
     }
 
- 
-    
     // helper function sends refresh_token endpoint back to the frontend
     getRefreshToken = async () => {
       try {

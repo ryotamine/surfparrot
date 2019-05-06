@@ -100,6 +100,8 @@ app.get('/callback', function(req, res) {
 
         req.session.access_token = body.access_token
         req.session.refresh_token = body.refresh_token;
+        req.session.expiry_time = new Date(Date.now());
+        console.log ("~~~~~~~~~~~~~~~~~~EXPIRY TIME", req.session.expiry_time)
         console.log("~~~~~~~~~~req.session", req.session)
         console.log("~~~~~~~~~~~~~req.session.access_token", req.session.access_token)
         // var options = {
@@ -127,7 +129,7 @@ app.get('/user_token', function(req, res) {
   });
 })
 
-app.get('/refresh_token', function(req, res) {
+app.get('/user_refresh_token', function(req, res) {
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {
