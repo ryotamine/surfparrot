@@ -23,3 +23,7 @@
   cursor: pointer;
   outline: none;
 }
+
+.name-event, {
+  text-align: left;
+}

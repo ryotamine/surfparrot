@@ -5,14 +5,25 @@ import ArtistContent from './artist_content';
 
 // Artist App class
 class ArtistApp extends Component {
+  constructor(props) {
+    super(props);
+    this.textEvent = React.createRef();
+    this.state = {
+      name: 'John'
+    }
+  }
+
+  handleName = evt => {
+    this.setState({name: evt.target.value})
+  }
 
   // Render artist page
   render() {
     return (
       <div>
-        <NavbarArtist />
+        <NavbarArtist name={this.state.name} handleName={this.handleName} ref={this.textEvent}/>
         <SignedInAs />
-        <ArtistContent />
+        <ArtistContent name={this.state.name} ref={this.textEvent}/>
       </div>
     );
   }

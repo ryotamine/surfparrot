@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 // Artist content class
 class ArtistContent extends Component {
   // Artist content constructor
@@ -7,15 +8,22 @@ class ArtistContent extends Component {
     super(props);
 
     this.state = { 
-      data: [{eventName: ""}]
+      eventName: "John",
+      data: [{name: ""}]
     };
 
+    this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  // Edit event helper function
+  handleEdit(event) {
+    this.setState({eventName: event});
   }
 
   // Delete event helper function
   handleDelete(event) {
-    const data = this.state.data.filter(i => i.eventName !== event.eventName)
+    const data = this.state.data.filter(i => i.name !== event.name)
     this.setState({data});
   }
 
@@ -23,14 +31,23 @@ class ArtistContent extends Component {
   render() {
     const events = this.state.data.map((event) => {
       return (
-        <div key={event.eventName}>
+        <div key={event.name}>
           <li className="event-info">
             <div className="align-event-option">
-              <button className="edit-event">
-                <i class="fas fa-edit"></i>
+              <a className="name-event">
+                {this.props.name}
+              </a>
+              <button 
+                className="edit-event" 
+                onClick={this.handleEdit.bind(this, event)}
+              >
+                <i className="fas fa-edit"></i>
               </button>
-              <button className="delete-event" onClick={this.handleDelete.bind(this, event)}>
-                <i class="far fa-trash-alt"></i>
+              <button 
+                className="delete-event" 
+                onClick={this.handleDelete.bind(this, event)}
+              >
+                <i className="far fa-trash-alt"></i>
               </button>
             </div>
           </li>

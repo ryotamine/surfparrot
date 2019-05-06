@@ -1,45 +1,48 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
-import { Redirect } from 'react-router';
 
-
+// Create event form class
 class EventCreation extends Component {
-
+  // Create event form constructor
   constructor(props) {
     super(props);
     this.state = 
-      { 
+    { 
       open: false,
       eventName: '',
       eventDate: '',
       eventLocation: '',
       songLink: ''
-      };
+    };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveEvent = this.handleSaveEvent.bind(this);
+    // this.setEventName = this.setEventName.bind(this);
   }
-   
+  
+  // Open event form helper function
   openModal () {
     this.setState({ open: true })
   }
+
+  // Close event form helper function
   closeModal () {
     this.setState({ open: false })
   };
 
+  // Change event form helper function
   handleChange(event) {
     event.preventDefault();
     this.setState({
       [event.target.id]: event.target.value
-
     });
   }
   
-    handleSaveEvent(event) {
-      event.persist();
-    console.log("handle save event", this.state)
+  // Save event form helper function
+  handleSaveEvent(event) {
+    event.persist();
 
     fetch('/saveEvent', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -56,33 +59,26 @@ class EventCreation extends Component {
         }
       ), 
     })
-    .then(response => response.json()); 
-
+    .then(
+      // use the function that changes state of eventName ON artist_content.js
+      // setEventName(event) {
+      //   [event.target.id]: event.target.value
+      // }
+      // set that state to the name of the event from here
+      // this.props.handleEvent(this.state.eventName),
+      // console.log("Event", this.state.eventName)
+    ).then(response => {
+      response.json()
+    }); 
   }
-  //   this.state = {
-  //     firstName: '',
-  //     lastName: '',
-  //     email: '',
-  //     password: ''
-  //   };
-    
-  // handleChange(event) {
-  //   this.setState({
-  //     firstName: event.target.value,
-  //     lastName: event.target.value,
-  //     email: event.target.value,
-  //     password: event.target.value
-  //   })
-  // }
-  // handleSubmit(event) {
-  //   alert('User Form Submitted: ' + this.state.value);
-  //   event.preventDefault();
-  // }
+
+  // Render event form
   render() {
+    console.log(this.props)
     return (
       <div>
         <button className="main-register main-nav" onClick={this.openModal}>
-         create event 
+          create event 
         </button>
         
         <Popup
@@ -101,11 +97,11 @@ class EventCreation extends Component {
               <input 
                 className="event-name-create" 
                 type="text" value={this.state.value} 
-                onBlur={this.handleChange} 
+                onBlur={this.props.handleName} 
                 placeholder="Event Name" 
                 name="event-name-create" 
                 id="eventName" 
-                ref={node => this.eventName = node} 
+                ref={this.props.name} 
                 required>
               </input>
 
@@ -135,7 +131,7 @@ class EventCreation extends Component {
                 required>
               </input>
               
-                <label htmlFor="song-link" className="event-song"><b>Link a Song!</b></label>
+              <label htmlFor="song-link" className="event-song"><b>Link a Song!</b></label>
               <input 
                 className="event-songlink-create" 
                 type="text" 
@@ -162,5 +158,5 @@ class EventCreation extends Component {
     )
   }
 }
-export default EventCreation
 
+export default EventCreation;
