@@ -105,6 +105,7 @@ app.post("/register/user", (req, res) => {
   // }
 });
 
+// POST save event
 app.post("/saveEvent", (req, res) => {
   database.insert([{
     event: req.body.eventName, 

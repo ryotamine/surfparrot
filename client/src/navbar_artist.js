@@ -4,6 +4,7 @@ import EventCreation from './event_form';
 
 class NavbarArtist extends Component {
   // Logout helper function
+
   handleLogout(event) {
     sessionStorage.clear();
   }
@@ -29,7 +30,7 @@ class NavbarArtist extends Component {
               </button>
 
               <div className="dropdown-content">
-                <EventCreation />
+                <EventCreation name={this.props.name} handleName={this.props.handleName}/>
                 <button className='main-logout main-nav'>
                   <a href='/' 
                     className='main-logout main-nav' 

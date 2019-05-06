@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Contact from './contact';
-import FindEvent from './find_event';
+import SignedInAs from './signed_in_as';
 
 class NavbarUser extends Component {
   // Logout helper function
@@ -20,6 +20,7 @@ class NavbarUser extends Component {
 
         <div className="rightnav">
           <ul>
+            <li><SignedInAs /></li>
             <li><Contact /></li>
 
             <div className="dropdown">
@@ -29,7 +30,6 @@ class NavbarUser extends Component {
               </button>
 
               <div className="dropdown-content">
-                <FindEvent />
                 <button className='main-logout main-nav'>
                   <a href='/' 
                     className='main-logout main-nav' 

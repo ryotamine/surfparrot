@@ -13,6 +13,13 @@ header {
 
 }
 
+.signed-email {
+    background-color: transparent;
+    padding: 14px 20px;
+    margin: 8px 0;
+    color: black;
+}
+
 .main-nav {
     color: black;
     text-transform: lowercase;

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Home from './home';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer.js';
-import NameForm from './name_form';
+// import NameForm from './name_form';
 
 // App class
 class App extends Component {
