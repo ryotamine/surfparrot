@@ -28,6 +28,7 @@ app.use(cors());
 // app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
+// Generate string of 5 random numeric characters
 function generateRandomString() {
   let text = "";
   let str = "0123456789";
@@ -36,7 +37,6 @@ function generateRandomString() {
   }
   return text;
 }
-
 
 // POST artist registration to database
 app.post("/register/artist", (req, res) => {
@@ -74,7 +74,7 @@ app.post("/register/artist", (req, res) => {
 //   // ...
 // });
 
-// POST user registration
+// POST user registration to database
 app.post("/register/user", (req, res) => {
   console.log(req.body, req.params.id);
   const userId = generateRandomString();
@@ -103,6 +103,27 @@ app.post("/register/user", (req, res) => {
   //   res.status(400).send("Invalid. Please try again.");
   //   return;
   // }
+});
+
+// POST artist login and compare to registration database
+app.post("/login/artist", (req, res) => {
+  const artistId = generateRandomString();
+  const artistEmail = req.body.email;
+  const artistPassword = req.body.password;
+  console.log("Id", artistId);
+
+  knex('User_musician')
+    .where({ 'musician_email': artistEmail })
+    .select('password_digest')
+    .then((result) => {
+      console.log("result", result);
+      res.json({url3: `/artists/${artistId}`, abc: 12})
+    });
+});
+
+// POST user login and compare to registration database
+app.post("/login/user", (req, res) => {
+  
 });
 
 // POST save event

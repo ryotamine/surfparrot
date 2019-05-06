@@ -8,7 +8,7 @@ class SignedInAs extends Component {
 
     return (
       <div>
-        <h3 className="signed-email">Signed In As: {email} </h3>
+        <h3 className="signed-email">signed in as: {email} </h3>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Contact from './contact';
+import SignedInAs from './signed_in_as';
 import EventCreation from './event_form';
 
 class NavbarArtist extends Component {
@@ -21,6 +22,7 @@ class NavbarArtist extends Component {
 
         <div className="rightnav">
           <ul>
+            <li><SignedInAs /></li>
             <li><Contact /></li>
 
             <div className="dropdown">

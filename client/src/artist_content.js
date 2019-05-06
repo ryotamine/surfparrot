@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import EventCreation from './event_form'; 
 
 // Artist content class
 class ArtistContent extends Component {
@@ -57,7 +57,7 @@ class ArtistContent extends Component {
 
     return (
       <div>
-        <h1 className="artist-my-events">My Events</h1>
+        <h1 className="artist-my-events">my events</h1>
         {events}
       </div>
     );

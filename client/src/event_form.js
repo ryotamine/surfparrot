@@ -6,14 +6,13 @@ class EventCreation extends Component {
   // Create event form constructor
   constructor(props) {
     super(props);
-    this.state = 
-    { 
+    this.state = { 
       open: false,
       eventName: '',
       eventDate: '',
       eventLocation: '',
       songLink: ''
-    };
+    }
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -43,7 +42,7 @@ class EventCreation extends Component {
   // Save event form helper function
   handleSaveEvent(event) {
     event.persist();
-
+    console.log("state eventname", this.state.eventName)
     fetch('/saveEvent', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
