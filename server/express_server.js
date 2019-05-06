@@ -13,6 +13,10 @@ const getSpotifyToken = require('./getSpotifyToken');
 const passport        = require("passport-local")
 const bodyParser      = require("body-parser");
 const capitalize      = require('capitalize');
+var cookieParser      = require('cookie-parser');
+
+app.use(cookieParser());
+app.use(cors());
 
 // Create AJAX DB environment
 const environment   = process.env.NODE_ENV || 'development'; // if something else isn't setting ENV, use development
@@ -22,7 +26,7 @@ const database      = require('knex')(configuration);
 require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
-app.use(cors());
+
 
 // Code to receive info from the front-end and parse correctly
 // app.use(bodyParser.urlencoded());
@@ -36,6 +40,39 @@ function generateRandomString() {
   }
   return text;
 }
+
+app.get('/', function (req, res) {
+  // Cookies that have not been signed
+  console.log('Cookies: ', req.cookies)
+})
+
+
+//find user in db
+// const findUser = (userReq) => {
+//   return database.raw("SELECT * FROM User_musician WHERE musician_email = ?", [userReq.email])
+//     .then((data) => data.rows[0])
+// }
+
+// const updateUserToken = (token, user) => {
+//   return database.raw("UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token", [token, user.id])
+//     .then((data) => data.rows[0])
+// }
+
+// //check password for login
+// const checkPassword = (reqPassword, foundUser) => {
+//   return new Promise((resolve, reject) =>
+//     bcrypt.compare(reqPassword, foundUser.password_digest, (err, response) => {
+//         if (err) {
+//           reject(err)
+//         }
+//         else if (response) {
+//           resolve(response)
+//         } else {
+//           reject(new Error('Passwords do not match.'))
+//         }
+//     })
+//   )
+// }
 
 
 // POST artist registration to database
@@ -54,6 +91,27 @@ app.post("/register/artist", (req, res) => {
     console.log("result", result);
     res.json({url1: `/artists/${artistId}`, abc: 12})
   });
+
+
+  // app.post("/login", (req, res) => {
+  //   const userReq = req.body;
+  //   let user;
+
+  //   findUser(userReq) => {
+  //     .then(foundUser => {
+  //       user = foundUser
+  //       return checkPassword(userReq.password, foundUser)
+  //     })
+  //     .then((res) => createToken())
+  //     .then(token => updateUserToken(token, user))
+  //     .then(() => {
+  //       delete user.password_digest
+  //       response.status(200).json(user)
+  //     })
+  //     .catch((err) => console.log(err))
+  //   }
+  // })
+
 
   // Check if musician email already exists
   // for (let musicianId in database) {
@@ -105,8 +163,21 @@ app.post("/register/user", (req, res) => {
   // }
 });
 
+// app.post("/saveEvent", (req, res) => {
+//   database.insert([{
+//     event: req.body.eventName, 
+//     date: req.body.eventDate, 
+//     location: req.body.eventLocation, 
+//     song: req.body.songLink
+//   }])
+//   .into("Event").then(function (res) {
+//   })
+//   res.send({ express: 'CREATE A NEW EVENT' });
+// });
+
 app.post("/saveEvent", (req, res) => {
   database.insert([{
+    userMusicianId:database.from("User_musician").select("id").limit(1),
     event: req.body.eventName, 
     date: req.body.eventDate, 
     location: req.body.eventLocation, 
@@ -114,6 +185,8 @@ app.post("/saveEvent", (req, res) => {
   }])
   .into("Event").then(function (res) {
   })
+  console.log("res", res)
+  console.log("req", req)
   res.send({ express: 'CREATE A NEW EVENT' });
 });
 

@@ -26,7 +26,6 @@ class App extends Component {
   //     return this.state.list!==nextState.list
   //   }
   //  }
-
   // Render page
   render() {
     return (
