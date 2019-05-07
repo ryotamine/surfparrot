@@ -30,6 +30,7 @@ app.use(cors({credentials: true, origin: "http://localhost:3000"}));
 // app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
+// Generate string of 5 random numeric characters
 function generateRandomString() {
   let text = "";
   let str = "0123456789";
@@ -49,7 +50,6 @@ const redirect_uri = 'http://localhost:5000/callback';
 const stateKey = 'spotify_auth_state';
 
 app.get('/login-recommendations', function(req, res) {
-  console.log("~~~~~~~~~~~~~~~~~~getroute")
   var state = generateRandomString(16);
   req.session[stateKey] = state;
 
@@ -154,7 +154,7 @@ app.get('/user_refresh_token', function(req, res) {
 
 
 // POST artist registration to database
-app.post("/register", (req, res) => {
+app.post("/register/artist", (req, res) => {
   console.log(req.body, req.params.id);
   const artistId = generateRandomString();
   database.insert([{
@@ -189,8 +189,8 @@ app.post("/register", (req, res) => {
 //   // ...
 // });
 
-// POST user registration
-app.post("/register", (req, res) => {
+// POST user registration to database
+app.post("/register/user", (req, res) => {
   console.log(req.body, req.params.id);
   const userId = generateRandomString();
   database.insert([{
@@ -220,6 +220,28 @@ app.post("/register", (req, res) => {
   // }
 });
 
+// POST artist login and compare to registration database
+app.post("/login/artist", (req, res) => {
+  const artistId = generateRandomString();
+  const artistEmail = req.body.email;
+  const artistPassword = req.body.password;
+  console.log("Id", artistId);
+
+  knex('User_musician')
+    .where({ 'musician_email': artistEmail })
+    .select('password_digest')
+    .then((result) => {
+      console.log("result", result);
+      res.json({url3: `/artists/${artistId}`, abc: 12})
+    });
+});
+
+// POST user login and compare to registration database
+app.post("/login/user", (req, res) => {
+  
+});
+
+// POST save event
 app.post("/saveEvent", (req, res) => {
   database.insert([{
     event: req.body.eventName, 

@@ -42,7 +42,7 @@ class Navbar extends Component {
     return (
       <header>
         <div className="logo">
-            <img src="/docs/parrot2.png"></img>
+            <img src="/docs/parrot2.png" alt=""></img>
         </div>
         
 
@@ -67,10 +67,6 @@ class Navbar extends Component {
                 <button className="main-login main-nav" onClick={this.openLoginModal}>
                   Login
                 </button>
-                <button className='main-logout main-nav'><a href='/' className='main-logout main-nav' onClick={this.handleLogout}>
-                  Logout</a>
-                </button>
-    
               </div>
             </div>
 

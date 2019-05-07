@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
-import Navbar from './navbar';
-import SignedInAs from './signed_in_as';
+import NavbarArtist from './navbar_artist';
 import ArtistContent from './artist_content';
 
 // Artist App class
 class ArtistApp extends Component {
+  constructor(props) {
+    super(props);
+    this.textEvent = React.createRef();
+    this.state = {
+      name: ''
+    }
+    this.handleName = this.handleName.bind(this);
+  }
+
+  handleName(evt) {
+    this.setState({name: evt.target.value});
+  }
 
   // Render artist page
   render() {
     return (
       <div>
-        <Navbar />
-        <SignedInAs />
-        <ArtistContent />
+        <NavbarArtist name={this.state.name} handleName={this.handleName}/>
+        <ArtistContent name={this.state.name}/>
       </div>
     );
   }

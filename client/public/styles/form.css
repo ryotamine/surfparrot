@@ -51,6 +51,7 @@ input[type=text] {
 /* Event form information */
 .info-event {
   padding: 16px;
+  text-align: left;
 }
 
 .info-event-form {
@@ -123,6 +124,7 @@ input[type=text] {
 
 .info-contact {
   color: black;
+  text-align: left;
 }
 
 .info-login {

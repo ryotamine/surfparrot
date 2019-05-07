@@ -1,71 +1,64 @@
 import React, { Component } from 'react';
-import Popup from "reactjs-popup";
+import EventCreation from './event_form'; 
 
 // Artist content class
 class ArtistContent extends Component {
-  // Artist constructor
+  // Artist content constructor
   constructor(props) {
     super(props);
-    this.state = { open: false}
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
 
-  }
-  
-  // Open create event helper function
-  openModal () {
-    this.setState({ open: true })
+    this.state = { 
+      eventName: "John",
+      data: [{name: ""}]
+    };
+
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  // Close create event helper function
-  closeModal () {
-    this.setState({ open: false })
+  // Edit event helper function
+  handleEdit(event) {
+    this.setState({eventName: event});
+  }
+
+  // Delete event helper function
+  handleDelete(event) {
+    const data = this.state.data.filter(i => i.name !== event.name)
+    this.setState({data});
   }
 
   // Render artist content
   render() {
+    const events = this.state.data.map((event) => {
+      return (
+        <div key={event.name}>
+          <li className="event-info">
+            <div className="align-event-option">
+              <a className="name-event">
+                {this.props.name}
+              </a>
+              <button 
+                className="edit-event" 
+                onClick={this.handleEdit.bind(this, event)}
+              >
+                <i className="fas fa-edit"></i>
+              </button>
+              <button 
+                className="delete-event" 
+                onClick={this.handleDelete.bind(this, event)}
+              >
+                <i className="far fa-trash-alt"></i>
+              </button>
+            </div>
+          </li>
+        </div>
+      );
+    });
+
     return (
       <div>
-        <h1 className="artist-my-events">My Events</h1>
-
-        <ul>
-          <li className="event-info">
-              <div className="align-event-option">
-                <button className="edit-event"><i class="fas fa-edit"></i></button>
-                <button className="delete-event"><i class="far fa-trash-alt"></i></button>
-              </div>
-          </li>
-        </ul>
-
-        <Popup
-          open={this.state.open}
-          closeOnDocumentClick
-          onClose={this.closeModal}
-        >
-          <div id="id04" className="modal">
-            <a className="close" onClick={this.closeModal}>
-            &times;
-            </a>
-            
-            <form onSubmit={this.handleSubmit} className="eventForm">
-              <div className="info-event-form">
-                <label htmlFor="event-name"><b>Event Name</b></label>
-                <input className="event-name-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Event Name" name="event-name-create" required></input>
-
-                <label htmlFor="Date"><b>Date</b></label>
-                <input className="event-date-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Last Name" name="last-name" required></input>
-
-                <label htmlFor="Location"><b>Location</b></label>
-                <input className="event-location-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Add Location" name="email" required></input>
-              
-                <label htmlFor="song-link"><b>Link a song!</b></label>
-                <input className="event-songlink-create" type="text" value={this.state.value} onChange={this.handleChange} placeholder="Link a song!" name="event-songLink-create" required></input>
-                              
-                <button className="submit-event-form" type="submit" value="submit">Create Your Event!</button>
-              </div>
-            </form>
-          </div>
-        </Popup>
+        <h1 className="artist-my-events">my events</h1>
+        {events}
       </div>
     );
   }

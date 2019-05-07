@@ -5,17 +5,25 @@
 .event-info {
   list-style: none;
   overflow: hidden;
+  margin: 10px 50px;
   padding: 10px 0;
-  border-bottom: 1px solid #555;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  color: black;
 }
 
 .edit-event, .delete-event {
   background: none;
   border: 0px;
   font-size: 20px;
-  color: #555;
-  width: 60px;
-  margin: 10px 0 0;
+  color: black;
+  width: 40px;
   font-family: 'Neucha', cursive;;
   cursor: pointer;
+  outline: none;
+}
+
+.name-event, {
+  text-align: left;
 }
