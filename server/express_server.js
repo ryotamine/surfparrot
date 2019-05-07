@@ -289,25 +289,25 @@ app.post("/register/user", (req, res) => {
 });
 
 // POST artist login and compare to registration database
-app.post("/login/artist", (req, res) => {
-  const artistId = generateRandomString();
-  const artistEmail = req.body.email;
-  const artistPassword = req.body.password;
-  console.log("Id", artistId);
+// app.post("/login/artist", (req, res) => {
+//   const artistId = generateRandomString();
+//   const artistEmail = req.body.email;
+//   const artistPassword = req.body.password;
+//   console.log("Id", artistId);
 
-  knex('User_musician')
-    .where({ 'musician_email': artistEmail })
-    .select('password_digest')
-    .then((result) => {
-      console.log("result", result);
-      res.json({url3: `/artists/${artistId}`, abc: 12})
-    });
-});
+//   knex('User_musician')
+//     .where({ 'musician_email': artistEmail })
+//     .select('password_digest')
+//     .then((result) => {
+//       console.log("result", result);
+//       res.json({url3: `/artists/${artistId}`, abc: 12})
+//     });
+// });
 
 // POST user login and compare to registration database
-app.post("/login/user", (req, res) => {
+// app.post("/login/user", (req, res) => {
   
-});
+// });
 
 // POST save event
 // app.post("/saveEvent", (req, res) => {
