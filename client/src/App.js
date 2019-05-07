@@ -3,7 +3,8 @@ import axios from 'axios';
 import Home from './home';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer.js';
-
+import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 // App class
 class App extends Component {
@@ -19,30 +20,39 @@ class App extends Component {
     searchTerm: "",
     artistName: "",
     data: null,
-    loading: true
+    loading: true,
+    user: undefined,
   };
+
+
+  setUser = (user) => {
+    console.log("TESTSETST  ")
+    console.log(user.user_id)
+    this.setState({user: user.user_id})
+  }
   
   componentDidMount() {    
     this.getSpotifyToken()
     this.getArtist()
+    this.getUser()
   };
-  // Render page
-  render () {
-    return (
-      <main>
-        <Home />
-        <Scrape
-          handleSubmit={this.getArtist} 
-          artistName = {this.state.artistName}
-          {...this.State}
-        />
-        <footer>
-          <div className="player">
-            <SpotifyPlayer artistid={this.state.artist.id}/>
-          </div>
-        </footer>
-      </main>
-    )
+
+  getUser = async () => {
+    if (sessionStorage.email) {
+      axios("/login/account", {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          'email': sessionStorage.email,
+        }),
+      })
+      .then(response => 
+        response.json()
+      ).then(response => {
+        this.props.history.push(response.url3)
+      })
+    }
   }
 
   callBackendAPI = async () => {
@@ -116,5 +126,28 @@ class App extends Component {
       console.log(error)
     }
   }
+
+  // Render page
+  render () {
+    // Redirect to artist page per radio button selection
+    
+
+    return (
+      <main>
+        <Home setUser={this.setUser}/>
+        USER IS {this.state.user}
+        <Scrape
+          handleSubmit={this.getArtist} 
+          artistName = {this.state.artistName}
+          {...this.State}
+        />
+        <footer>
+          <div className="player">
+            <SpotifyPlayer artistid={this.state.artist.id}/>
+          </div>
+        </footer>
+      </main>
+    )
+  }
 }
-export default App;
+export default withRouter(App);

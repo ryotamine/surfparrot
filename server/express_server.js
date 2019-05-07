@@ -9,7 +9,6 @@ const moment          = require("moment");
 const entities        = require("entities");
 const bcrypt          = require("bcrypt");
 const cookieSession   = require("cookie-session");
-
 const getSpotifyToken = require('./getSpotifyToken');
 const passport        = require("passport-local")
 const bodyParser      = require("body-parser");
@@ -29,7 +28,6 @@ require('dotenv').config()
 const SPOTIFY_CLIENT_ID  = process.env.SPOTIFY_CLIENT_ID;
 const SPOTIFY_CLIENT_SECRET  = process.env.SPOTIFY_CLIENT_SECRET ;
 app.use(cors({credentials: true, origin: "http://localhost:3000"}));
-
 
 // Code to receive info from the front-end and parse correctly
 // app.use(bodyParser.urlencoded());
@@ -189,7 +187,6 @@ app.get('/', function (req, res) {
 //   )
 // }
 
-
 // POST artist registration to database
 app.post("/register/artist", (req, res) => {
   console.log(req.body, req.params.id);
@@ -206,7 +203,6 @@ app.post("/register/artist", (req, res) => {
     console.log("result", result);
     res.json({url1: `/artists/${artistId}`, abc: 12})
   });
-
 
   // app.post("/login", (req, res) => {
   //   const userReq = req.body;
@@ -226,22 +222,7 @@ app.post("/register/artist", (req, res) => {
   //     .catch((err) => console.log(err))
   //   }
   // })
-
-
-  // Check if musician email already exists
-  // for (let musicianId in database) {
-  //   if (req.body.email === database[musicianId].musician_email) {
-  //     res.status(400).send("Invalid. Please try again.");
-  //   }
-  // }
-
-  // Check for musician registration errors
-  // if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
-  //   res.status(400).send("Invalid. Please try again.");
-  //   return;
-  // }
 });
-
 
 app.get('/events', (request, response) => {
   alert("HITS");
@@ -255,7 +236,6 @@ app.get('/events', (request, response) => {
       response.status(500).json({ error });
     });
 });
-
 
 // POST user registration to database
 app.post("/register/user", (req, res) => {
@@ -273,19 +253,6 @@ app.post("/register/user", (req, res) => {
     console.log("result", result);
     res.json({url2: `/users/${userId}`, abc: 12})
   });
-
-  // Check if artist email already exists
-  // for (let artistId in database) {
-  //   if (req.body.email === database[artistId].fan_email) {
-  //     res.status(400).send("Invalid. Please try again.");
-  //   }
-  // }
-
-  // Check for artist registration errors
-  // if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
-  //   res.status(400).send("Invalid. Please try again.");
-  //   return;
-  // }
 });
 
 // POST artist login and compare to registration database
@@ -305,23 +272,66 @@ app.post("/register/user", (req, res) => {
 // });
 
 // POST user login and compare to registration database
-// app.post("/login/user", (req, res) => {
-  
-// });
+app.post("/login/artist", (req, res) => {
+  console.log("LOGIN ARtISTS");
+  console.log(req.body);
+  let error = false;
+  let login = false;
+  let artist = true;
+  let password = false;
+  if (req.body.artist) {
+    database.from("User_musician").select("id", "password_digest").where({
+      musician_email: req.body.email
+    }).asCallback((err, rows) => {
+      if (err) {
+        console.log(err);
+        res.status(500).end();
+        console.log('IM AM ERROR');
+        return
+      } else {
+        console.log(rows[0]);
+        let result = bcrypt.compareSync(req.body.password, rows[0].password_digest)
+          console.log("DID PASSWORD MATCH??? =>  ",result)
+          if (result === true) {
+            login = true;
+            res.send({user_id: rows[0].id, artist: true})
+          } else {
+            res.send({error: "Incorrect password"});
+            console.log("incorrect password");
+          }
+        console.log("Password matches", login);
+        // database.from("User_fan").select("id").where({
+        //   email: req.body.email,
+        //   password: req.body.password
+        //})
+          // .then((rows) => {
+          //   if (err) {
+          //     res.status(500).end();
+          //     return;
+          //   } else if (rows[0] === undefined) {
+          //     error = true;
+          //     login = false;
+          //     res.json({login, error });
+          //     res.status(404).end();
+          //   } else {
+          //     login = true;
+          //     error = false;
+          //     artist = true;
+          //     console.log("Success", login);
+          //     req.session.artist_id = rows[0].id;
+            
+          //     console.log("Artist logged in", req.session.artist_id);
+          //     res.json({login, error, user_id: rows[0]});
+          //   }
+          // })
+      };
+    });
+  } else {
+    console.log("IM JUST A USER")
+  }
+});
 
 // POST save event
-// app.post("/saveEvent", (req, res) => {
-//   database.insert([{
-//     event: req.body.eventName, 
-//     date: req.body.eventDate, 
-//     location: req.body.eventLocation, 
-//     song: req.body.songLink
-//   }])
-//   .into("Event").then(function (res) {
-//   })
-//   res.send({ express: 'CREATE A NEW EVENT' });
-// });
-
 app.post("/saveEvent", (req, res) => {
   database.insert([{
     userMusicianId:database.from("User_musician").select("id").limit(1),
@@ -337,16 +347,14 @@ app.post("/saveEvent", (req, res) => {
   res.send({ express: 'CREATE A NEW EVENT' });
 });
 
-
 app.get("/user", (req, res) => {
-
   console.log(req.body);
- var usernameReq = req.body.username;
-var passwordReq = req.body.password;
-knex('User_musician')
-  .where({ username: usernameReq })
-  .select('password')
-  .then(function(result) {
+  var usernameReq = req.body.username;
+  var passwordReq = req.body.password;
+  database('User_musician')
+    .where({ username: usernameReq })
+    .select('password')
+    .then(function(result) {
     if (!result || !result[0])  {  // not found!
       // report invalid username
       return;
@@ -361,7 +369,7 @@ knex('User_musician')
   .catch(function(error) {
     console.log(error);
   });
-console.log (req)
+  console.log (req)
 
   // var usernameReq = req.body.username;
   // var passwordReq = req.body.password;

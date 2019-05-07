@@ -39,6 +39,7 @@ class Navbar extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <header>
         <div className="logo">
@@ -74,7 +75,7 @@ class Navbar extends Component {
         </div>
         { this.state.openRegistration && <Registration closeModal={this.closeModals}/>}
 
-        { this.state.openLogin && <Login closeModal={this.closeModals}/> }
+        { this.state.openLogin && <Login setUser={this.props.setUser} closeModal={this.closeModals}/> }
       </header>
     );
   }

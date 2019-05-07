@@ -56,7 +56,7 @@ class Login extends Component {
     sessionStorage.setItem('email', this.state.email);
 
     if (this.state.artist) {
-      fetch("/register/artist", {
+      fetch("/login/artist", {
         method: "POST",
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
@@ -69,13 +69,14 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
+        this.props.setUser(response)
         console.log("Artist", this.props.history, response)
-        this.props.history.push(response.url1)
+        this.props.history.push(response.url3)
       })
     }
 
     if (!this.state.artist) {
-      fetch("/register/user", {
+      fetch("/login/user", {
         method: "POST", 
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
