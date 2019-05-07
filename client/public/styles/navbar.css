@@ -29,6 +29,25 @@ header {
     font-size: 1.25rem;
 }
 
+.recommend {
+    padding-top: 22px;
+    font-family: 'Neucha', cursive;
+    color: black;
+    font-size: 1.25rem;
+    list-style: none;
+}
+
+li {
+    list-style: none;
+    color: black;
+}
+
+.recommend a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
 .main-find-event {
     background-color: transparent;
     padding: 7px 10px;
