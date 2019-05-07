@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
-import Scrape from './external-show-listings/scrape';
+import Scrape from './external-show-listings/scrape-recommendations';
 import SpotifyPlayer from './SpotifyPlayer.js';
 
 
@@ -15,6 +15,8 @@ class Recommendations extends Component {
             token: null,
             data: null,
             recommendations: "",
+            //artists object that contains 150 artists from spotify endpoints
+            //not sure if its saving to state properly?
             artists: [],
             artist: '43ZHCT0cAZBISjO8DG9PnE', 
             searchTerm: "",
@@ -74,9 +76,7 @@ class Recommendations extends Component {
 
                   //array of all the artists pulled from different queries
                   const artistNames = [] 
-                  //is this setting it to state properly?
-                  this.setState({artists: artistNames}) 
-                  
+
                   console.log("~~~~~~~~~~artistNames", artistNames)
                     for (let i = 0; i < artistArray.length; i++) {
                         let item = artistArray[i].Artists;
@@ -103,8 +103,14 @@ class Recommendations extends Component {
                       console.log("~~~~~~~top artists", topObject[i].name)
                     }
 
+                  //setting to state after running through every endpoint
+                   //filtering out duplicate artists
+                  const uniqueValues = artistNames.filter((value, index, self) => self.indexOf(value) === index)
+
+                  this.setState({artists: uniqueValues}) 
+                  console.log("~~~~~~~~~~this.state.artists", this.state.artists)
                 }))
-                
+              
             } else {
                 axios.get('http://localhost:5000/user_refresh_token', {
                     withCredentials: true,
@@ -121,12 +127,16 @@ class Recommendations extends Component {
         return (
         <div>
             <Navbar />
-            {this.state.artists}
+            {/* {this.state.artists} */}
+
             <Scrape
+            recommendedArtists={this.state.artists}
             handleSubmit={this.getArtist} 
             artistName = {this.state.artistName}
             {...this.State} />
-            <footer>
+
+
+          <footer>
               <div className="player">
                 <SpotifyPlayer artistid={this.state.artist.id}/>
               </div>
