@@ -165,10 +165,8 @@ class Login extends Component {
               <input 
                 className="check-artist" 
                 type="radio" 
-                checked={this.state.artist} 
                 onChange={this.handleRadioButtonChange} 
-                value={"artist"} 
-                checked={this.state.artist} 
+                value={"artist"}
                 id="artist"
                 name="accountType"
                 required>
@@ -177,7 +175,6 @@ class Login extends Component {
               <input 
                 className="check-user" 
                 type="radio"
-                checked={this.state.artist=false}
                 onChange={this.handleRadioButtonChange} 
                 value={"user"}  
                 id="user"
