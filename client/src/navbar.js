@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Login from './login';
-import Registration from './registration_form';
-import Contact from './contact';
-import LoginRecommendations from './loginrecommendations';
+import Login from '/login';
+import Registration from '/registration_form';
+import Contact from '/contact';
+import LoginRecommendations from '/loginrecommendations';
 
 class Navbar extends Component {
 

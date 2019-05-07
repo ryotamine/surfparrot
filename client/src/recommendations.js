@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './navbar';
+import Navbar from '/navbar';
 
 
 // User App class
@@ -46,14 +46,14 @@ class Recommendations extends Component {
                       params: {limit: 50 },
                     }  
                   ),
-                  // axios.get(
-                  //   //50 of users top played artists
-                  //   `	https://api.spotify.com/v1/me/top/{artists}`,
-                  //   {
-                  //     headers: { Authorization: `Bearer ${token}` },
-                  //     params: {limit: 50 },
-                  //   }  
-                  // )
+                  axios.get(
+                    //50 of users top played artists
+                    `	https://api.spotify.com/v1/me/top/artists`,
+                    {
+                      headers: { Authorization: `Bearer ${token}` },
+                      params: {limit: 50 },
+                    }  
+                  )
                 ])
                 .then(axios.spread((recent, following, top) => {
                   //most recently listened to
@@ -83,8 +83,13 @@ class Recommendations extends Component {
                       console.log("~~~~~~~item", item)
                     }
                   //top artists
-                  // const topObject = top.data
-                  // console.log("~~~~~topObject", topObject)
+                  const topObject = top.data.items
+                  console.log("~~~~~topObject", topObject)
+                    for (let i = 0; i < topObject.length; i++ ) {
+                      let item = topObject[i].name
+                      artistNames.push(item)
+                      console.log("~~~~~~~top artists", topObject[i].name)
+                    }
 
                 }))
                 

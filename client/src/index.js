@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
-import UserApp from './user_app';
-import ArtistApp from './artist_app';
-import Recommendations from './recommendations.js'
+import App from '/App';
+import UserApp from '/user_app';
+import ArtistApp from '/artist_app';
+import Recommendations from '/recommendations.js'
 
 const routing = (
   <Router>

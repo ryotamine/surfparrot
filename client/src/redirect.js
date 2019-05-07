@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Scrape from './external-show-listings/scrape';
-import App from './App';
+import Scrape from '/external-show-listings/scrape';
+import App from '/App';
 
 
 // Home class
