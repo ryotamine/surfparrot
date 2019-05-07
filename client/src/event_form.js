@@ -69,8 +69,8 @@ class EventCreation extends Component {
     ).then(response => {
       response.json()
     }); 
+    console.log("this state", this.state)
   }
-
   // Render event form
   render() {
     console.log(this.props)
