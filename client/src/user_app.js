@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Navbar from '/navbar';
-import SignedInAs from '/signed_in_as';
-import UserContent from '/user_content';
+import Navbar from './navbar';
+import SignedInAs from './signed_in_as';
+import UserContent from './user_content';
 
 // User App class
 class UserApp extends Component {

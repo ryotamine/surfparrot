@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from '/navbar';
+import App from './App.js';
+import Navbar from './navbar';
+
 
 
 // User App class
@@ -110,6 +112,7 @@ class Recommendations extends Component {
         <div>
             <Navbar />
             {this.state.artists}
+        
         </div>
 
         );
