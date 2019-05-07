@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 // Login class
 class Login extends Component {
   // Login constructor
   constructor(props) {
     super(props);
-
     this.state = { 
+      loggedIn: false,
+      loginError: false,
       email: '',
       password: '',
       artist: false
@@ -49,12 +51,12 @@ class Login extends Component {
   handleAccountSelection(event) {
     event.preventDefault();
     this.setState({
-      login: true
+      register: true
     });
     sessionStorage.setItem('email', this.state.email);
 
     if (this.state.artist) {
-      fetch("/login/artist", {
+      fetch("/register/artist", {
         method: "POST",
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
@@ -68,12 +70,12 @@ class Login extends Component {
         response.json()
       ).then(response => {
         console.log("Artist", this.props.history, response)
-        this.props.history.push(response.url3)
+        this.props.history.push(response.url1)
       })
     }
 
     if (!this.state.artist) {
-      fetch("/login/user", {
+      fetch("/register/user", {
         method: "POST", 
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
@@ -87,23 +89,37 @@ class Login extends Component {
         response.json()
       ).then(response => {
         console.log("User", this.props.history, response)
-        this.props.history.push(response.url4)
+        this.props.history.push(response.url2)
       })
     }
   }
 
+  handleEmail = (event) => {
+    this.setState({email: event.target.value})
+  };
+  
+  handlePassword = (event) => {
+    this.setState({password: event.target.value});
+  };
+
+  handleSubmit = (event) => {
+    // event.preventDefault();
+    const loginData = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    console.log(this.state)
+  axios
+  .post("/login", loginData, {withCredentials: true})
+  .then((res) => {
+    this.setState({
+      loggedIn: res.data.login,
+      loginError: res.data.error
+    })
+  })
+  }
   // Render login popup
   render() {
-    // // Redirect to artist page per radio button selection
-    // if (this.state.artist && this.state.register) {
-    //   return <Redirect to="/artist"/>
-    // }
-  
-    // // Redirect to user page per radio button selection
-    // if (!this.state.artist && this.state.register) { 
-    //   return <Redirect to="/user"/>
-    // }
-
     return (
 
       <Popup
@@ -125,7 +141,7 @@ class Login extends Component {
                 className="email-login" 
                 type="text" 
                 value={this.state.value} 
-                onBlur={this.handleChange} 
+                onBlur={this.handleEmail} 
                 placeholder="Email Address" 
                 id="email" 
                 required>
@@ -138,7 +154,7 @@ class Login extends Component {
                 className="password-login" 
                 type="password" 
                 value={this.state.value} 
-                onBlur={this.handleChange} 
+                onBlur={this.handlePassword} 
                 placeholder="Password" 
                 id="password" 
                 required>
@@ -161,7 +177,7 @@ class Login extends Component {
               <input 
                 className="check-user" 
                 type="radio"
-                checked={this.state.user}
+                checked={this.state.artist=false}
                 onChange={this.handleRadioButtonChange} 
                 value={"user"}  
                 id="user"
@@ -169,7 +185,7 @@ class Login extends Component {
                 required>
               </input> User<br></br>
 
-              <button className="submit-login" type="submit" value="submit" onClick={this.handleAccountSelection}>Login</button>
+              <button className="submit-login" type="submit" value={this.state.loggedIn=true} onClick={this.handleAccountSelection}>Login</button>
             </div>
           </form>
         </div>
@@ -179,3 +195,5 @@ class Login extends Component {
 }
 
 export default withRouter(Login);
+
+

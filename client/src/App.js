@@ -3,7 +3,7 @@ import axios from 'axios';
 import Home from './home';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer.js';
-// import NameForm from './name_form';
+
 
 // App class
 class App extends Component {
@@ -18,17 +18,16 @@ class App extends Component {
     artist: '43ZHCT0cAZBISjO8DG9PnE', 
     searchTerm: "",
     artistName: "",
-    data: null
+    data: null,
+    loading: true
   };
-
-  // shouldComponentUpdate(nextProps, nextState){
-  //   if (searchTerm !== onSearchTermChange) {
-  //     return this.state.list!==nextState.list
-  //   }
-  //  }
-
+  
+  componentDidMount() {    
+    this.getSpotifyToken()
+    this.getArtist()
+  };
   // Render page
-  render() {
+  render () {
     return (
       <main>
         <Home />
@@ -43,16 +42,8 @@ class App extends Component {
           </div>
         </footer>
       </main>
-    );
-  };
-
-  componentDidMount() {
-    this.getSpotifyToken()
-    this.getArtist()
-    this.callBackendAPI()
-    .then(res => this.setState({ data: res.express }))
-    .catch(err => console.log(err));
-  };
+    )
+  }
 
   callBackendAPI = async () => {
     const response = await fetch('/express_backend');
@@ -115,7 +106,6 @@ class App extends Component {
       console.log(error)
     }
   }
- 
   // helper function sends refresh_token endpoint back to the frontend
   getRefreshToken = async () => {
     try {
@@ -127,5 +117,4 @@ class App extends Component {
     }
   }
 }
-
 export default App;

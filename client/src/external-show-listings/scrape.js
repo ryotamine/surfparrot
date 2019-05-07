@@ -32,11 +32,9 @@ class Scrape extends Component {
       }
     });
   }
+
   handleClick(eventName) {
     this.props.handleSubmit(eventName)
-
-   //  this.props.getArtist(this.state.listingData.name)
-  // console.log("this state listing data event name", this.state.listingData[0].Event)
    console.log("this state listing data event name", eventName)
   }
 
