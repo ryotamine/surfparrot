@@ -41,7 +41,7 @@ class EventCreation extends Component {
   
   // Save event form helper function
   handleSaveEvent(event) {
-    event.persist();
+    event.preventDefault();
     console.log("state eventname", this.state.eventName)
     fetch('/saveEvent', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -51,7 +51,7 @@ class EventCreation extends Component {
       },
       body: JSON.stringify(
         {
-          'eventName': this.state.eventName, 
+          'eventName': this.props.name, 
           'eventDate' : this.state.eventDate, 
           'eventLocation': this.state.eventLocation, 
           'songLink': this.state.songLink 

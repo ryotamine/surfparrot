@@ -49,12 +49,12 @@ class Login extends Component {
   handleAccountSelection(event) {
     event.preventDefault();
     this.setState({
-      login: true
+      register: true
     });
     sessionStorage.setItem('email', this.state.email);
 
     if (this.state.artist) {
-      fetch("/login/artist", {
+      fetch("/register/artist", {
         method: "POST",
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
@@ -68,12 +68,12 @@ class Login extends Component {
         response.json()
       ).then(response => {
         console.log("Artist", this.props.history, response)
-        this.props.history.push(response.url3)
+        this.props.history.push(response.url1)
       })
     }
 
     if (!this.state.artist) {
-      fetch("/login/user", {
+      fetch("/register/user", {
         method: "POST", 
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
@@ -87,7 +87,7 @@ class Login extends Component {
         response.json()
       ).then(response => {
         console.log("User", this.props.history, response)
-        this.props.history.push(response.url4)
+        this.props.history.push(response.url2)
       })
     }
   }

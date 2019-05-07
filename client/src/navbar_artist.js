@@ -5,7 +5,6 @@ import EventCreation from './event_form';
 
 class NavbarArtist extends Component {
   // Logout helper function
-
   handleLogout(event) {
     sessionStorage.clear();
   }
