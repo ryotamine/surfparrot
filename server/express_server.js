@@ -127,10 +127,20 @@ app.post("/register/artist", (req, res) => {
   // }
 });
 
-// GET user registration
-// app.get("/register", (req, res) => {
-//   // ...
-// });
+
+app.get('/events', (request, response) => {
+  alert("HITS");
+  response.send("hello there")
+  database('Event').select()
+    .then((events) => {
+      response.status(200).json(events);
+      
+    })
+    .catch((error) => {
+      response.status(500).json({ error });
+    });
+});
+
 
 // POST user registration
 app.post("/register/user", (req, res) => {
@@ -190,6 +200,38 @@ app.post("/saveEvent", (req, res) => {
   res.send({ express: 'CREATE A NEW EVENT' });
 });
 
+
+app.get("/user", (req, res) => {
+
+  console.log(req.body);
+ var usernameReq = req.body.username;
+var passwordReq = req.body.password;
+knex('User_musician')
+  .where({ username: usernameReq })
+  .select('password')
+  .then(function(result) {
+    if (!result || !result[0])  {  // not found!
+      // report invalid username
+      return;
+    }
+    var pass = result[0].password;
+    if (passwordReq === pass) {
+      // login
+    } else {
+      // failed login
+    }
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+console.log (req)
+
+  // var usernameReq = req.body.username;
+  // var passwordReq = req.body.password;
+
+  // database.select().table("Event")
+  // console.log("success!!1")
+});
 
 // Passport example
 // const { dbConfig } = require('pg')

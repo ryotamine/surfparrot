@@ -20,10 +20,7 @@ const getSpotifyToken = ({
     },
 
     (error, response, body) => {
-      console.log("body.client_id~~~~~~~~", clientId)
-      console.log("body.client_secret~~~~~~~~", clientSecret)
-      console.log(body)
-      console.log("body.access_token~~~~~~~~", body.access_token)
+      console.log("Spotify token ok.")
       if (error) {
         done(error)
       } else if (response.statusCode < 200 || response.statusCode > 299) {
