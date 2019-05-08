@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
+import 'flatpickr/dist/themes/material_green.css'
+import Flatpickr from 'react-flatpickr'
 
 // Create event form class
 class Eventform extends Component {
@@ -12,7 +14,8 @@ class Eventform extends Component {
       eventName: '',
       eventDate: '',
       eventLocation: '',
-      songLink: ''
+      songLink: '',
+      date: new Date()
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,6 +56,7 @@ class Eventform extends Component {
 
   // Render event form
   render() {
+    const { date } = this.state;
     return (
       <Popup
         open={this.props.event}

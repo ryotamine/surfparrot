@@ -9,58 +9,88 @@ class ArtistContent extends Component {
     super(props);
 
     this.state = { 
-      events: []
+      events: [],
+      delete: null,
+      id: 0
     };
-    
-    this.handleEdit = this.handleEdit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+
+    this.removeEvent = this.removeEvent.bind(this);
+
+
+    // this.handleEdit = this.handleEdit.bind(this);
+    // this.handleDelete = this.handleDelete.bind(this);
+  }
+//delete event helper function
+removeEvent(evt) { 
+  console.log(evt.target.id)
+  debugger
+  console.log("REMOVE EVENT")
+   fetch("/events/userEvents/delete" , {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({'id': parseInt(evt.target.id), 'user_id': 4345 })
+    })
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          response: result,
+          // events: events.filter(event => event.id !== eventId)
+        });
+      },
+      (error) => {
+        // this.setState({ error });
+        console.log(error)
+      }
+    )
+    // // Edit event helper function
+    //   handleEdit(event) {
+    //   this.setState({eventName: event})
+    // }
+  
+    // // Delete event helper function
+    // handleDelete(event) {
+    //   const data = this.state.data.filter(i => i.name !== event.name)
+    //   this.setState({data});
   }
 
   componentDidMount() {
 //grab events from the db!
-    fetch("/events/userEvents", {
-      method: "POST",
-      mode: "cors", 
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': 82955 }),
-    }).then(response => 
-      response.json()
-    )
-    .then(response => {
-      let artistEvents = response.result.map((event) => this.renderEvent(event))
-      this.setState({events: artistEvents})
-    console.log("artist content state", this.state)
-    }
+  fetch("/events/userEvents", {
+    method: "POST",
+    mode: "cors", 
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({'id': 34245 }),
+  }).then(response => 
+    response.json()
   )
+  .then(response => {
+    let artistEvents = response.result.map((event) => this.renderEvent(event))
+    this.setState({events: artistEvents})
+    this.setState({id: response.result.id})
+    });
 
-
+//delete events 
 }
 
-  // Edit event helper function
-  handleEdit(event) {
-    this.setState({eventName: event});
-  }
-
-  // Delete event helper function
-  handleDelete(event) {
-    const data = this.state.data.filter(i => i.name !== event.name)
-    this.setState({data});
-  }
-
-  renderEvent = (data) => {
-    console.log(data)
+renderEvent = (data) => {
+    this.setState({id: data.id})
+    console.log(this.state.id)
     return (
       <li className="event-info">
-            <div className="align-event-option">
-              <a className="name-event">
-                {data.event}
-              </a>
-              <button  className="delete-event" >
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </div>
-          </li>
+        <div className="align-event-option">
+          <a className="name-event">
+            {data.event}
+          </a>
+          <button id ={data.id} className="delete-event" onClick={this.removeEvent} >
+            <i className="far fa-trash-alt" id={data.id}></i>
+          </button>
+        </div>
+      </li>
+    
     )
+    
   }
     render() {
     return (
@@ -70,8 +100,7 @@ class ArtistContent extends Component {
         {this.state.events}
       </div>
     );
-  }
-  
+  }  
 }
 
 export default ArtistContent;
