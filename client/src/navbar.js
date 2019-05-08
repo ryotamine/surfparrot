@@ -52,7 +52,7 @@ class Navbar extends Component {
         <div className="rightnav">
           <ul>
 
-            <li><LoginRecommendations /></li>
+            <li className="recommend"><LoginRecommendations /></li>
             <li><Contact /></li>
 
             <div className="dropdown">
@@ -62,12 +62,12 @@ class Navbar extends Component {
               </button>
 
               <div className="dropdown-content">
-                <button className="main-register main-nav" onClick={this.openRegistrationModal}>
+                <div className="main-register main-nav" onClick={this.openRegistrationModal}>
                   Register 
-                </button>
-                <button className="main-login main-nav" onClick={this.openLoginModal}>
+                </div>
+                <div className="main-login main-nav" onClick={this.openLoginModal}>
                   Login
-                </button>
+                </div>
               </div>
             </div>
 
