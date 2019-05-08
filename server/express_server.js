@@ -349,25 +349,45 @@ app.post("/saveEvent", (req, res) => {
 
 app.post("/events/userEvents", (req, res) => {
   console.log("event users route hit");
-  console.log(req.body);
   var userId = req.body.id
   database('Event')
   .where({userMusicianId: userId })
-  .select ('event', 'date', 'location')
+  .select ('id', 'event', 'date', 'location')
   .then(function(result) {
     // if no events found:
     if (!result || !result[0])  {
       console.log("No events found for this user.")
       return;
     } else {
-      console.log("FJSLFDJSKLDFJSFJDKLDJSFLJSLDSLKFKLSDJLSDJFKL")
-      console.log(result)
-      res.send({
+      res.send
+      ({
         result: result
       });
-    } 
-  })
+    }; 
+  });
 });
+
+app.post("/events/userEvents/delete", (req, res) => {
+  console.log(req.body);
+  var userId = req.body.id
+  database('Event')
+  .where({userMusicianId: userId })
+  .select ('id')
+  .then(function() {
+    // if no events found:
+    if (!result || !result[0])  {
+      console.log("No event to delete.")
+      return;
+    } else {
+      res.send
+      ({
+        result: result
+      });
+    }; 
+  });
+});
+
+
 
 app.get("/user", (req, res) => {
   console.log("get /user: ", req.body);
