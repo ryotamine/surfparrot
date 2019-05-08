@@ -8,7 +8,7 @@ class ArtistContent extends Component {
     super(props);
 
     this.state = { 
-      eventName: "John",
+      eventName: "",
       data: [{name: ""}]
     };
 
@@ -38,11 +38,31 @@ class ArtistContent extends Component {
                 {this.props.name}
               </a>
               <button 
-                className="edit-event" 
-                onClick={this.handleEdit.bind(this, event)}
+                className="delete-event" 
+                onClick={this.handleDelete.bind(this, event)}
               >
-                <i className="fas fa-edit"></i>
+                <i className="far fa-trash-alt"></i>
               </button>
+            </div>
+          </li>
+          <li className="event-info">
+            <div className="align-event-option">
+              <a className="name-event">
+                {this.props.name}
+              </a>
+              <button 
+                className="delete-event" 
+                onClick={this.handleDelete.bind(this, event)}
+              >
+                <i className="far fa-trash-alt"></i>
+              </button>
+            </div>
+          </li>
+          <li className="event-info">
+            <div className="align-event-option">
+              <a className="name-event">
+                {this.props.name}
+              </a>
               <button 
                 className="delete-event" 
                 onClick={this.handleDelete.bind(this, event)}

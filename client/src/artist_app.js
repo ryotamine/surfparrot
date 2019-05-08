@@ -7,16 +7,14 @@ class ArtistApp extends Component {
     super(props);
     // this.textEvent = React.createRef();
     this.state = {
-      name: 'Bob',
-      date: '1'
+      name: ''
     }
     this.handleName = this.handleName.bind(this);
   }
 
   handleName(evt) {
     this.setState({
-      name: evt.target.value,
-      date: evt.target.value
+      name: evt.target.value
     });
   }
 
@@ -24,7 +22,7 @@ class ArtistApp extends Component {
   render() {
     return (
       <div>
-        <ArtistContent name={this.state.name} date={this.state.date}/>
+        <ArtistContent name={this.state.name}/>
       </div>
     );
   }

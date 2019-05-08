@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Contact from './contact';
 import SignedInAs from './signed_in_as';
+import EventCreation from './event_form';
 
 class NavbarUser extends Component {
   // Logout helper function

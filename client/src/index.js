@@ -7,7 +7,7 @@ import ArtistApp from './artist_app';
 import Recommendations from './recommendations.js';
 import Home from './home';
 import axios from 'axios';
-import NavbarUser from './navbar_user';
+import NavbarArtist from './navbar_artist';
 
 class Index extends Component {
 
@@ -136,7 +136,7 @@ getRefreshToken = async () => {
    return (
     <div>
     {
-    this.state.user > 0 ? <NavbarUser /> : <Home setUser={this.setUser}/>
+    this.state.user > 0 ? <NavbarArtist /> : <Home setUser={this.setUser}/>
     }
     <Router>
       <div>
