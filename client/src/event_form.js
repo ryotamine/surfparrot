@@ -51,7 +51,7 @@ class EventCreation extends Component {
       },
       body: JSON.stringify(
         {
-          'eventName': this.state.name, 
+          'eventName': this.state.eventName, 
           'eventDate' : this.state.eventDate, 
           'eventLocation': this.state.eventLocation, 
           'songLink': this.state.songLink 
@@ -96,11 +96,11 @@ class EventCreation extends Component {
               <input 
                 className="event-name-create" 
                 type="text" value={this.state.value} 
-                onBlur={this.props.handleName} 
+                onBlur={this.handleChange} 
                 placeholder="Event Name" 
                 name="event-name-create" 
                 id="eventName" 
-                ref={this.props.name} 
+                ref={this.props.eventName} 
                 required>
               </input>
 
