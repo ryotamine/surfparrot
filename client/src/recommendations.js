@@ -137,7 +137,7 @@ class Recommendations extends Component {
 
           <footer>
               <div className="player">
-                <SpotifyPlayer artistid={this.state.artist.id}/>
+                <SpotifyPlayer artistid={this.state.artist}/>
               </div>
           </footer>
         </div>
@@ -181,11 +181,11 @@ class Recommendations extends Component {
             // <Redirect />
             return
           }
-          // get the id of the first artist returned
-          this.setState({artist: firstItem})
-          this.setState({artistName: firstItem})
-          // do something with the artist id
-          // https://api.spotify.com/v1/artists/{id}/top-tracks
+    
+          console.log(" IM GETTING THE ARTSIT NOW")
+          console.log(firstItem)
+          this.setState({artist: firstItem.id})
+          // this.setState({artistName: firstItem})
         })    
       } else {
         this.getSpotifyToken()
