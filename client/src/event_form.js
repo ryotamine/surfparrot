@@ -6,16 +6,17 @@ class Eventform extends Component {
   // Create event form constructor
   constructor(props) {
     super(props);
-    this.state = { 
+
+    this.state = {
       open: false,
       eventName: '',
       eventDate: '',
       eventLocation: '',
       songLink: ''
     }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveEvent = this.handleSaveEvent.bind(this);
-    // this.setEventName = this.setEventName.bind(this);
   }
   
   // Change event form helper function
@@ -30,10 +31,10 @@ class Eventform extends Component {
   handleSaveEvent(event) {
     event.preventDefault();
     fetch('/saveEvent', {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      mode: "cors", // no-cors, cors, *same-origin
+      method: "POST",
+      mode: "cors",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(
         {
@@ -44,34 +45,26 @@ class Eventform extends Component {
         }
       ), 
     })
-    .then(
-      // use the function that changes state of eventName ON artist_content.js
-      // setEventName(event) {
-      //   [event.target.id]: event.target.value
-      // }
-      // set that state to the name of the event from here
-      // this.props.handleEvent(this.state.eventName),
-      // console.log("Event", this.state.eventName)
-    ).then(response => {
+    .then()
+    .then(response => {
       response.json()
-    }); 
-    console.log("this event saved to db: ", this.state)
+    });
   }
+
   // Render event form
   render() {
     return (
-    
-        <Popup
-          open={this.props.event}
-          closeOnDocumentClick
-          onClose={this.props.closeModal}
-          >
+      <Popup
+        open={this.props.event}
+        closeOnDocumentClick
+        onClose={this.props.closeModal}
+        >
         <div id="id02" className="modal">
           <a href className="close" onClick={this.props.closeModal}>
           &times;
-         </a>
+          </a>
           <form onSubmit={this.handleSubmit} className="registrationForm">
-          
+        
             <div className="info-event">
               <label htmlFor="event-name" className="event-name"><b>Event Name</b></label>
               <input 
@@ -130,11 +123,10 @@ class Eventform extends Component {
                 value="submit" 
                 onClick={this.handleSaveEvent}>Create Your Event!
               </button>
-              </div>
-            </form>
-          </div>
-        </Popup>
-  
+            </div>
+          </form>
+        </div>
+      </Popup>
     )
   }
 }

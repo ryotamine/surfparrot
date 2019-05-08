@@ -6,33 +6,33 @@ class EventCreation extends Component {
   // Create event form constructor
   constructor(props) {
     super(props);
-    this.state = { 
-      openEvent: false,
-    }
 
+    this.state = { 
+      openEvent: false
+    }
   }
 
-    // Open Event popup helper function
-    openEventModal = () => {
-        this.setState({ openEvent: true });
-    }
+  // Open event popup helper function
+  openEventModal = () => {
+    this.setState({ openEvent: true });
+  }
 
-    // Close Event popup helper function
-    closeModal = () => {
-      this.setState({ 
-        openEvent: false,
-       });
-    }
+  // Close event popup helper function
+  closeModal = () => {
+    this.setState({ 
+      openEvent: false
+    });
+  }
   
   // Render event form
   render() {
     return (
       <div>
-          <button className="main-register main-nav" onClick={this.openEventModal}>
-            create event 
-            </button>
+        <button className="main-register main-nav" onClick={this.openEventModal}>
+          create event 
+        </button>
           
-        { this.state.openEvent && <Eventform closeModal={this.closeModal} 
+        {this.state.openEvent && <Eventform closeModal={this.closeModal} 
         openModal={this.openModal} event={this.state.openEvent}/>}
       </div>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from 'request';
 import ReactTable from 'react-table';
-import "react-table/react-table.css";
+import 'react-table/react-table.css';
 
 // Scrape class
 class Scrape extends Component {

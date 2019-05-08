@@ -6,18 +6,20 @@ class Contact extends Component {
   // Contact constructor
   constructor(props) {
     super(props);
+
     this.state = { open: false };
+
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   // Open contact popup helper function
-  openModal () {
+  openModal() {
     this.setState({ open: true });
   }
 
   // Close contact popup helper function
-  closeModal () {
+  closeModal() {
     this.setState({ open: false });
   }
 

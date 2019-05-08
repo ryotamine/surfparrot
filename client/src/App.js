@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import Home from './home';
 import Scrape from './external-show-listings/scrape';
-import SpotifyPlayer from './SpotifyPlayer.js';
-// import { withRouter } from 'react-router-dom';
+import SpotifyPlayer from './SpotifyPlayer';
 import { Redirect } from 'react-router';
 
 // App class
 class App extends Component {
-
+  // Set artist function
   setUser = (user) => {
-    this.setState({ user: user.user_id })
-  }
-
-  setFan = (fan) => {
-    this.setState({ fan: fan.fan_id })
+    this.setState({ user: user.user_id });
   }
 
   // Render page
@@ -24,18 +17,10 @@ class App extends Component {
       return (
         <Redirect to={`/artists/${this.props.user}`} />
       )
-    } else if (this.props.fan) {
-      return (
-        <Redirect to={`/users/${this.props.fan}`} />
-      )
     } else {
       return (
         <main>
-          {/* <Home setUser={this.setUser}/>
-          USER IS {this.state.user} */}
-          <Scrape 
-            handleSubmit={this.props.handleSubmit} 
-          />
+          <Scrape handleSubmit={this.props.handleSubmit}/>
           <footer>
             {
               this.props.artist && (
