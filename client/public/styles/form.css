@@ -18,7 +18,7 @@ input[type=text] {
   border-radius: 5px;
 }
 
-/* Set a style for main register button on home page */
+/* Set a style for create event button on home page */
 .main-event-form {
   background-color: transparent;
   padding: 14px 20px;
@@ -26,10 +26,9 @@ input[type=text] {
   border: none;
   cursor: pointer;
   outline: none;
-
 }
 
-/* Set a style for submit register button */
+/* Set a style for create event button */
 .submit-event-form {
   background-color: #2196F3;
   color: white;
@@ -41,14 +40,14 @@ input[type=text] {
   width: 100%;
 }
 
-/* Close register button */
+/* Close create event button */
 .close-form {
   text-align: right;
   margin: 24px 0 12px 0;
   position: relative;
 }
 
-/* Event form information */
+/* Create event form information */
 .info-event {
   padding: 16px;
   text-align: left;
@@ -57,7 +56,6 @@ input[type=text] {
 .info-event-form {
   padding: 16px;
 }
-
 
 /* Register popup */
 .popup-register {
@@ -98,27 +96,11 @@ input[type=text] {
   cursor: pointer;
 }
 
-/* Add zoom animation to register */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
 /* Change styles for span on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
 }
 

@@ -4,8 +4,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-
-
+/* Home page background */
 body {
   background-image: url('../docs/surfparrot-background.jpg');
   background-size: 100vw 100vh;
@@ -28,6 +27,7 @@ body {
   font-size: 2.5rem !important;
 }
 
+/* Song recommendations banner */
 .spotify h2 {
   text-align: center;
   font-family: 'Neucha', cursive;
