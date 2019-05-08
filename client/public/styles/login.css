@@ -8,11 +8,6 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Email and password box */
-.email-login, .password-login {
-  border-radius: 5px;
-}
-
 /* Set a style for main login button on home page */
 .main-login {
   background-color: transparent;
@@ -21,6 +16,49 @@ input[type=text], input[type=password] {
   border: none;
   cursor: pointer;
   outline: none;
+}
+
+/* Login popup */
+.popup-login {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Login information */
+.info-login {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Login content */
+.content-login {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+/* Login popup text */
+.info-login {
+  color: black;
+}
+
+/* Email and password box */
+.email-login, .password-login {
+  border-radius: 5px;
 }
 
 /* Set a style for submit login button */
@@ -44,39 +82,6 @@ input[type=text], input[type=password] {
   position: relative;
 }
 
-/* Login information */
-.info-login {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Login popup */
-.popup-login {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Login content */
-.content-login {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 40%;
-}
-
 /* Close button (x) */
 .close {
   position: absolute;
@@ -86,22 +91,6 @@ span.psw {
   font-size: 35px;
   font-weight: bold;
   cursor: pointer;
-}
-
-/* Add zoom animation to login */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
 }
 
 /* Change styles for span on extra small screens */

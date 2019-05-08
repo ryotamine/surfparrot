@@ -1,62 +1,72 @@
+/* Live-music event listing table */
 .ReactTable  {
-    height: 53vh !important;
+  height: 53vh !important;
 }
 
+/* Live-music event listing table header */
 .ReactTable .rt-thead .rt-tr {
-    padding: 10px 10px 10px 10px !important;
-    text-align: left !important; 
-    background-color: black; 
-    color: white;
+	padding: 10px 10px 10px 10px !important;
+	text-align: left !important; 
+	background-color: black; 
+	color: white;
 }
 
+/* Live-music event listing table body */
 .rt-tbody {
-    background-color: white;
+  background-color: white;
 }   
 
-.rt-td a {
-    color: black;
-}
-
-.rt-td a:hover {
-    color: #888 !important;
-}
-
-div.-pagination {
-    background-color: white;
-}
-
-.rt-td button {
-    padding: 10px;
-    transition: all 0.3s;
-}
-
+/* Live-music event listing table row */
 .rt-td {
-    line-height: 37px;
+  line-height: 37px;
 }
 
+.rt-td a {
+  color: black;
+}
+
+/* Live-music event listing table row hover effect */
+.rt-td a:hover {
+  color: #888 !important;
+}
+
+/* Live-music event listing table footer */
+div.-pagination {
+  background-color: white;
+}
+
+/* Live-music event listing table footer button */
+.rt-td button {
+	padding: 10px;
+	transition: all 0.3s;
+}
+
+/* Preview song button (even) */
 .rt-tr-group:nth-child(even) button {
-    cursor: pointer;
-    color: black;
-    border: none;
-    padding-right: 100%;
-    background-color: #b9ff8d;
+	cursor: pointer;
+	color: black;
+	border: none;
+	padding-right: 100%;
+	background-color: #b9ff8d;
 }
+
+/* Preview song button hover (even) */
 .rt-tr-group:nth-child(even) button:hover {
-    background-color: #62ff00;
-    color: white;
+	background-color: #62ff00;
+	color: white;
 }
 
-
+/* Preview song button (odd) */
 .rt-tr-group:nth-child(odd) button {
-    cursor: pointer;
-    color: black;
-    border: none;
-    padding-right: 100%;
-    background-color: #9ad3fb; 
+	cursor: pointer;
+	color: black;
+	border: none;
+	padding-right: 100%;
+	background-color: #9ad3fb; 
 }
 
+/* Preview song button hover (odd) */
 .rt-tr-group:nth-child(odd) button:hover {
-    background-color: #0b9aff;
-    color: white;
+	background-color: #0b9aff;
+	color: white;
 }
-
