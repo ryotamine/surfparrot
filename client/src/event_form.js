@@ -51,7 +51,7 @@ class EventCreation extends Component {
       },
       body: JSON.stringify(
         {
-          'eventName': this.props.name, 
+          'eventName': this.state.name, 
           'eventDate' : this.state.eventDate, 
           'eventLocation': this.state.eventLocation, 
           'songLink': this.state.songLink 
