@@ -126,9 +126,6 @@ class Recommendations extends Component {
                 {
         return (
         <div>
-            <Navbar />
-            {/* {this.state.artists} */}
-
             <Scrape
             recommendedArtists={this.state.artists}
             handleSubmit={this.getArtist} 
