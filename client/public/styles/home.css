@@ -27,3 +27,11 @@ body {
   font-family: 'Indie Flower', cursive !important;
   font-size: 2.5rem !important;
 }
+
+.spotify h2 {
+  text-align: center;
+  font-family: 'Neucha', cursive;
+  background-color: #b9ff8d8c;
+  margin-top: 32px;
+  padding: 13px;
+}

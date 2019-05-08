@@ -52,7 +52,7 @@ div.-pagination {
     color: black;
     border: none;
     padding-right: 100%;
-    background-color: #9ad3fb; ;
+    background-color: #9ad3fb; 
 }
 
 .rt-tr-group:nth-child(odd) button:hover {

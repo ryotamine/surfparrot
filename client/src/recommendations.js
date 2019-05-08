@@ -125,7 +125,9 @@ class Recommendations extends Component {
     render() 
                 {
         return (
-        <div>
+        <div className="spotify">
+
+            <h2>Here are some show recommendations based on artists you listen to on Spotify!</h2>
             <Scrape
             recommendedArtists={this.state.artists}
             handleSubmit={this.getArtist} 
