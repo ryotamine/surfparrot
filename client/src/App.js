@@ -135,7 +135,7 @@ class App extends Component {
     return (
       <main>
         <Home setUser={this.setUser}/>
-        USER IS {this.state.user}
+        {this.state.user}
         <Scrape
           handleSubmit={this.getArtist} 
           artistName = {this.state.artistName}

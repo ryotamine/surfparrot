@@ -25,6 +25,38 @@ div.-pagination {
     background-color: white;
 }
 
-button {
-    cursor: pointer;
+.rt-td button {
+    padding: 10px;
+    transition: all 0.3s;
 }
+
+.rt-td {
+    line-height: 37px;
+}
+
+.rt-tr-group:nth-child(even) button {
+    cursor: pointer;
+    color: black;
+    border: none;
+    padding-right: 100%;
+    background-color: #b9ff8d;
+}
+.rt-tr-group:nth-child(even) button:hover {
+    background-color: #62ff00;
+    color: white;
+}
+
+
+.rt-tr-group:nth-child(odd) button {
+    cursor: pointer;
+    color: black;
+    border: none;
+    padding-right: 100%;
+    background-color: #9ad3fb; ;
+}
+
+.rt-tr-group:nth-child(odd) button:hover {
+    background-color: #0b9aff;
+    color: white;
+}
+
