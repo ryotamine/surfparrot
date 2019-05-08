@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Popup from "reactjs-popup";
 
 // Create event form class
-class EventCreation extends Component {
+class Eventform extends Component {
   // Create event form constructor
   constructor(props) {
     super(props);
@@ -13,24 +13,11 @@ class EventCreation extends Component {
       eventLocation: '',
       songLink: ''
     }
-
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveEvent = this.handleSaveEvent.bind(this);
     // this.setEventName = this.setEventName.bind(this);
   }
   
-  // Open event form helper function
-  openModal () {
-    this.setState({ open: true })
-  }
-
-  // Close event form helper function
-  closeModal () {
-    this.setState({ open: false })
-  };
-
   // Change event form helper function
   handleChange(event) {
     event.preventDefault();
@@ -73,18 +60,14 @@ class EventCreation extends Component {
   // Render event form
   render() {
     return (
-      <div>
-        <button className="main-register main-nav" onClick={this.openModal}>
-          create event 
-        </button>
-        
+    
         <Popup
-          open={this.state.open}
+          open={this.props.event}
           closeOnDocumentClick
-          onClose={this.closeModal}
+          onClose={this.props.closeModal}
           >
         <div id="id02" className="modal">
-          <a href className="close" onClick={this.closeModal}>
+          <a href className="close" onClick={this.props.closeModal}>
           &times;
          </a>
           <form onSubmit={this.handleSubmit} className="registrationForm">
@@ -151,9 +134,9 @@ class EventCreation extends Component {
             </form>
           </div>
         </Popup>
-      </div>
+  
     )
   }
 }
 
-export default EventCreation;
+export default Eventform;

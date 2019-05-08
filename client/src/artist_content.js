@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCreation from './event_form'; 
+import Eventform from './event_form'; 
 import axios from 'axios';
 
 // Artist content class
@@ -22,7 +22,7 @@ class ArtistContent extends Component {
       method: "POST",
       mode: "cors", 
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': 34245 }),
+      body: JSON.stringify({'id': 82955 }),
     }).then(response => 
       response.json()
     )

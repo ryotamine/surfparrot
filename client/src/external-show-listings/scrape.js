@@ -34,7 +34,6 @@ class Scrape extends Component {
   }
 
   handleClick(eventName) {
-    debugger
     this.props.handleSubmit(eventName)
    console.log("this state listing data event name", eventName)
   }

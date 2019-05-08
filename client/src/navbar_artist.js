@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Contact from './contact';
 import SignedInAs from './signed_in_as';
-import EventCreation from './event_form';
+import Event from './event';
 
 class NavbarArtist extends Component {
   // Logout helper function
@@ -31,14 +31,17 @@ class NavbarArtist extends Component {
               </button>
 
               <div className="dropdown-content">
-                <EventCreation name={this.props.name} handleName={this.props.handleName}/>
+             
+                <Event name={this.props.name} handleName={this.props.handleName}/>
                 <button className='main-logout main-nav'>
+            
                   <a href='/' 
                     className='main-logout main-nav' 
                     onClick={this.handleLogout}>
                     Logout
                   </a>
                 </button>
+              
               </div>
             </div>
           </ul>
