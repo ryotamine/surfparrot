@@ -347,8 +347,30 @@ app.post("/saveEvent", (req, res) => {
   res.send({ express: 'CREATE A NEW EVENT' });
 });
 
-app.get("/user", (req, res) => {
+app.post("/events/userEvents", (req, res) => {
+  console.log("event users route hit");
   console.log(req.body);
+  var userId = req.body.id
+  database('Event')
+  .where({userMusicianId: userId })
+  .select ('event', 'date', 'location')
+  .then(function(result) {
+    // if no events found:
+    if (!result || !result[0])  {
+      console.log("No events found for this user.")
+      return;
+    } else {
+      console.log("FJSLFDJSKLDFJSFJDKLDJSFLJSLDSLKFKLSDJLSDJFKL")
+      console.log(result)
+      res.send({
+        result: result
+      });
+    } 
+  })
+});
+
+app.get("/user", (req, res) => {
+  console.log("get /user: ", req.body);
   var usernameReq = req.body.username;
   var passwordReq = req.body.password;
   database('User_musician')

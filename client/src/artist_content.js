@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import EventCreation from './event_form'; 
+import EventCreation from './event_form'; 
+import axios from 'axios';
 
 // Artist content class
 class ArtistContent extends Component {
@@ -8,13 +9,32 @@ class ArtistContent extends Component {
     super(props);
 
     this.state = { 
-      eventName: "",
-      data: [{name: ""}]
+      events: []
     };
-
+    
     this.handleEdit = this.handleEdit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
+
+  componentDidMount() {
+//grab events from the db!
+    fetch("/events/userEvents", {
+      method: "POST",
+      mode: "cors", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({'id': 34245 }),
+    }).then(response => 
+      response.json()
+    )
+    .then(response => {
+      let artistEvents = response.result.map((event) => this.renderEvent(event))
+      this.setState({events: artistEvents})
+    console.log("artist content state", this.state)
+    }
+  )
+
+
+}
 
   // Edit event helper function
   handleEdit(event) {
@@ -27,61 +47,31 @@ class ArtistContent extends Component {
     this.setState({data});
   }
 
-  // Render artist content
-  render() {
-    const events = this.state.data.map((event) => {
-      return (
-        <div key={event.name}>
-          <li className="event-info">
-            <div className="align-event-option">
-              <a className="name-event">
-                {this.props.name}
-              </a>
-              <button 
-                className="delete-event" 
-                onClick={this.handleDelete.bind(this, event)}
-              >
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </div>
-          </li>
-          <li className="event-info">
-            <div className="align-event-option">
-              <a className="name-event">
-                {this.props.name}
-              </a>
-              <button 
-                className="delete-event" 
-                onClick={this.handleDelete.bind(this, event)}
-              >
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </div>
-          </li>
-          <li className="event-info">
-            <div className="align-event-option">
-              <a className="name-event">
-                {this.props.name}
-              </a>
-              <button 
-                className="delete-event" 
-                onClick={this.handleDelete.bind(this, event)}
-              >
-                <i className="far fa-trash-alt"></i>
-              </button>
-            </div>
-          </li>
-        </div>
-      );
-    });
-
+  renderEvent = (data) => {
+    console.log(data)
     return (
+      <li className="event-info">
+            <div className="align-event-option">
+              <a className="name-event">
+                {data.event}
+              </a>
+              <button  className="delete-event" >
+                <i className="far fa-trash-alt"></i>
+              </button>
+            </div>
+          </li>
+    )
+  }
+    render() {
+    return (
+
       <div>
-        <h1 className="artist-my-events">my events</h1>
-        {events}
+        <h1 className="artist-my-events">my events</h1> 
+        {this.state.events}
       </div>
     );
   }
+  
 }
 
 export default ArtistContent;
