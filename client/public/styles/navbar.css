@@ -1,189 +1,188 @@
 /* App navbar */
 header {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    margin: 0 auto;
-    padding: 20px 0px;
-    height: 200px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  margin: 0 auto;
+  padding: 20px 0px;
+  height: 200px;
+  color: white;
+  position: relative;
+}
+
+/* Further app navbar */
+.main-nav {
+  color: black;
+  text-transform: lowercase;
+  font-family: 'Neucha', cursive;
+  font-size: 1.25rem;
+}
+
+/* Further app navbar effect */
+.main-nav:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+/* Surfparrot logo */
+.logo {
+  flex: 0 0 200px;
+}
+
+/* Surfparrot logo alignment */
+.logo img {
+  width: 100%;
+  height: 100%;
+  margin-left: -21px;
+}
+
+/* Get show recommendations link */
+.recommend {
+  padding-top: 22px;
+  font-family: 'Neucha', cursive;
+  color: black;
+  font-size: 1.25rem;
+  list-style: none;
+  padding-right: 11px;
+}
+
+li {
+  list-style: none;
+  color: black;
+}
+
+.recommend a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+a:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+/* Signed in as email */
+.signed-email {
+  background-color: transparent;
+  padding: 14px 20px;
+  margin: 8px 0;
+  color: black;
+}
+
+/* Right side of navbar */
+.rightnav {
+  display: flex;
+  flex: 1 1 300px;
+  justify-content: flex-end;
+  text-align: center;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.rightnav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 10px 0px 0px 0px;
+}
+
+.rightnav ul li {
+  list-style: none;
+  float: left;
+}
+
+/* My acccount dropdown */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  background-color: inherit;
+  font-family: 'Neucha', cursive;
+  color: black;
+  padding: 17px 0px 0px 15px;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.dropbtn:hover {
+  color: grey;
+}
+
+.dropdown-content {
+  display: none;
+  box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.5);
+  z-index: 1;
+  background-color: #ccc;
+  right: 0px;
+  bottom: -26%;
+}
+
+.dropdown-content .main-nav {
+  float: none;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.fa-caret-down {
+  padding: 4px;
+}
+
+/* Register hover effect */
+.main-register:hover {
+  color: white;
+}
+
+/* Login hover effect */
+.main-login:hover {
+  color: white;
+}
+
+/* Find event button */
+.main-find-event {
+  background-color: transparent;
+  padding: 7px 10px;
+  margin: 4px 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: -7px 0px 0px -8px;
+}
+
+/* Find event hover effect */
+.main-find-event:hover {
+  color: white;
+}
+
+/* Logout button */
+.main-logout {
+  background-color: transparent;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: -7px 0px 0px -8px;
+}
+
+/* Logout hover effect */
+.main-logout:hover {
     color: white;
-    position: relative;
   }
-  
-  /* Further app navbar */
-  .main-nav {
-    color: black;
-    text-transform: lowercase;
-    font-family: 'Neucha', cursive;
-    font-size: 1.25rem;
+
+@media screen and (min-height: 926px) {
+  header {
+    height: 20vh;
   }
-  
-  /* Further app navbar effect */
-  .main-nav:hover {
-    cursor: pointer;
-    color: grey;
-  }
-  
-  /* Surfparrot logo */
-  .logo {
-    flex: 0 0 200px;
-  }
-  
-  /* Surfparrot logo alignment */
-  .logo img {
-    width: 100%;
-    height: 100%;
-    margin-left: -21px;
-  }
-  
-  /* Get show recommendations link */
-  .recommend {
-    padding-top: 22px;
-    font-family: 'Neucha', cursive;
-    color: black;
-    font-size: 1.25rem;
-    list-style: none;
-    padding-right: 11px;
-  }
-  
-  li {
-    list-style: none;
-    color: black;
-  }
-  
-  .recommend a {
-    list-style: none;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  
-  a:hover {
-    cursor: pointer;
-    color: grey;
-  }
-  
-  /* Signed in as email */
-  .signed-email {
-    background-color: transparent;
-    padding: 14px 20px;
-    margin: 8px 0;
-    color: black;
-  }
-  
-  /* Right side of navbar */
-  .rightnav {
-    display: flex;
-    flex: 1 1 300px;
-    justify-content: flex-end;
-    text-align: center;
-    margin: 0 auto;
-    overflow: hidden;
-  }
-  
-  .rightnav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    padding: 10px 0px 0px 0px;
-  }
-  
-  .rightnav ul li {
-    list-style: none;
-    float: left;
-  }
-  
-  /* My acccount dropdown */
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  .dropdown .dropbtn {
-    border: none;
-    outline: none;
-    background-color: inherit;
-    font-family: 'Neucha', cursive;
-    color: black;
-    padding: 17px 0px 0px 15px;
-    font-size: 1.25rem;
-    margin: 0;
-  }
-  
-  .dropbtn:hover {
-    color: grey;
-  }
-  
-  .dropdown-content {
-    display: none;
-    box-shadow: 0px 7px 10px 0px rgba(0,0,0,0.5);
-    z-index: 1;
-    background-color: #ccc;
-    right: 0px;
-    bottom: -26%;
-  }
-  
-  .dropdown-content .main-nav {
-    float: none;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: right;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .fa-caret-down {
-    padding: 4px;
-  }
-  
-  /* Register hover effect */
-  .main-register:hover {
-    color: white;
-  }
-  
-  /* Login hover effect */
-  .main-login:hover {
-    color: white;
-  }
-  
-  /* Find event button */
-  .main-find-event {
-    background-color: transparent;
-    padding: 7px 10px;
-    margin: 4px 0;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    margin: -7px 0px 0px -8px;
-  }
-  
-  /* Find event hover effect */
-  .main-find-event:hover {
-    color: white;
-  }
-  
-  /* Logout button */
-  .main-logout {
-    background-color: transparent;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    margin: -7px 0px 0px -8px;
-  }
-  
-  /* Logout hover effect */
-  .main-logout:hover {
-      color: white;
-    }
-  
-  @media screen and (min-height: 926px) {
-    header {
-      height: 20vh;
-    }
-  }
-  
+}
