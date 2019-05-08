@@ -8,11 +8,6 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-/* Name, email, subject, and comment box */
-.name-contact, .email-contact, .subject-contact, .comment-contact {
-  border-radius: 5px;
-}
-
 /* Set a style for main contact button on home page */
 .main-contact {
   background-color: transparent;
@@ -22,6 +17,62 @@ input[type=text] {
   cursor: pointer;
   outline: none;
   color: black;
+}
+
+/* Contact popup */
+.popup-contact {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Contact information */
+.info-contact {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Contact content */
+.content-contact {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 40%;
+}
+
+/* Contact popup text */
+.info-contact {
+  color: black;
+  text-align: left;
+}
+
+/* Name, email, subject, and comment box */
+.name-contact, .email-contact, .subject-contact, .comment-contact {
+  border-radius: 5px;
+}
+
+/* Contact comment box */
+.comment-contact {
+  height: 100px;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 /* Set a style for submit contact button */
@@ -43,51 +94,6 @@ input[type=text] {
   position: relative;
 }
 
-/* Contact information */
-.info-contact {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* Contact popup */
-.popup-contact {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Contact content */
-.content-contact {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 40%;
-}
-
-/* Contact comment box */
-.comment-contact {
-  height: 100px;
-  resize: none;
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
 /* Close button (x) */
 .close {
   position: absolute;
@@ -99,26 +105,10 @@ span.psw {
   cursor: pointer;
 }
 
-/* Add zoom animation to contact */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
 /* Change styles for span on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
 }
