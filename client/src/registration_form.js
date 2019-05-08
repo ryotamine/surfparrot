@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 // Register class
 class Registration extends Component {

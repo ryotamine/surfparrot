@@ -17,7 +17,7 @@ class NavbarUser extends Component {
             <img src="/docs/parrot2.png" alt=""></img>
         </div>
 
-        <button className='home'><a className='home main-nav' href='/'>surfparrot</a></button>
+        <button className='home'><a className='home main-nav' href='#'>surfparrot</a></button>
 
         <div className="rightnav">
           <ul>

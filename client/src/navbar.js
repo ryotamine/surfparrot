@@ -39,7 +39,6 @@ class Navbar extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <header>
         <div className="logo">

@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Home from './home';
+// import axios from 'axios';
+// import Home from './home';
 import Scrape from './external-show-listings/scrape';
 import SpotifyPlayer from './SpotifyPlayer.js';
-import { withRouter } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
 // App class
 class App extends Component {
 
   setUser = (user) => {
-    console.log("TESTSETST  ")
-    console.log(user.user_id)
-    this.setState({user: user.user_id})
+    this.setState({ user: user.user_id })
+  }
+
+  setFan = (fan) => {
+    this.setState({ fan: fan.fan_id })
   }
 
   // Render page
@@ -21,6 +23,10 @@ class App extends Component {
     if (this.props.user) {
       return (
         <Redirect to={`/artists/${this.props.user}`} />
+      )
+    } else if (this.props.fan) {
+      return (
+        <Redirect to={`/users/${this.props.fan}`} />
       )
     } else {
       return (

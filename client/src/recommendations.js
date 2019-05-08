@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from './navbar';
+// import Navbar from './navbar';
 import Scrape from './external-show-listings/scrape-recommendations';
 import SpotifyPlayer from './SpotifyPlayer.js';
 

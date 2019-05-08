@@ -7,6 +7,7 @@ class Login extends Component {
   // Login constructor
   constructor(props) {
     super(props);
+
     this.state = { 
       loggedIn: false,
       loginError: false,
@@ -18,8 +19,8 @@ class Login extends Component {
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleAccountSelection = this.handleAccountSelection.bind(this);
     this.handleRadioButtonChange = this.handleRadioButtonChange.bind(this);
+    this.handleAccountSelection = this.handleAccountSelection.bind(this);
   }
 
   // Open login popup helper function
@@ -68,8 +69,6 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        console.log("DO I RUN @@")
-        console.log(response)
         this.props.setUser(response)
       })
     }
@@ -88,37 +87,38 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        console.log("User", this.props.history, response)
-        this.props.history.push(response.url2)
+        this.props.setUser(response)
       })
     }
   }
 
+  // Email helper function
   handleEmail = (event) => {
     this.setState({email: event.target.value})
   };
   
+  // Email password function
   handlePassword = (event) => {
     this.setState({password: event.target.value});
   };
 
   handleSubmit = (event) => {
-    // event.preventDefault();
     const loginData = {
       email: this.state.email,
       password: this.state.password
     }
     console.log(this.state)
-  axios
-  .post("/login", loginData, {withCredentials: true})
-  .then((res) => {
-    console.log(res)
-    this.setState({
-      loggedIn: res.data.login,
-      loginError: res.data.error
+    axios
+    .post("/login", loginData, {withCredentials: true})
+    .then((res) => {
+      console.log(res)
+      this.setState({
+        loggedIn: res.data.login,
+        loginError: res.data.error
+      })
     })
-  })
   }
+
   // Render login popup
   render() {
     return (
@@ -183,7 +183,14 @@ class Login extends Component {
                 required>
               </input> User<br></br>
 
-              <button className="submit-login" type="submit" value={this.state.loggedIn=true} onClick={this.handleAccountSelection}>Login</button>
+              <button 
+                className="submit-login" 
+                type="submit" 
+                value={this.state.loggedIn=true} 
+                onClick={this.handleAccountSelection}
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>
@@ -193,5 +200,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-

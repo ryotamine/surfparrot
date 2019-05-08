@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EventCreation from './event_form'; 
+// import EventCreation from './event_form'; 
 
 // Artist content class
 class ArtistContent extends Component {
