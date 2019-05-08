@@ -42,7 +42,6 @@ class EventCreation extends Component {
   // Save event form helper function
   handleSaveEvent(event) {
     event.preventDefault();
-    console.log("state eventname", this.state.eventName)
     fetch('/saveEvent', {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
@@ -69,11 +68,10 @@ class EventCreation extends Component {
     ).then(response => {
       response.json()
     }); 
-    console.log("this state", this.state)
+    console.log("this event saved to db: ", this.state)
   }
   // Render event form
   render() {
-    console.log(this.props)
     return (
       <div>
         <button className="main-register main-nav" onClick={this.openModal}>

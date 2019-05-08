@@ -142,7 +142,7 @@ getRefreshToken = async () => {
       <div>
         <Route exact path="/" component={() => <App user={this.state.user}  handleSubmit={this.getArtist} artistName = {this.state.artistName} artist={this.state.artist}/>} />
         <Route exact path="/users/:id" component={UserApp} />
-        <Route exact path="/artists/:id" component={ArtistApp} />
+        <Route exact path="/artists/:id" component={() => <ArtistApp id={this.state.user}/>} />
         <Route exact path="/recommendations" component={Recommendations} />
       </div>
     </Router>
