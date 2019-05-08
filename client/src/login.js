@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Popup from 'reactjs-popup';
-import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 // Login class
@@ -69,9 +68,9 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
+        console.log("DO I RUN @@")
+        console.log(response)
         this.props.setUser(response)
-        console.log("Artist", this.props.history, response)
-        this.props.history.push(response.url3)
       })
     }
 
@@ -113,6 +112,7 @@ class Login extends Component {
   axios
   .post("/login", loginData, {withCredentials: true})
   .then((res) => {
+    console.log(res)
     this.setState({
       loggedIn: res.data.login,
       loginError: res.data.error
@@ -192,6 +192,6 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default Login;
 
 

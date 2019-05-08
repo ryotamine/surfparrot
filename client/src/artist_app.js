@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavbarArtist from './navbar_artist';
 import ArtistContent from './artist_content';
 
 // Artist App class
@@ -25,7 +24,6 @@ class ArtistApp extends Component {
   render() {
     return (
       <div>
-        <NavbarArtist name={this.state.name} date={this.state.date} handleName={this.handleName}/>
         <ArtistContent name={this.state.name} date={this.state.date}/>
       </div>
     );

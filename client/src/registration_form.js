@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
 import { withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router';
 
 // Register class
 class Registration extends Component {
@@ -72,8 +71,6 @@ class Registration extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        console.log("Artist", this.props.history, response)
-        this.props.history.push(response.url1)
       })
     }
 
@@ -93,8 +90,8 @@ class Registration extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        console.log("User", this.props.history, response)
-        this.props.history.push(response.url2)
+        console.log("HAVE I REGISTEREDs")
+        console.log(response)
       })
     }
   }
@@ -236,4 +233,4 @@ class Registration extends Component {
   }
 }
 
-export default withRouter(Registration);
+export default Registration;

@@ -25,7 +25,6 @@ class UserApp extends Component {
   render() {
     return (
       <main>
-        <NavbarUser />
         <Scrape
           handleSubmit={this.getArtist} 
           artistName = {this.state.artistName}
