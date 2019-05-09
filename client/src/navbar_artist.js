@@ -3,6 +3,7 @@ import Contact from './contact';
 import SignedInAs from './signed_in_as';
 import Event from './event';
 
+// Artist navbar class
 class NavbarArtist extends Component {
   // Logout helper function
   handleLogout(event) {
@@ -14,7 +15,7 @@ class NavbarArtist extends Component {
     return (
       <header>
         <div className="logo">
-            <img src="/docs/parrot2.png" alt=""></img>
+          <img src="/docs/parrot2.png" alt=""></img>
         </div>
 
         <button className='home'><a className='home main-nav' href='#'>surfparrot</a></button>
@@ -26,22 +27,21 @@ class NavbarArtist extends Component {
 
             <div className="dropdown">
               <button className="dropbtn main-nav">
-                 my account
+                my account
                 <i className="fa fa-caret-down"></i>
               </button>
 
               <div className="dropdown-content">
-             
                 <Event name={this.props.name} handleName={this.props.handleName}/>
                 <button className='main-logout main-nav'>
-            
-                  <a href='/' 
+                  <a 
+                    href='/' 
                     className='main-logout main-nav' 
-                    onClick={this.handleLogout}>
+                    onClick={this.handleLogout}
+                  >
                     Logout
                   </a>
                 </button>
-              
               </div>
             </div>
           </ul>

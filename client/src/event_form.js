@@ -13,7 +13,7 @@ class Eventform extends Component {
       eventDate: '',
       eventLocation: '',
       songLink: ''
-    }
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSaveEvent = this.handleSaveEvent.bind(this);
@@ -127,7 +127,7 @@ class Eventform extends Component {
           </form>
         </div>
       </Popup>
-    )
+    );
   }
 }
 

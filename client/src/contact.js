@@ -63,7 +63,7 @@ class Contact extends Component {
           </div>
         </Popup>
       </div>
-    )
+    );
   }
 }
 

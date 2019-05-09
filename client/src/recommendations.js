@@ -1,116 +1,106 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Navbar from './navbar';
 import Scrape from './external-show-listings/scrape-recommendations';
 import SpotifyPlayer from './SpotifyPlayer.js';
 
-
-
 // User App class
 class Recommendations extends Component {
-    constructor(props) {
+  // User app constructor
+  constructor(props) {
     super(props);
-    }
-        state = {
-            token: null,
-            data: null,
-            recommendations: "",
-            //artists object that contains 150 artists from spotify endpoints
-            //not sure if its saving to state properly?
-            artists: [],
-            artist: '43ZHCT0cAZBISjO8DG9PnE', 
-            searchTerm: "",
-        };
-    
-    componentDidMount() {
-        this.getRecommendations()
-        this.getSpotifyToken()
-        this.getArtist()
-        this.callBackendAPI()
-        .then(res => this.setState({ data: res.express }))
-        .catch(err => console.log(err));
-    }
+  }
 
-    getRecommendations = async artistName => {
+  // Initial state
+  state = {
+    token: null,
+    data: null,
+    recommendations: "",
+    // Artists object that contains 150 artists from spotify endpoints
+    artists: [],
+    artist: '43ZHCT0cAZBISjO8DG9PnE', 
+    searchTerm: ""
+  };
+  
+  // Mount component function
+  componentDidMount() {
+    this.getRecommendations()
+    this.getSpotifyToken()
+    this.getArtist()
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express }))
+      .catch(err => console.log(err));
+  }
 
-        axios.get('http://localhost:5000/user_token', {
-            withCredentials: true,
-        })
-        .then (response => {
-            const token = response.data.user_token
-            console.log("FRONT END token: ", token)
-            if (token) {
-                console.log("this.state.token: ", token)
-                axios.all([
-                  axios.get(
-                    //50 most recently played tracks
-                    `https://api.spotify.com/v1/me/player/recently-played`,
-                    {
-                      headers: { Authorization: `Bearer ${token}` },
-                      params: {limit: 50 },
-                    }  
-                  ),
-                  axios.get(
-                    //50 artists the user followers
-                    `https://api.spotify.com/v1/me/following?type=artist`,
-                    {
-                      headers: { Authorization: `Bearer ${token}` },
-                      params: {limit: 50 },
-                    }  
-                  ),
-                  axios.get(
-                    //50 of users top played artists
-                    `	https://api.spotify.com/v1/me/top/artists`,
-                    {
-                      headers: { Authorization: `Bearer ${token}` },
-                      params: {limit: 50 },
-                    }  
-                  )
-                ])
-                .then(axios.spread((recent, following, top) => {
-                  //most recently listened to
-                  const data = recent.data.items;
-                  const artistArray = data.map(artist => ({
-                    Artists: artist.track.album.artists
-                  }));
+  getRecommendations = async artistName => {
+    axios.get('http://localhost:5000/user_token', {
+      withCredentials: true
+    })
+      .then (response => {
+        const token = response.data.user_token;
+        if (token) {
+          axios.all([
+            axios.get(
+              // 50 most recently played tracks
+              `https://api.spotify.com/v1/me/player/recently-played`,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+                params: {limit: 50 },
+              }  
+            ),
+            axios.get(
+              // 50 artists the user followers
+              `https://api.spotify.com/v1/me/following?type=artist`,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+                params: {limit: 50 },
+              }  
+            ),
+            axios.get(
+              // 50 of users top played artists
+              `	https://api.spotify.com/v1/me/top/artists`,
+              {
+                headers: { Authorization: `Bearer ${token}` },
+                params: {limit: 50 },
+              }  
+            )
+          ])
+            .then(axios.spread((recent, following, top) => {
+              // Most recently listened to
+              const data = recent.data.items;
+              const artistArray = data.map(artist => ({
+                Artists: artist.track.album.artists
+              }));
 
-                  //array of all the artists pulled from different queries
-                  const artistNames = [] 
+              // Array of all the artists pulled from different queries
+              const artistNames = [];
+              for (let i = 0; i < artistArray.length; i++) {
+                let item = artistArray[i].Artists;
+                for (let j = 0; j < item.length; j++) {
+                  artistNames.push(item[j].name)
+                }
+              }
 
-                  console.log("~~~~~~~~~~artistNames", artistNames)
-                    for (let i = 0; i < artistArray.length; i++) {
-                        let item = artistArray[i].Artists;
-                        for (let j = 0; j < item.length; j++) {
-                            artistNames.push(item[j].name)
-                            console.log("~~~~~~~~~~~~names", item[j].name)
-                        }
-                    }
-                  console.log("~~~~~~~artistNames", artistNames)
-                  const library = following.data.artists.items;
-                  //artists user follows
-                  console.log("~~~~~~~~~library", library)
-                    for (let i = 0; i < library.length; i++ ) {
-                      let item = library[i].name
-                      artistNames.push(item)
-                      console.log("~~~~~~~item", item)
-                    }
-                  //top artists
-                  const topObject = top.data.items
-                  console.log("~~~~~topObject", topObject)
-                    for (let i = 0; i < topObject.length; i++ ) {
-                      let item = topObject[i].name
-                      artistNames.push(item)
-                      console.log("~~~~~~~top artists", topObject[i].name)
-                    }
+              const library = following.data.artists.items;
+              // Artists user follows
+              for (let i = 0; i < library.length; i++) {
+                let item = library[i].name;
+                artistNames.push(item);
+              }
 
-                  //setting to state after running through every endpoint
-                   //filtering out duplicate artists
-                  const uniqueValues = artistNames.filter((value, index, self) => self.indexOf(value) === index)
+              // Top artists
+              const topObject = top.data.items;
+                for (let i = 0; i < topObject.length; i++) {
+                  let item = topObject[i].name
+                  artistNames.push(item)
+                }
 
-                  this.setState({artists: uniqueValues}) 
-                  console.log("~~~~~~~~~~this.state.artists", this.state.artists)
-                }))
-              
+              //setting to state after running through every endpoint
+                //filtering out duplicate artists
+              const uniqueValues = artistNames.filter((value, index, self) => self.indexOf(value) === index)
+
+              this.setState({artists: uniqueValues}) 
+            }))
+          
             } else {
                 axios.get('http://localhost:5000/user_refresh_token', {
                     withCredentials: true,
@@ -118,7 +108,6 @@ class Recommendations extends Component {
                 this.getRefreshToken()
             }
         })
-        console.log("this.state.artists~~~~~~~~", this.state.artists)
       }
     
     // Render user page
@@ -164,7 +153,6 @@ class Recommendations extends Component {
     getArtist = async artistName => {
       try {
         if (this.state.token) {
-        console.log("this.state.token: ", `${this.state.token}`)
         const response = await axios.get(
           `https://api.spotify.com/v1/search/?q=${artistName}&type=artist`,
           {
@@ -182,8 +170,6 @@ class Recommendations extends Component {
             return
           }
     
-          console.log(" IM GETTING THE ARTSIT NOW")
-          console.log(firstItem)
           this.setState({artist: firstItem.id})
           // this.setState({artistName: firstItem})
         })    
@@ -202,7 +188,6 @@ class Recommendations extends Component {
       try {
         const response = await axios.get('http://localhost:5000/spotify_token')
         const token = response.data.token
-        console.log("FRONT END token: ", token)
         this.setState({ token })
       } catch (error) {
         console.log(error)
@@ -219,7 +204,6 @@ class Recommendations extends Component {
         console.log(error)
       }
     }
-  
 }
 
 export default Recommendations;

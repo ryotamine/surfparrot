@@ -1,36 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
-import Login from 'login';
-import { Verify } from 'crypto';
 
+// User verification class
 class UserVerification extends Component {
+  // User verification classs
   constructor(props) {
-
     super(props);
     
     this.state = 
     {
       email: this.props.email,
-      password: this.props.password,
+      password: this.props.password
     }
+
     this.email = this.email.bind(this);
     this.password = this.password.bind(this);
-    console.log("account verify state", this.state)
   }
 
+  // Mount component function
   componentDidMount() {
-    //get email and password from form
-    //retrieve passwords from server
+    // Get email and password from form
+    // Retrieve passwords from server
     userInfoDB = () => {
       fetch('api/userAccounts')
-      .then(res => res.json())
-      .then(verify => this.setState({email}), this.setsState({password}))
+        .then(res => res.json())
+        .then(verify => this.setState({email}), this.setsState({password}));
     }
   }
+
+  // Render user verification
   render() {
     return (
-      alert(this.props.email)
-    )
+      alert(this.props.email);
+    );
   }
 }
-export default UserVerification
+
+export default UserVerification;

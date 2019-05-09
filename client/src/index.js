@@ -8,14 +8,10 @@ import Recommendations from './recommendations.js';
 import Home from './home';
 import axios from 'axios';
 import NavbarArtist from './navbar_artist';
-// import NavbarUser from './navbar_user';
 
+// Index class
 class Index extends Component {
-
-  // constructor(props) {
-  //   super(props);
-  // }
-  
+  // Set initial state
   state = {
     token: null,
     artist: '43ZHCT0cAZBISjO8DG9PnE',
@@ -23,18 +19,15 @@ class Index extends Component {
     artistName: "",
     data: null,
     loading: true,
-    user: 0,
-    fan: 0
-  };
+    user: 0
+  }
  
+  // Set artist function
   setUser = (user) => {
-    this.setState({user: user.user_id})
+    this.setState({user: user.user_id});
   }
 
-  setFan = (fan) => {
-    this.setState({ fan: fan.fan_id })
-  }
-
+  // Get artist function
   getUser = async () => {
     if (sessionStorage.email) {
       axios("/login/account", {
@@ -43,12 +36,12 @@ class Index extends Component {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           'email': sessionStorage.email
-        }),
+        })
       })
       .then(response => 
         response.json()
       ).then(response => {
-        this.props.history.push(response.url3)
+        this.props.history.push(response.url3);
       })
     }
   }
@@ -58,7 +51,7 @@ class Index extends Component {
     const body = await response.json();
 
     if (response.status !== 200) {
-      throw Error(body.message) 
+      throw Error(body.message);
     }
     return body;
   };
@@ -70,87 +63,81 @@ class Index extends Component {
   getArtist = async artistName => {
     try {
       if (this.state.token) {
-      console.log("this.state.token: ", `${this.state.token}`)
-      const response = await axios.get(
-        `https://api.spotify.com/v1/search/?q=${artistName}&type=artist`,
-        {
-          headers: { Authorization: `Bearer ${this.state.token}` },
-        }  
-      )
-      .then(res => {
-        const items = res.data.artists.items
-        // get the first artist returned from the request
-        const firstItem = items[0]
+        const response = await axios.get(
+          `https://api.spotify.com/v1/search/?q=${artistName}&type=artist`,
+          {
+            headers: { Authorization: `Bearer ${this.state.token}` },
+          }  
+        )
+        .then(res => {
+          const items = res.data.artists.items;
+          // Get the first artist returned from the request
+          const firstItem = items[0];
 
-        if (!firstItem) {
-          alert('surfparrot could not find this artist on Spotify!')
-          // <Redirect />
-          return
-        }
-        // get the id of the first artist returned
-        console.log(" IM GETTING THE ARTSIT NOW")
-        console.log(firstItem)
-        this.setState({artist: firstItem.id})
-        // this.setState({artistName: firstItem})
+          if (!firstItem) {
+            alert('surfparrot could not find this artist on Spotify!');
+            return
+          }
 
-        // do something with the artist id
-        // https://api.spotify.com/v1/artists/{id}/top-tracks
-      })    
-    } else {
-      this.getSpotifyToken()
-    }
-
+          // Get the id of the first artist returned
+          this.setState({artist: firstItem.id});
+        })  
+      } else {
+        this.getSpotifyToken();
+      }
     } catch (e) {
-      // queries the spotify_token endpoint on backend
-      this.getSpotifyToken()
-      this.getRefreshToken()
+      // Queries the Spotify token endpoint on back-end
+      this.getSpotifyToken();
+      this.getRefreshToken();
     }
   }
 
   getSpotifyToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token')
-      const token = response.data.token
-      console.log("FRONT END token: ", token)
-      this.setState({ token })
+      const response = await axios.get('http://localhost:5000/spotify_token');
+      const token = response.data.token;
+      this.setState({ token });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
-  // helper function sends refresh_token endpoint back to the frontend
+
+  // Helper function sends refresh token endpoint back to the front-end
   getRefreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token')
-      const token = response.data.token
-      this.setState({ token })
+      const response = await axios.get('http://localhost:5000/spotify_token');
+      const token = response.data.token;
+      this.setState({ token });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
+  // Mount artist and Spotify token function
   componentDidMount() {    
-    this.getSpotifyToken()
-    this.getArtist()
-    this.getUser()
-  };
+    this.getSpotifyToken();
+    this.getArtist();
+    this.getUser();
+  }
 
- render() {
-   return (
-    <div>
-    {
-      this.state.user > 0 ? <NavbarArtist /> : <Home setUser={this.setUser}/>
-    }
-    <Router>
+  // Render pages
+  render() {
+    return (
       <div>
-        <Route exact path="/" component={() => <App user={this.state.user}  handleSubmit={this.getArtist} artistName = {this.state.artistName} artist={this.state.artist}/>} />
-        <Route exact path="/users/:id" component={UserApp} />
-        <Route exact path="/artists/:id" component={() => <ArtistApp id={this.state.user}/>} />
-        <Route exact path="/recommendations" component={Recommendations} />
+        {
+          this.state.user > 0 ? <NavbarArtist /> : <Home setUser={this.setUser}/>
+        }
+        <Router>
+          <div>
+            <Route exact path="/" component={() => <App user={this.state.user}  handleSubmit={this.getArtist} artistName = {this.state.artistName} artist={this.state.artist}/>} />
+            <Route exact path="/users/:id" component={UserApp} />
+            <Route exact path="/artists/:id" component={() => <ArtistApp id={this.state.user}/>} />
+            <Route exact path="/recommendations" component={Recommendations} />
+          </div>
+        </Router>
       </div>
-    </Router>
-  </div>
-   )
- }
+    );
+  }
 }
 
 ReactDOM.render(<Index />, document.getElementById('root'));

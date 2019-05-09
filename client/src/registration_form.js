@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Popup from "reactjs-popup";
-// import { withRouter } from 'react-router-dom';
 
 // Register class
 class Registration extends Component {
@@ -71,6 +70,7 @@ class Registration extends Component {
       .then(response => 
         response.json()
       ).then(response => {
+        console.log(response);
       })
     }
 
@@ -90,48 +90,14 @@ class Registration extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        console.log("HAVE I REGISTEREDs")
-        console.log(response)
+        console.log(response);
       })
     }
   }
 
-  // Handle submit helper function
-  // handleSubmit(event) {
-  //   event.persist();
-  //   const data = {
-  //     'firstName': this.firstName.value,
-  //     'lastName': this.lastName.value,
-  //     'email': this.email.value,
-  //     'password': this.password.value
-  //     //'accountType': this.accountType.value
-  //   }
-  //     $.ajax({
-  //       type: 'PUT',
-  //       // url: 'http://localhost:3000/', How to differentiate between artist and user?
-  //       data: data,
-  //       crossDomain: true,
-  //       success: function(result) {
-  //         //console.log('result': result)
-  //       },
-  //       error: function(err) {alert('invalid info')}
-  //     })
-  // }
-
   // Render register popup
   render() {
-    // Redirect to artist page per radio button selection
-    // if (this.state.artist && this.state.register) {
-    //   return <Redirect to="/artist"/>
-    // }
-
-    // // Redirect to user page per radio button selection
-    // if (!this.state.artist && this.state.register) {
-    //   return <Redirect to="/user"/>
-    // }
-
     return (
-      
       <Popup
         open={true}
         closeOnDocumentClick
@@ -224,12 +190,19 @@ class Registration extends Component {
                 required>
               </input> User<br></br>
 
-              <button className="submit-register" type="submit" value="submit" onClick={this.handleAccountSelection}>Register</button>
+              <button 
+                className="submit-register" 
+                type="submit" 
+                value="submit" 
+                onClick={this.handleAccountSelection}
+              >
+                Register
+              </button>
             </div>
           </form>
         </div>
       </Popup>
-    )
+    );
   }
 }
 

@@ -69,7 +69,7 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        this.props.setUser(response)
+        this.props.setUser(response);
       })
     }
 
@@ -87,7 +87,7 @@ class Login extends Component {
       .then(response => 
         response.json()
       ).then(response => {
-        this.props.setUser(response)
+        this.props.setUser(response);
       })
     }
   }
@@ -97,21 +97,20 @@ class Login extends Component {
     this.setState({email: event.target.value})
   };
   
-  // Email password function
+  // Email password helper function
   handlePassword = (event) => {
     this.setState({password: event.target.value});
   };
 
+  // Submit login helper function
   handleSubmit = (event) => {
     const loginData = {
       email: this.state.email,
       password: this.state.password
     }
-    console.log(this.state)
     axios
     .post("/login", loginData, {withCredentials: true})
     .then((res) => {
-      console.log(res)
       this.setState({
         loggedIn: res.data.login,
         loginError: res.data.error

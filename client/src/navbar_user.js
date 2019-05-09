@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Contact from './contact';
 import SignedInAs from './signed_in_as';
-import EventCreation from './event_form';
 
+// User navbar class
 class NavbarUser extends Component {
   // Logout helper function
   handleLogout(event) {
@@ -14,7 +14,7 @@ class NavbarUser extends Component {
     return (
       <header>
         <div className="logo">
-            <img src="/docs/parrot2.png" alt=""></img>
+          <img src="/docs/parrot2.png" alt=""></img>
         </div>
 
         <button className='home'><a className='home main-nav' href='#'>surfparrot</a></button>
@@ -32,9 +32,11 @@ class NavbarUser extends Component {
 
               <div className="dropdown-content">
                 <button className='main-logout main-nav'>
-                  <a href='/' 
+                  <a 
+                    href='/' 
                     className='main-logout main-nav' 
-                    onClick={this.handleLogout}>
+                    onClick={this.handleLogout}
+                  >
                     Logout
                   </a>
                 </button>
