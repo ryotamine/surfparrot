@@ -25,7 +25,6 @@ Surfparrot is a full-stack web application built with React, Node, Express, Post
 - react: 16.8.6
 - react-router: 5.0.0
 - react-router-dom: 5.0.0
-- react-flatpickr: 3.8.0
 - react-table: 6.10.0
 - reactjs-popup: 1.3.2
 - request: 2.88.0
