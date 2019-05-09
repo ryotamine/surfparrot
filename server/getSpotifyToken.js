@@ -1,6 +1,5 @@
-const request = require('request')
+const request = require('request');
 const base64url = require('base64url');
-
 
 const getSpotifyToken = ({
     clientId,
@@ -39,12 +38,4 @@ const getSpotifyToken = ({
     }
   )
 
-// function encodeInBase64(s) {
-//   if (typeof window === 'object' && window.btoa) {
-//     return window.btoa(s)
-//   } else {
-//     return new Buffer(s).toString('base64')
-//   }
-// }
-
-module.exports = getSpotifyToken
+module.exports = getSpotifyToken;
