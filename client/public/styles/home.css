@@ -6,7 +6,7 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 /* Home page background */
 body {
-  background-image: url('../docs/surfparrot-background.jpg');
+  background-image: url('../docs/surfparrot-background.png');
   background-size: cover;
   z-index: -1;
   margin: 0 auto;

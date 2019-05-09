@@ -44,7 +44,7 @@ class ArtistContent extends Component {
       method: "POST",
       mode: "cors", 
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': 34245 })
+      body: JSON.stringify({'id': 15570 })
     })
       .then(response => response.json())
       .then(response => {
