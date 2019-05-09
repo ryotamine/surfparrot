@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import ArtistContent from './artist_content';
 
-// Artist App class
+// Artist app class
 class ArtistApp extends Component {
+  // Artist app constructor
   constructor(props) {
     super(props);
-    // this.textEvent = React.createRef();
+
     this.state = {
       name: ''
     }
+
     this.handleName = this.handleName.bind(this);
   }
 
+  // Artist name helper function
   handleName(evt) {
     this.setState({
       name: evt.target.value
