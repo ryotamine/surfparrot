@@ -6,9 +6,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-          <Navbar setUser={this.props.setUser}/>
+        <Navbar setUser={this.props.setUser}/>
       </div>
-        
     );
   }
 }

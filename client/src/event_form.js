@@ -131,7 +131,7 @@ class Eventform extends Component {
           </form>
         </div>
       </Popup>
-    )
+    );
   }
 }
 

@@ -9,7 +9,7 @@ class EventCreation extends Component {
 
     this.state = { 
       openEvent: false
-    }
+    };
   }
 
   // Open event popup helper function
@@ -35,7 +35,7 @@ class EventCreation extends Component {
         {this.state.openEvent && <Eventform closeModal={this.closeModal} 
         openModal={this.openModal} event={this.state.openEvent}/>}
       </div>
-    )
+    );
   }
 }
 
