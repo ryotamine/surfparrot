@@ -4,9 +4,9 @@ Surfparrot is a full-stack web application built with React, Node, Express, Post
 
 ## Final Product
 
-!["Screenshot of home page"](https://github.com/ryotamine/surfparrot/blob/master/docs/surfparrot-home.png)
-!["Screenshot of artist page"](https://github.com/ryotamine/surfparrot/blob/master/docs/surfparrot-artist.png)
-!["Screenshot of get show recommendations page"](https://github.com/ryotamine/surfparrot/blob/master/docs/surfparrot-recommendations.png)
+!["Screenshot of home page"](https://github.com/ryotamine/surfparrot/blob/master/client/public/docs/surfparrot-home.png)
+!["Screenshot of artist page"](https://github.com/ryotamine/surfparrot/blob/master/client/public/docs/surfparrot-artist.png)
+!["Screenshot of get show recommendations page"](https://github.com/ryotamine/surfparrot/blob/master/client/public/docs/surfparrot-recommendations.png)
 
 ## Dependencies
 
