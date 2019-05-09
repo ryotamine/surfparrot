@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Eventform from './event_form'; 
+import EventCreation from './event_form'; 
 import axios from 'axios';
 
 // Artist content class
@@ -22,18 +22,19 @@ class ArtistContent extends Component {
   }
 //delete event helper function
 removeEvent(evt) { 
-  console.log(evt.target.id)
-  debugger
+  console.log("evt.target.id", evt.target.id)
   console.log("REMOVE EVENT")
    fetch("/events/userEvents/delete" , {
-      method: "POST",
+      method: "DELETE",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': parseInt(evt.target.id), 'user_id': 4345 })
+      body: JSON.stringify({'id': parseInt(evt.target.id)})
     })
     .then(res => res.json())
     .then(
       (result) => {
+        this.getUserEvents();
+
         this.setState({
           response: result,
           // events: events.filter(event => event.id !== eventId)
@@ -55,21 +56,25 @@ removeEvent(evt) {
     //   this.setState({data});
   }
 
+  getUserEvents = () => {
+    fetch("/events/userEvents", {
+      method: "POST",
+      mode: "cors", 
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({'id': 34245 }),
+    }).then(response => 
+      response.json()
+    )
+    .then(response => {
+      let artistEvents = response.result.map((event) => this.renderEvent(event))
+      this.setState({events: artistEvents})
+      this.setState({id: response.result.id})
+      }); 
+  }
+
   componentDidMount() {
-//grab events from the db!
-  fetch("/events/userEvents", {
-    method: "POST",
-    mode: "cors", 
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({'id': 34245 }),
-  }).then(response => 
-    response.json()
-  )
-  .then(response => {
-    let artistEvents = response.result.map((event) => this.renderEvent(event))
-    this.setState({events: artistEvents})
-    this.setState({id: response.result.id})
-    });
+//grab events from the db!;
+    this.getUserEvents();
 
 //delete events 
 }
@@ -93,6 +98,7 @@ renderEvent = (data) => {
     
   }
     render() {
+      console.log(this.state.events)
     return (
 
       <div>

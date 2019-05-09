@@ -348,7 +348,6 @@ app.post("/saveEvent", (req, res) => {
 });
 
 app.post("/events/userEvents", (req, res) => {
-  console.log("event users route hit");
   var userId = req.body.id
   database('Event')
   .where({userMusicianId: userId })
@@ -366,28 +365,27 @@ app.post("/events/userEvents", (req, res) => {
     }; 
   });
 });
-
-app.post("/events/userEvents/delete", (req, res) => {
-  console.log(req.body);
-  var userId = req.body.id
+//delete an event from the musician profile.
+app.delete("/events/userEvents/delete", (req, res) => {
+  var eventId = req.body.id
   database('Event')
-  .where({userMusicianId: userId })
-  .select ('id')
-  .then(function() {
+  .where({'id': eventId })
+  .del()
+  .then(function(result) {
     // if no events found:
     if (!result || !result[0])  {
-      console.log("No event to delete.")
+      console.log("event deleted.")
+      res.send ({status: 'okay'})
       return;
     } else {
+      console.log("what happened? I guess this event lasts forever")
       res.send
       ({
         result: result
       });
-    }; 
-  });
+    }
+  })
 });
-
-
 
 app.get("/user", (req, res) => {
   console.log("get /user: ", req.body);
