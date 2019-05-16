@@ -44,14 +44,14 @@ Surfparrot is a full-stack web application built with React, Node, Express, Post
 
 ## Functionality
 
-Surfparrot is an app for live-music event listing. Users can preview music by artist who are going to be playing in their area soon. Artists can create events at their respective page.
+Surfparrot is an app for live-music event listing. Users can preview music by artist who are going to be playing in their area soon. Artists can create events at their respective pages.
 
 Once the user has previewed multiple songs, they get show recommendations based on their selection.
 
-Surfparrot is designed to allow users to preview music before attending the event. This method allows them to get an idea on what the artist is like. The live-music event listing at home page is real-time through integrating www.rotate.com and Spotify API.
+Surfparrot is designed to allow users to preview music before attending the event. This method allows them to get an idea of what the artist is like. The live-music event listing at home page is real-time through integrating www.rotate.com and Spotify API.
 
 ## Contributors
 
-- Ryota Mine
-- Patrick McKeegan
-- Esther Splett
+- Ryota Mine (https://github.com/ryotamine)
+- Patrick McKeegan (https://github.com/pmckeegan)
+- Esther Splett (https://github.com/esplett)
