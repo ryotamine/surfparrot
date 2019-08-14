@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import request from 'request';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
+import React, { Component } from "react";
+import request from "request";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
 // Scrape class
 class Scrape extends Component {
@@ -23,7 +23,7 @@ class Scrape extends Component {
 
   // Calls server to get data for the table
   getConcertData() {
-    request('http://localhost:5000/showInfo', {json: true}, (error, response, body) => {
+    request("http://localhost:5000/showInfo", {json: true}, (error, response, body) => {
       if (!error && response.statusCode === 200) {
         this.setState({listingData: body.listingData});
       }
@@ -44,24 +44,24 @@ class Scrape extends Component {
   render() {
     const columns = [
       {
-        Header: 'Event',
-        accessor: 'Event'
+        Header: "Event",
+        accessor: "Event"
       },
       {
-        Header: 'Date',
-        accessor: 'Date'
+        Header: "Date",
+        accessor: "Date"
       },
       {
-        Header: 'Location',
-        accessor: 'Location',
+        Header: "Location",
+        accessor: "Location",
         Cell: row => {
           const url = `https://www.google.com/maps/search/${row.value}+Toronto`
           return <a href={url} target="_blank" rel="noopener noreferrer">{row.value}</a>
         }
       },
       {
-        Header: 'Listen',
-        accessor: 'Event',
+        Header: "Listen",
+        accessor: "Event",
         Cell: row => {
           const artistButtonClicked = () => {
             this.handleClick(row.value);

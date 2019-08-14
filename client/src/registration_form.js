@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Popup from "reactjs-popup";
 
 // Register class
@@ -8,10 +8,10 @@ class Registration extends Component {
     super(props);
 
     this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
       artist: false
     };
     
@@ -43,7 +43,7 @@ class Registration extends Component {
   // Radio button change helper function
   handleRadioButtonChange(event) {
     event.persist();
-    this.setState({ artist: event.target.id === 'artist' });
+    this.setState({ artist: event.target.id === "artist" });
   }
 
   // Artist or user selection helper function
@@ -52,7 +52,7 @@ class Registration extends Component {
     this.setState({
       register: true
     });
-    sessionStorage.setItem('email', this.state.email);
+    sessionStorage.setItem("email", this.state.email);
 
     if (this.state.artist) {
       fetch("/register/artist", {
@@ -60,11 +60,11 @@ class Registration extends Component {
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          'artist': this.state.artist, 
-          'firstName': this.state.firstName, 
-          'lastName': this.state.lastName, 
-          'email': this.state.email, 
-          'password': this.state.password 
+          "artist": this.state.artist, 
+          "firstName": this.state.firstName, 
+          "lastName": this.state.lastName, 
+          "email": this.state.email, 
+          "password": this.state.password 
         }),
       })
       .then(response => 
@@ -80,11 +80,11 @@ class Registration extends Component {
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
         body: JSON.stringify({
-          'user': this.state.user, 
-          'firstName': this.state.firstName, 
-          'lastName': this.state.lastName,
-          'email': this.state.email, 
-          'password': this.state.password
+          "user": this.state.user, 
+          "firstName": this.state.firstName, 
+          "lastName": this.state.lastName,
+          "email": this.state.email, 
+          "password": this.state.password
         }),
       })
       .then(response => 

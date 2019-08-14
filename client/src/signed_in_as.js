@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // User signed in as class
 class SignedInAs extends Component {
 
   // Render signed in as
   render() {
-    let email = sessionStorage.getItem('email');
+    let email = sessionStorage.getItem("email");
 
     return (
       <div>

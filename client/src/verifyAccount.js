@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
 // User verification class
 class UserVerification extends Component {
@@ -22,7 +22,7 @@ class UserVerification extends Component {
     // Get email and password from form
     // Retrieve passwords from server
     userInfoDB = () => {
-      fetch('api/userAccounts')
+      fetch("api/userAccounts")
         .then(res => res.json())
         .then(verify => this.setState({email}), this.setsState({password}));
     }

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import Contact from './contact';
-import Registration from './registration_form';
-import Login from './login';
-import LoginRecommendations from './loginrecommendations';
+import React, { Component } from "react";
+import Contact from "./contact";
+import Registration from "./registration_form";
+import Login from "./login";
+import LoginRecommendations from "./loginrecommendations";
 
 // Home navbar class
 class Navbar extends Component {
@@ -47,7 +47,7 @@ class Navbar extends Component {
           <img src="/docs/parrot2.png" alt=""></img>
         </div>
         
-        <button className='home'><a className='home main-nav' href='/'>surfparrot</a></button>
+        <button className="home"><a className="home main-nav" href="/">surfparrot</a></button>
 
         <div className="rightnav">
           <ul>

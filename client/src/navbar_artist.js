@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Contact from './contact';
-import SignedInAs from './signed_in_as';
-import Event from './event';
+import React, { Component } from "react";
+import Contact from "./contact";
+import SignedInAs from "./signed_in_as";
+import Event from "./event";
 
 // Artist navbar class
 class NavbarArtist extends Component {
@@ -18,7 +18,7 @@ class NavbarArtist extends Component {
           <img src="/docs/parrot2.png" alt=""></img>
         </div>
 
-        <button className='home'><a className='home main-nav' href='#'>surfparrot</a></button>
+        <button className="home"><a className="home main-nav" href="#">surfparrot</a></button>
 
         <div className="rightnav">
           <ul>
@@ -33,10 +33,10 @@ class NavbarArtist extends Component {
 
               <div className="dropdown-content">
                 <Event name={this.props.name} handleName={this.props.handleName}/>
-                <button className='main-logout main-nav'>
+                <button className="main-logout main-nav">
                   <a 
-                    href='/' 
-                    className='main-logout main-nav' 
+                    href="/" 
+                    className="main-logout main-nav" 
                     onClick={this.handleLogout}
                   >
                     Logout

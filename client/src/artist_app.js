@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ArtistContent from './artist_content';
+import React, { Component } from "react";
+import ArtistContent from "./artist_content";
 
 // Artist app class
 class ArtistApp extends Component {
@@ -8,7 +8,7 @@ class ArtistApp extends Component {
     super(props);
 
     this.state = {
-      name: ''
+      name: ""
     }
 
     this.handleName = this.handleName.bind(this);

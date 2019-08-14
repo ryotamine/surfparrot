@@ -14,7 +14,7 @@ header {
 .main-nav {
   color: black;
   text-transform: lowercase;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
   font-size: 1.25rem;
 }
 
@@ -39,7 +39,7 @@ header {
 /* Get show recommendations link */
 .recommend {
   padding-top: 22px;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
   color: black;
   font-size: 1.25rem;
   list-style: none;
@@ -103,7 +103,7 @@ a:hover {
   border: none;
   outline: none;
   background-color: inherit;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
   color: black;
   padding: 17px 0px 0px 15px;
   font-size: 1.25rem;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Spotify player class
 class SpotifyPlayer extends Component {

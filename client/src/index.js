@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import App from './App';
-import UserApp from './user_app';
-import ArtistApp from './artist_app';
-import Recommendations from './recommendations.js';
-import Home from './home';
-import axios from 'axios';
-import NavbarArtist from './navbar_artist';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import App from "./App";
+import UserApp from "./user_app";
+import ArtistApp from "./artist_app";
+import Recommendations from "./recommendations.js";
+import Home from "./home";
+import axios from "axios";
+import NavbarArtist from "./navbar_artist";
 
 // Index class
 class Index extends Component {
   // Set initial state
   state = {
     token: null,
-    artist: '43ZHCT0cAZBISjO8DG9PnE',
+    artist: "43ZHCT0cAZBISjO8DG9PnE",
     searchTerm: "",
     artistName: "",
     data: null,
@@ -35,7 +35,7 @@ class Index extends Component {
         mode: "cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          'email': sessionStorage.email
+          "email": sessionStorage.email
         })
       })
       .then(response => 
@@ -47,7 +47,7 @@ class Index extends Component {
   }
 
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch("/express_backend");
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -75,7 +75,7 @@ class Index extends Component {
           const firstItem = items[0];
 
           if (!firstItem) {
-            alert('surfparrot could not find this artist on Spotify!');
+            alert("surfparrot could not find this artist on Spotify!");
             return
           }
 
@@ -94,7 +94,7 @@ class Index extends Component {
 
   getSpotifyToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token');
+      const response = await axios.get("http://localhost:5000/spotify_token");
       const token = response.data.token;
       this.setState({ token });
     } catch (error) {
@@ -105,7 +105,7 @@ class Index extends Component {
   // Helper function sends refresh token endpoint back to the front-end
   getRefreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token');
+      const response = await axios.get("http://localhost:5000/spotify_token");
       const token = response.data.token;
       this.setState({ token });
     } catch (error) {
@@ -140,4 +140,4 @@ class Index extends Component {
   }
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(<Index />, document.getElementById("root"));

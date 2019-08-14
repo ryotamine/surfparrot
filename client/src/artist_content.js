@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Artist content class
 class ArtistContent extends Component {
@@ -21,7 +21,7 @@ class ArtistContent extends Component {
       method: "DELETE",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': parseInt(evt.target.id)})
+      body: JSON.stringify({"id": parseInt(evt.target.id)})
     })
       .then(res => res.json())
       .then(
@@ -44,7 +44,7 @@ class ArtistContent extends Component {
       method: "POST",
       mode: "cors", 
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({'id': 15570 })
+      body: JSON.stringify({"id": 15570 })
     })
       .then(response => response.json())
       .then(response => {

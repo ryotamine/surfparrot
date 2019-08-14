@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Name form search class
 class NameForm extends Component {
 	// Name form search constructor
 	constructor(props) {
 		super(props);
-		this.state = {value: ''};
+		this.state = {value: ""};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);

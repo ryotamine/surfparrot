@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Scrape from './external-show-listings/scrape-recommendations';
-import SpotifyPlayer from './SpotifyPlayer.js';
+import React, { Component } from "react";
+import axios from "axios";
+import Scrape from "./external-show-listings/scrape-recommendations";
+import SpotifyPlayer from "./SpotifyPlayer.js";
 
 // User App class
 class Recommendations extends Component {
@@ -17,7 +17,7 @@ class Recommendations extends Component {
     recommendations: "",
     // Artists object that contains 150 artists from spotify endpoints
     artists: [],
-    artist: '43ZHCT0cAZBISjO8DG9PnE', 
+    artist: "43ZHCT0cAZBISjO8DG9PnE", 
     searchTerm: ""
   };
   
@@ -32,7 +32,7 @@ class Recommendations extends Component {
   }
 
   getRecommendations = async artistName => {
-    axios.get('http://localhost:5000/user_token', {
+    axios.get("http://localhost:5000/user_token", {
       withCredentials: true
     })
       .then (response => {
@@ -102,7 +102,7 @@ class Recommendations extends Component {
             }))
           
             } else {
-                axios.get('http://localhost:5000/user_refresh_token', {
+                axios.get("http://localhost:5000/user_refresh_token", {
                     withCredentials: true,
                 })
                 this.getRefreshToken()
@@ -136,7 +136,7 @@ class Recommendations extends Component {
 
 
     callBackendAPI = async () => {
-      const response = await fetch('/express_backend');
+      const response = await fetch("/express_backend");
       const body = await response.json();
   
       if (response.status !== 200) {
@@ -165,7 +165,7 @@ class Recommendations extends Component {
           const firstItem = items[0]
     
           if (!firstItem) {
-            alert('surfparrot could not find this artist on Spotify!')
+            alert("surfparrot could not find this artist on Spotify!")
             // <Redirect />
             return
           }
@@ -186,7 +186,7 @@ class Recommendations extends Component {
   
     getSpotifyToken = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/spotify_token')
+        const response = await axios.get("http://localhost:5000/spotify_token")
         const token = response.data.token
         this.setState({ token })
       } catch (error) {
@@ -197,7 +197,7 @@ class Recommendations extends Component {
     // helper function sends refresh_token endpoint back to the frontend
     getRefreshToken = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/spotify_token')
+        const response = await axios.get("http://localhost:5000/spotify_token")
         const token = response.data.token
         this.setState({ token })
       } catch (error) {

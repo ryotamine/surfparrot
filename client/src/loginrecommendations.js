@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Get show recommendations class
 class LoginRecommendations extends Component {

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Eventform from './event_form';
+import React, { Component } from "react";
+import Eventform from "./event_form";
 
 // Create event form class
 class EventCreation extends Component {

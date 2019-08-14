@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Popup from 'reactjs-popup';
-import axios from 'axios';
+import React, { Component } from "react";
+import Popup from "reactjs-popup";
+import axios from "axios";
 
 // Login class
 class Login extends Component {
@@ -11,8 +11,8 @@ class Login extends Component {
     this.state = { 
       loggedIn: false,
       loginError: false,
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       artist: false
     };
 
@@ -44,7 +44,7 @@ class Login extends Component {
   // Radio button change helper function
   handleRadioButtonChange(event) {
     event.persist();
-    this.setState({ artist: event.target.id === 'artist' });
+    this.setState({ artist: event.target.id === "artist" });
   }
 
   // Artist or user selection helper function
@@ -53,7 +53,7 @@ class Login extends Component {
     this.setState({
       register: true
     });
-    sessionStorage.setItem('email', this.state.email);
+    sessionStorage.setItem("email", this.state.email);
 
     if (this.state.artist) {
       fetch("/login/artist", {
@@ -61,9 +61,9 @@ class Login extends Component {
         mode: "cors", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          'artist': this.state.artist, 
-          'email': this.state.email, 
-          'password': this.state.password 
+          "artist": this.state.artist, 
+          "email": this.state.email, 
+          "password": this.state.password 
         }),
       })
       .then(response => 
@@ -79,9 +79,9 @@ class Login extends Component {
         mode: "cors", 
         headers: { "Content-Type": "application/json" },     
         body: JSON.stringify({
-          'user': this.state.user,
-          'email': this.state.email, 
-          'password': this.state.password
+          "user": this.state.user,
+          "email": this.state.email, 
+          "password": this.state.password
         }),
       })
       .then(response => 

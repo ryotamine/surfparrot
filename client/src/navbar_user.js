@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Contact from './contact';
-import SignedInAs from './signed_in_as';
+import React, { Component } from "react";
+import Contact from "./contact";
+import SignedInAs from "./signed_in_as";
 
 // User navbar class
 class NavbarUser extends Component {
@@ -17,7 +17,7 @@ class NavbarUser extends Component {
           <img src="/docs/parrot2.png" alt=""></img>
         </div>
 
-        <button className='home'><a className='home main-nav' href='#'>surfparrot</a></button>
+        <button className="home"><a className="home main-nav" href="#">surfparrot</a></button>
 
         <div className="rightnav">
           <ul>
@@ -31,10 +31,10 @@ class NavbarUser extends Component {
               </button>
 
               <div className="dropdown-content">
-                <button className='main-logout main-nav'>
+                <button className="main-logout main-nav">
                   <a 
-                    href='/' 
-                    className='main-logout main-nav' 
+                    href="/" 
+                    className="main-logout main-nav" 
                     onClick={this.handleLogout}
                   >
                     Logout

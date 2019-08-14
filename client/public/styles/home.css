@@ -6,13 +6,13 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}bo
 
 /* Home page background */
 body {
-  background-image: url('../docs/surfparrot-background.png');
+  background-image: url("../docs/surfparrot-background.png");
   background-size: cover;
   z-index: -1;
   margin: 0 auto;
   height: 100%;
   width: 90%;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .home {
@@ -23,14 +23,14 @@ body {
   border: none;
   cursor: pointer;
   outline: none;
-  font-family: 'Indie Flower', cursive !important;
+  font-family: "Indie Flower", cursive !important;
   font-size: 2.5rem !important;
 }
 
 /* Song recommendations banner */
 .spotify h2 {
   text-align: center;
-  font-family: 'Neucha', cursive;
+  font-family: "Neucha", cursive;
   background-color: #b9ff8d8c;
   margin-top: 32px;
   padding: 30px;

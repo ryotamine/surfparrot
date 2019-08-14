@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Popup from "reactjs-popup";
-import 'flatpickr/dist/themes/material_green.css'
-import Flatpickr from 'react-flatpickr'
+import "flatpickr/dist/themes/material_green.css"
+import Flatpickr from "react-flatpickr"
 
 // Create event form class
 class Eventform extends Component {
@@ -11,10 +11,10 @@ class Eventform extends Component {
 
     this.state = {
       open: false,
-      eventName: '',
-      eventDate: '',
-      eventLocation: '',
-      songLink: '',
+      eventName: "",
+      eventDate: "",
+      eventLocation: "",
+      songLink: "",
       date: new Date()
     }
 
@@ -33,7 +33,7 @@ class Eventform extends Component {
   // Save event form helper function
   handleSaveEvent(event) {
     event.preventDefault();
-    fetch('/saveEvent', {
+    fetch("/saveEvent", {
       method: "POST",
       mode: "cors",
       headers: {
@@ -41,10 +41,10 @@ class Eventform extends Component {
       },
       body: JSON.stringify(
         {
-          'eventName': this.state.eventName, 
-          'eventDate' : this.state.eventDate, 
-          'eventLocation': this.state.eventLocation, 
-          'songLink': this.state.songLink 
+          "eventName": this.state.eventName, 
+          "eventDate" : this.state.eventDate, 
+          "eventLocation": this.state.eventLocation, 
+          "songLink": this.state.songLink 
         }
       ), 
     })

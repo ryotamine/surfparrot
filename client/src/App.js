@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Scrape from './external-show-listings/scrape';
-import SpotifyPlayer from './SpotifyPlayer';
-import { Redirect } from 'react-router';
+import React, { Component } from "react";
+import Scrape from "./external-show-listings/scrape";
+import SpotifyPlayer from "./SpotifyPlayer";
+import { Redirect } from "react-router";
 
 // App class
 class App extends Component {

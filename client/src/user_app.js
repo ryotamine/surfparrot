@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Scrape from './external-show-listings/scrape';
-import SpotifyPlayer from './SpotifyPlayer.js';
+import React, { Component } from "react";
+import axios from "axios";
+import Scrape from "./external-show-listings/scrape";
+import SpotifyPlayer from "./SpotifyPlayer.js";
 
 // App class
 class UserApp extends Component {
@@ -15,14 +15,14 @@ class UserApp extends Component {
   // Initial state
   state = {
     token: null,
-    artist: '43ZHCT0cAZBISjO8DG9PnE', 
+    artist: "43ZHCT0cAZBISjO8DG9PnE", 
     searchTerm: "",
     artistName: "",
     data: null
   };
 
   callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
+    const response = await fetch("/express_backend");
     const body = await response.json();
 
     if (response.status !== 200) {
@@ -50,7 +50,7 @@ class UserApp extends Component {
           const firstItem = items[0];
     
           if (!firstItem) {
-            alert('surfparrot could not find this artist on Spotify!');
+            alert("surfparrot could not find this artist on Spotify!");
             return
           }
 
@@ -72,7 +72,7 @@ class UserApp extends Component {
 
   getSpotifyToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token');
+      const response = await axios.get("http://localhost:5000/spotify_token");
       const token = response.data.token;
       this.setState({ token });
     } catch (error) {
@@ -83,7 +83,7 @@ class UserApp extends Component {
   // Helper function sends refresh token endpoint back to the front-end
   getRefreshToken = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/spotify_token');
+      const response = await axios.get("http://localhost:5000/spotify_token");
       const token = response.data.token;
       this.setState({ token });
     } catch (error) {
