@@ -32,15 +32,16 @@ Surfparrot is a full-stack web application built with React, Node, Express, Post
 
 ## Getting Started
 
-1. Install dependencies at both client and server folder: `npm i`
-2. Run migrations at server folder: `npm run knex migrate:latest`
+1. Fork and clone
+2. Install dependencies at both client and server folder: `npm install`
+3. Run migrations at server folder: `npm run knex migrate:latest`
   - Check the migrations folder to see what gets created in the DB
-3. Run the seed at server folder: `npm run knex seed:run`
+4. Run the seed at server folder: `npm run knex seed:run`
   - Check the seeds file to see what gets seeded in the DB
-4. Generate Spotify ID and secret key at `https://developer.spotify.com/dashboard/login` and save them to .env file at server folder
-5. Run the server at client folder: `npm run start`
-6. Run the server at server folder: `npm start`
-7. Visit `http://localhost:3000/`
+5. Generate Spotify ID and secret key at `https://developer.spotify.com/dashboard/login` and save them to .env file at server folder
+6. Run the server at client folder: `npm run start`
+7. Run the server at server folder: `npm start`
+8. Visit <http://localhost:3000/>
 
 ## Functionality
 
