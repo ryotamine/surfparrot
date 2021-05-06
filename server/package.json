@@ -43,7 +43,7 @@
     "entities": "^1.1.2",
     "express": "^4.16.4",
     "fast-boot": "^1.0.7",
-    "json": "^9.0.6",
+    "json": "^10.0.0",
     "moment": "^2.24.0",
     "mongodb": "^3.2.3",
     "mongoose": "^5.5.5",
