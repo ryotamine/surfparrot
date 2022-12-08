@@ -31,7 +31,7 @@
     "base64url": "^3.0.1",
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "capitalize": "^2.0.0",
     "cheerio": "^1.0.0-rc.3",
     "concurrently": "^4.1.0",
@@ -41,7 +41,7 @@
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "entities": "^1.1.2",
-    "express": "^4.16.4",
+    "express": "^4.18.2",
     "fast-boot": "^1.0.7",
     "json": "^9.0.6",
     "moment": "^2.24.0",
@@ -53,7 +53,7 @@
     "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "nodemon": "^1.18.11",
     "passport-local": "^1.0.0",
     "pg": "^7.10.0"
